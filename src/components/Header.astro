@@ -1,0 +1,676 @@
+---
+// Enhanced Header component
+---
+
+<header class="site-header">
+  <!-- Top Bar -->
+  <div class="header-top">
+    <div class="header-container">
+      <div class="header-info">
+        <span class="info-item">
+          <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          30+ Medical Terms
+        </span>
+        <span class="info-item">
+          <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+          6 Categories
+        </span>
+        <span class="info-item">
+          <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+          Free Forever
+        </span>
+      </div>
+      
+      <div class="header-actions">
+        <a href="/admin/login" class="action-link admin-link">
+          <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Admin
+        </a>
+        <a href="/blog" class="action-link">
+          <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+          </svg>
+          Blog
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <div class="header-main">
+    <div class="header-container">
+      <!-- Logo and Branding -->
+      <div class="header-brand">
+        <a href="/" class="brand-link">
+          <div class="brand-icon">
+            <svg class="brand-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">Medical Terminology Hub</h1>
+            <p class="brand-subtitle">Master Medical Terminology</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="header-nav">
+        <div class="nav-links">
+          <a href="/" class="nav-link active">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"/>
+            </svg>
+            Study Cards
+          </a>
+          
+          <div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">
+              <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+              Categories
+              <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            
+            <div class="dropdown-menu">
+              <a href="/cardiovascular" class="dropdown-item">
+                <span class="category-icon">❤️</span>
+                Cardiovascular System
+              </a>
+              <a href="/respiratory" class="dropdown-item">
+                <span class="category-icon">🫁</span>
+                Respiratory System
+              </a>
+              <a href="/neurology" class="dropdown-item">
+                <span class="category-icon">🧠</span>
+                Neurology
+              </a>
+              <a href="/dermatology" class="dropdown-item">
+                <span class="category-icon">🩺</span>
+                Dermatology
+              </a>
+              <a href="/musculoskeletal" class="dropdown-item">
+                <span class="category-icon">🦴</span>
+                Musculoskeletal System
+              </a>
+              <a href="/gastroenterology" class="dropdown-item">
+                <span class="category-icon">🫃</span>
+                Gastroenterology
+              </a>
+            </div>
+          </div>
+          
+          <a href="/blog" class="nav-link">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            Medical Blog
+          </a>
+          
+          <a href="/about" class="nav-link">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            About
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg class="close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav hidden" id="mobileNav">
+    <div class="mobile-nav-content">
+      <a href="/" class="mobile-nav-link active">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+        </svg>
+        Study Cards
+      </a>
+      
+      <div class="mobile-category-section">
+        <h3 class="mobile-section-title">Medical Categories</h3>
+        <a href="/cardiovascular" class="mobile-nav-link category-link">
+          <span class="category-icon">❤️</span>
+          Cardiovascular System
+        </a>
+        <a href="/respiratory" class="mobile-nav-link category-link">
+          <span class="category-icon">🫁</span>
+          Respiratory System
+        </a>
+        <a href="/neurology" class="mobile-nav-link category-link">
+          <span class="category-icon">🧠</span>
+          Neurology
+        </a>
+        <a href="/dermatology" class="mobile-nav-link category-link">
+          <span class="category-icon">🩺</span>
+          Dermatology
+        </a>
+        <a href="/musculoskeletal" class="mobile-nav-link category-link">
+          <span class="category-icon">🦴</span>
+          Musculoskeletal System
+        </a>
+        <a href="/gastroenterology" class="mobile-nav-link category-link">
+          <span class="category-icon">🫃</span>
+          Gastroenterology
+        </a>
+      </div>
+      
+      <a href="/blog" class="mobile-nav-link">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13"/>
+        </svg>
+        Medical Blog
+      </a>
+      
+      <a href="/about" class="mobile-nav-link">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        About
+      </a>
+      
+      <a href="/admin/login" class="mobile-nav-link admin-link">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0"/>
+        </svg>
+        Admin Panel
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    font-family: 'Source Serif Pro', serif;
+  }
+
+  /* Header Top Bar */
+  .header-top {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 0;
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-info {
+    display: flex;
+    gap: 24px;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .info-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.9;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  .action-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+  }
+
+  .action-link:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .admin-link {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .action-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Main Header */
+  .header-main {
+    padding: 16px 0;
+    background: white;
+  }
+
+  /* Brand */
+  .header-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .brand-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+
+  .brand-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1e293b;
+    line-height: 1.1;
+  }
+
+  .brand-subtitle {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Navigation */
+  .header-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #667eea;
+    background: #f1f5f9;
+    transform: translateY(-1px);
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Dropdown */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dropdown-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #475569;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+
+  .dropdown-item:hover {
+    background: #f8fafc;
+    color: #667eea;
+    transform: translateX(4px);
+  }
+
+  .category-icon {
+    font-size: 1.2rem;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn:hover {
+    background: #f1f5f9;
+    color: #667eea;
+  }
+
+  .menu-icon,
+  .close-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-nav {
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 0;
+  }
+
+  .mobile-nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    text-decoration: none;
+    color: #475569;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    background: #f8fafc;
+    color: #667eea;
+  }
+
+  .mobile-category-section {
+    margin: 16px 0;
+    padding: 16px 0;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .mobile-section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    margin: 0 0 12px 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .category-link {
+    padding-left: 32px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .nav-links {
+      gap: 4px;
+    }
+
+    .nav-link {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-info {
+      gap: 16px;
+    }
+
+    .info-item {
+      font-size: 0.8rem;
+    }
+
+    .header-actions {
+      gap: 12px;
+    }
+
+    .action-link {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .brand-svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-container {
+      padding: 0 16px;
+    }
+
+    .header-info {
+      display: none;
+    }
+
+    .header-actions {
+      gap: 8px;
+    }
+
+    .brand-text {
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 1.2rem;
+    }
+
+    .brand-subtitle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function setupHeader() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = mobileMenuBtn?.querySelector('.menu-icon');
+    const closeIcon = mobileMenuBtn?.querySelector('.close-icon');
+    
+    let isMenuOpen = false;
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      mobileNav?.classList.toggle('hidden', !isMenuOpen);
+      menuIcon?.classList.toggle('hidden', isMenuOpen);
+      closeIcon?.classList.toggle('hidden', !isMenuOpen);
+      
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    });
+    
+    // Close mobile menu when clicking on links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        isMenuOpen = false;
+        mobileNav?.classList.add('hidden');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        isMenuOpen = false;
+        mobileNav?.classList.add('hidden');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Set active nav link based on current path
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+    
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || (currentPath !== '/' && href !== '/' && currentPath.startsWith(href))) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', setupHeader);
+</script>

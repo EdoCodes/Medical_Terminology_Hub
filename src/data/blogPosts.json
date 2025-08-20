@@ -1,0 +1,190 @@
+{
+  "posts": [
+    {
+      "id": "understanding-cardiovascular-terminology",
+      "title": "Understanding Cardiovascular Terminology: A Beginner's Guide",
+      "excerpt": "Master essential heart and circulation terms with this comprehensive guide to cardiovascular medical terminology.",
+      "content": "The cardiovascular system is one of the most important systems in the human body, and understanding its terminology is crucial for anyone in healthcare...",
+      "category": "Cardiovascular",
+      "author": "Dr. Sarah Johnson",
+      "authorBio": "Cardiologist with 15 years of experience in cardiovascular medicine",
+      "publishDate": "2024-01-15",
+      "readTime": "8 min read",
+      "tags": ["cardiovascular", "heart", "terminology", "beginner"],
+      "featuredImage": "/images/blog/cardiovascular-guide.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": true,
+      "difficulty": "basic",
+      "relatedTerms": ["Hypertension", "Myocardial Infarction", "Arrhythmia"]
+    },
+    {
+      "id": "respiratory-system-essentials",
+      "title": "Respiratory System Essentials: From Pneumonia to Pneumothorax",
+      "excerpt": "Explore critical respiratory terminology that every healthcare professional should know.",
+      "content": "The respiratory system terminology can be complex, but mastering these terms is essential for effective communication in healthcare settings...",
+      "category": "Respiratory",
+      "author": "Dr. Michael Chen",
+      "authorBio": "Pulmonologist and respiratory therapy specialist",
+      "publishDate": "2024-01-22",
+      "readTime": "10 min read",
+      "tags": ["respiratory", "lungs", "pneumonia", "breathing"],
+      "featuredImage": "/images/blog/respiratory-essentials.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": true,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Pneumonia", "Pneumothorax", "Asthma"]
+    },
+    {
+      "id": "neurological-terms-decoded",
+      "title": "Neurological Terms Decoded: Brain and Nervous System Vocabulary",
+      "excerpt": "Demystify complex neurological terminology with clear explanations and practical examples.",
+      "content": "Neurological terminology often intimidates medical students, but with the right approach, these complex terms become manageable...",
+      "category": "Neurology",
+      "author": "Dr. Emily Rodriguez",
+      "authorBio": "Neurologist and medical education specialist",
+      "publishDate": "2024-01-29",
+      "readTime": "12 min read",
+      "tags": ["neurology", "brain", "nervous system", "stroke"],
+      "featuredImage": "/images/blog/neurological-terms.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": true,
+      "difficulty": "advanced",
+      "relatedTerms": ["Stroke", "Seizure", "Encephalitis"]
+    },
+    {
+      "id": "dermatology-for-beginners",
+      "title": "Dermatology for Beginners: Common Skin Condition Terms",
+      "excerpt": "Learn essential dermatological terminology to better understand skin conditions and treatments.",
+      "content": "Dermatology encompasses a wide range of conditions affecting the skin, hair, and nails. Understanding the basic terminology is crucial...",
+      "category": "Dermatology",
+      "author": "Dr. Amanda Thompson",
+      "authorBio": "Board-certified dermatologist with focus on medical education",
+      "publishDate": "2024-02-05",
+      "readTime": "7 min read",
+      "tags": ["dermatology", "skin", "conditions", "treatment"],
+      "featuredImage": "/images/blog/dermatology-basics.jpg",
+      "videoUrl": null,
+      "featured": false,
+      "difficulty": "basic",
+      "relatedTerms": ["Melanoma", "Dermatitis", "Eczema"]
+    },
+    {
+      "id": "musculoskeletal-anatomy-terms",
+      "title": "Musculoskeletal Anatomy: Essential Terms for Healthcare Workers",
+      "excerpt": "Master bone, muscle, and joint terminology with this comprehensive guide to musculoskeletal anatomy.",
+      "content": "The musculoskeletal system provides structure and enables movement. Healthcare professionals must understand the terminology...",
+      "category": "Musculoskeletal",
+      "author": "Dr. Robert Martinez",
+      "authorBio": "Orthopedic surgeon and sports medicine physician",
+      "publishDate": "2024-02-12",
+      "readTime": "9 min read",
+      "tags": ["musculoskeletal", "bones", "muscles", "joints"],
+      "featuredImage": "/images/blog/musculoskeletal-anatomy.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": false,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Fracture", "Arthritis", "Osteoporosis"]
+    },
+    {
+      "id": "digestive-system-terminology",
+      "title": "Digestive System Terminology: From Gastritis to Cirrhosis",
+      "excerpt": "Explore gastroenterology terminology and understand common digestive system conditions.",
+      "content": "The digestive system is complex, with terminology that reflects the intricate processes of digestion and absorption...",
+      "category": "Gastroenterology",
+      "author": "Dr. Lisa Patel",
+      "authorBio": "Gastroenterologist specializing in inflammatory bowel disease",
+      "publishDate": "2024-02-19",
+      "readTime": "11 min read",
+      "tags": ["gastroenterology", "digestive", "stomach", "liver"],
+      "featuredImage": "/images/blog/digestive-terminology.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": false,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Gastritis", "Cirrhosis", "Appendicitis"]
+    },
+    {
+      "id": "medical-terminology-study-strategies",
+      "title": "Effective Study Strategies for Medical Terminology",
+      "excerpt": "Discover proven techniques to memorize and retain medical terminology more effectively.",
+      "content": "Learning medical terminology can be challenging, but with the right strategies, you can master these complex terms efficiently...",
+      "category": "Study Tips",
+      "author": "Prof. Jennifer Kim",
+      "authorBio": "Medical education researcher and terminology expert",
+      "publishDate": "2024-02-26",
+      "readTime": "6 min read",
+      "tags": ["study tips", "memory", "learning", "education"],
+      "featuredImage": "/images/blog/study-strategies.jpg",
+      "videoUrl": null,
+      "featured": false,
+      "difficulty": "basic",
+      "relatedTerms": []
+    },
+    {
+      "id": "prefix-suffix-medical-terms",
+      "title": "Mastering Medical Prefixes and Suffixes",
+      "excerpt": "Learn the building blocks of medical terminology through common prefixes, suffixes, and root words.",
+      "content": "Understanding medical prefixes and suffixes is like having a key to unlock the meaning of thousands of medical terms...",
+      "category": "Educational",
+      "author": "Dr. David Wilson",
+      "authorBio": "Professor of Medical Terminology and Healthcare Communication",
+      "publishDate": "2024-03-05",
+      "readTime": "15 min read",
+      "tags": ["prefixes", "suffixes", "word roots", "etymology"],
+      "featuredImage": "/images/blog/prefixes-suffixes.jpg",
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "featured": false,
+      "difficulty": "basic",
+      "relatedTerms": []
+    }
+  ],
+  "categories": [
+    {
+      "name": "Cardiovascular",
+      "description": "Heart and circulation related content",
+      "color": "#ef4444",
+      "postCount": 1
+    },
+    {
+      "name": "Respiratory",
+      "description": "Lung and breathing related content", 
+      "color": "#3b82f6",
+      "postCount": 1
+    },
+    {
+      "name": "Neurology",
+      "description": "Brain and nervous system content",
+      "color": "#8b5cf6", 
+      "postCount": 1
+    },
+    {
+      "name": "Dermatology",
+      "description": "Skin condition related content",
+      "color": "#ec4899",
+      "postCount": 1
+    },
+    {
+      "name": "Musculoskeletal",
+      "description": "Bone, muscle, and joint content",
+      "color": "#f59e0b",
+      "postCount": 1
+    },
+    {
+      "name": "Gastroenterology", 
+      "description": "Digestive system related content",
+      "color": "#10b981",
+      "postCount": 1
+    },
+    {
+      "name": "Study Tips",
+      "description": "Learning strategies and study methods",
+      "color": "#6366f1",
+      "postCount": 1
+    },
+    {
+      "name": "Educational",
+      "description": "General medical education content",
+      "color": "#8b5cf6",
+      "postCount": 1
+    }
+  ]
+}
