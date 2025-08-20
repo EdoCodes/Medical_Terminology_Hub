@@ -1,0 +1,77 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Interactive medical terminology flashcards for medical students and healthcare professionals" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+    
+    <!-- Global Styles -->
+    <style>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div id="app" class="min-h-screen">
+      <slot />
+    </div>
+    
+    <script>
+      // Global keyboard shortcuts and utilities
+      (window as any).medicalTermsApp = {
+        currentCardIndex: 0,
+        isFlipped: false,
+        studyStats: JSON.parse(localStorage.getItem('medicalTermsStats') || '{"studied": 0, "correct": 0}'),
+        
+        saveStats() {
+          localStorage.setItem('medicalTermsStats', JSON.stringify(this.studyStats));
+          this.updateStatsDisplay();
+        },
+        
+        updateStatsDisplay() {
+          const studiedEl = document.querySelector('[data-stat="studied"]');
+          const correctEl = document.querySelector('[data-stat="correct"]');
+          const accuracyEl = document.querySelector('[data-stat="accuracy"]');
+          
+          if (studiedEl) studiedEl.textContent = this.studyStats.studied;
+          if (correctEl) correctEl.textContent = this.studyStats.correct;
+          if (accuracyEl) {
+            const accuracy = this.studyStats.studied > 0 ? 
+              Math.round((this.studyStats.correct / this.studyStats.studied) * 100) : 0;
+            accuracyEl.textContent = accuracy + '%';
+          }
+        }
+      };
+      
+      // Initialize stats display
+      document.addEventListener('DOMContentLoaded', () => {
+        (window as any).medicalTermsApp.updateStatsDisplay();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "cardiovascular": {
+    "name": "Cardiovascular System",
+    "icon": "❤️",
+    "description": "Heart and circulation terminology",
+    "color": "red"
+  },
+  "respiratory": {
+    "name": "Respiratory System", 
+    "icon": "🫁",
+    "description": "Lung and breathing terminology",
+    "color": "blue"
+  },
+  "neurology": {
+    "name": "Neurology",
+    "icon": "🧠", 
+    "description": "Brain and nervous system terminology",
+    "color": "purple"
+  },
+  "dermatology": {
+    "name": "Dermatology",
+    "icon": "🩺",
+    "description": "Skin condition terminology", 
+    "color": "pink"
+  },
+  "musculoskeletal": {
+    "name": "Musculoskeletal System",
+    "icon": "🦴",
+    "description": "Bone, muscle, and joint terminology",
+    "color": "yellow"
+  },
+  "gastroenterology": {
+    "name": "Gastroenterology", 
+    "icon": "🫃",
+    "description": "Digestive system terminology",
+    "color": "green"
+  }
+}

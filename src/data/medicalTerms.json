@@ -1,0 +1,224 @@
+{
+  "cardiovascular": [
+    {
+      "id": "cardio-1",
+      "term": "Myocardial Infarction",
+      "definition": "Death of heart muscle tissue due to lack of blood supply, commonly known as a heart attack",
+      "example": "The patient presented with chest pain and was diagnosed with an acute myocardial infarction",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "cardio-2", 
+      "term": "Hypertension",
+      "definition": "High blood pressure, defined as systolic pressure ≥140 mmHg or diastolic pressure ≥90 mmHg",
+      "example": "Chronic hypertension increases the risk of stroke and kidney disease",
+      "difficulty": "basic"
+    },
+    {
+      "id": "cardio-3",
+      "term": "Arrhythmia", 
+      "definition": "Irregular heartbeat or abnormal heart rhythm",
+      "example": "The ECG showed atrial fibrillation, a common type of arrhythmia",
+      "difficulty": "basic"
+    },
+    {
+      "id": "cardio-4",
+      "term": "Atherosclerosis",
+      "definition": "Hardening and narrowing of arteries due to plaque buildup",
+      "example": "Atherosclerosis in the coronary arteries can lead to angina and heart attacks",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "cardio-5",
+      "term": "Cardiomyopathy",
+      "definition": "Disease of the heart muscle that affects its ability to pump blood effectively",
+      "example": "Dilated cardiomyopathy resulted in the patient's heart failure symptoms",
+      "difficulty": "advanced"
+    }
+  ],
+  "respiratory": [
+    {
+      "id": "resp-1",
+      "term": "Pneumonia",
+      "definition": "Infection that inflames air sacs in one or both lungs, which may fill with fluid",
+      "example": "Bacterial pneumonia was confirmed with chest X-ray and sputum culture",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resp-2",
+      "term": "Asthma",
+      "definition": "Chronic respiratory condition causing airway inflammation and breathing difficulties",
+      "example": "The child's asthma was triggered by exposure to dust mites",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resp-3",
+      "term": "Pneumothorax",
+      "definition": "Collapsed lung caused by air leaking into the space between lung and chest wall",
+      "example": "Spontaneous pneumothorax required immediate chest tube insertion",
+      "difficulty": "advanced"
+    },
+    {
+      "id": "resp-4",
+      "term": "Bronchitis",
+      "definition": "Inflammation of the bronchial tubes that carry air to the lungs",
+      "example": "Acute bronchitis typically resolves within 2-3 weeks with supportive care",
+      "difficulty": "basic"
+    },
+    {
+      "id": "resp-5",
+      "term": "Pleural Effusion",
+      "definition": "Abnormal accumulation of fluid in the pleural space around the lungs",
+      "example": "Thoracentesis was performed to drain the pleural effusion and relieve dyspnea",
+      "difficulty": "advanced"
+    }
+  ],
+  "neurology": [
+    {
+      "id": "neuro-1",
+      "term": "Stroke",
+      "definition": "Sudden interruption of blood flow to the brain, causing brain tissue damage",
+      "example": "The patient showed signs of acute stroke with left-sided weakness and speech difficulties",
+      "difficulty": "basic"
+    },
+    {
+      "id": "neuro-2",
+      "term": "Seizure",
+      "definition": "Sudden, uncontrolled electrical disturbance in the brain",
+      "example": "The generalized tonic-clonic seizure lasted three minutes",
+      "difficulty": "basic"
+    },
+    {
+      "id": "neuro-3",
+      "term": "Migraine",
+      "definition": "Severe headache often accompanied by nausea, vomiting, and light sensitivity",
+      "example": "Her migraine attacks occur monthly and respond well to triptans",
+      "difficulty": "basic"
+    },
+    {
+      "id": "neuro-4",
+      "term": "Neuropathy",
+      "definition": "Damage or dysfunction of peripheral nerves, often causing pain and numbness",
+      "example": "Diabetic neuropathy caused tingling and burning sensation in his feet",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "neuro-5",
+      "term": "Encephalitis",
+      "definition": "Inflammation of the brain tissue, often caused by viral infection",
+      "example": "Viral encephalitis was suspected based on fever, headache, and altered mental status",
+      "difficulty": "advanced"
+    }
+  ],
+  "dermatology": [
+    {
+      "id": "derm-1",
+      "term": "Melanoma",
+      "definition": "Most serious type of skin cancer that develops in melanocytes",
+      "example": "Early detection of melanoma significantly improves treatment outcomes",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "derm-2",
+      "term": "Dermatitis",
+      "definition": "General term for skin inflammation causing redness, swelling, and itching",
+      "example": "Contact dermatitis developed after exposure to poison ivy",
+      "difficulty": "basic"
+    },
+    {
+      "id": "derm-3",
+      "term": "Eczema",
+      "definition": "Chronic skin condition causing dry, itchy, and inflamed skin patches",
+      "example": "Atopic eczema in children often improves with age and proper skin care",
+      "difficulty": "basic"
+    },
+    {
+      "id": "derm-4",
+      "term": "Psoriasis",
+      "definition": "Autoimmune condition causing rapid skin cell turnover and scaly patches",
+      "example": "Plaque psoriasis commonly affects elbows, knees, and scalp",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "derm-5",
+      "term": "Cellulitis",
+      "definition": "Bacterial skin infection affecting deeper layers of skin and soft tissue",
+      "example": "Cellulitis of the lower leg required immediate antibiotic treatment",
+      "difficulty": "intermediate"
+    }
+  ],
+  "musculoskeletal": [
+    {
+      "id": "msk-1",
+      "term": "Fracture",
+      "definition": "Break in the continuity of bone tissue",
+      "example": "The X-ray revealed a displaced fracture of the radius bone",
+      "difficulty": "basic"
+    },
+    {
+      "id": "msk-2",
+      "term": "Arthritis",
+      "definition": "Inflammation of joints causing pain, stiffness, and reduced range of motion",
+      "example": "Rheumatoid arthritis affects multiple joints symmetrically",
+      "difficulty": "basic"
+    },
+    {
+      "id": "msk-3",
+      "term": "Osteoporosis",
+      "definition": "Condition where bones become weak and brittle due to loss of bone density",
+      "example": "Postmenopausal women are at increased risk for osteoporosis",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "msk-4",
+      "term": "Tendonitis",
+      "definition": "Inflammation of tendons, often due to overuse or repetitive motion",
+      "example": "Tennis elbow is a common form of tendonitis affecting the lateral epicondyle",
+      "difficulty": "basic"
+    },
+    {
+      "id": "msk-5",
+      "term": "Spondylosis",
+      "definition": "Age-related wear and tear affecting the spinal discs and vertebrae",
+      "example": "Cervical spondylosis can cause neck pain and arm numbness",
+      "difficulty": "advanced"
+    }
+  ],
+  "gastroenterology": [
+    {
+      "id": "gastro-1",
+      "term": "Gastritis",
+      "definition": "Inflammation of the stomach lining often caused by H. pylori bacteria or NSAIDs",
+      "example": "Chronic gastritis can lead to peptic ulcers if left untreated",
+      "difficulty": "basic"
+    },
+    {
+      "id": "gastro-2",
+      "term": "Appendicitis",
+      "definition": "Inflammation of the appendix requiring emergency surgical removal",
+      "example": "Acute appendicitis presents with right lower quadrant abdominal pain",
+      "difficulty": "basic"
+    },
+    {
+      "id": "gastro-3",
+      "term": "Jaundice",
+      "definition": "Yellow discoloration of skin and eyes due to elevated bilirubin levels",
+      "example": "Obstructive jaundice may indicate gallstone blockage of the bile duct",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "gastro-4",
+      "term": "Cirrhosis",
+      "definition": "Chronic liver disease characterized by scarring and loss of liver function",
+      "example": "Alcohol-related cirrhosis can progress to liver failure",
+      "difficulty": "advanced"
+    },
+    {
+      "id": "gastro-5",
+      "term": "Ulcerative Colitis",
+      "definition": "Inflammatory bowel disease causing ulcers in the colon and rectum",
+      "example": "Ulcerative colitis symptoms include bloody diarrhea and abdominal cramping",
+      "difficulty": "advanced"
+    }
+  ]
+}
