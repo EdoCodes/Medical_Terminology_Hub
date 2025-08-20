@@ -36,11 +36,30 @@ The project includes:
 
 No environment variables are required for the basic deployment.
 
-## Post-Deployment Steps
+## Custom Domain Setup
 
-1. **Custom Domain** (Optional): Configure your custom domain in Netlify settings
-2. **Update URLs**: Replace placeholder URLs in sitemap.xml with your actual Netlify URL
-3. **Admin Access**: Admin login is available at `/admin/login` (credentials: admin/medical2024)
+### Configure Domain in Netlify
+1. Go to your site's **Settings** → **Domain management**
+2. Click **Add custom domain**
+3. Enter: `www.medicalterminologyhub.com`
+4. Also add: `medicalterminologyhub.com` (for redirect)
+
+### DNS Configuration
+Point your domain to Netlify by adding these DNS records:
+- **A Record**: `@` → `75.2.60.5`
+- **CNAME**: `www` → `your-site-name.netlify.app`
+
+### SSL & HTTPS
+- Netlify automatically provisions SSL certificates
+- Enable **Force HTTPS** in domain settings
+- Update sitemap.xml URLs from `http://` to `https://` after SSL is active
+
+## Post-Deployment Checklist
+
+- ✅ **Domain Connected**: `www.medicalterminologyhub.com`
+- ✅ **HTTPS Enabled**: Force HTTPS in Netlify settings
+- ✅ **DNS Propagated**: Check with `nslookup medicalterminologyhub.com`
+- ✅ **Admin Access**: Available at `/admin/login` (admin/medical2024)
 
 ## Features Included
 

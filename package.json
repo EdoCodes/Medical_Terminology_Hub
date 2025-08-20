@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/EdoCodes/medical-terminology-hub/issues"
   },
-  "homepage": "https://EdoCodes.github.io/medical-terminology-hub",
+  "homepage": "http://www.medicalterminologyhub.com",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
