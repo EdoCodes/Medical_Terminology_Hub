@@ -1,0 +1,14 @@
+# Redirect admin routes to proper pages
+/admin /admin/login 302
+/admin/ /admin/login 302
+
+# Handle dynamic routes
+/cardiovascular /cardiovascular/index.html 200
+/respiratory /respiratory/index.html 200
+/neurology /neurology/index.html 200
+/dermatology /dermatology/index.html 200
+/musculoskeletal /musculoskeletal/index.html 200
+/gastroenterology /gastroenterology/index.html 200
+
+# Fallback for SPA behavior (if needed)
+/* /index.html 200

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dist/
+Disallow: /.astro/
+
+# Sitemap location
+Sitemap: https://your-netlify-url.netlify.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
