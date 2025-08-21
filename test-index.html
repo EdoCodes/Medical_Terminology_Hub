@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Terminology Hub - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .success {
+            color: #28a745;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .status {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="success">✅ Deployment Test Successful!</h1>
+        <h2>Medical Terminology Hub</h2>
+        <p>If you can see this page, your Netlify deployment is working correctly.</p>
+        
+        <div class="status">
+            <h3>Deployment Status</h3>
+            <p><strong>Build:</strong> ✅ Successful</p>
+            <p><strong>Domain:</strong> www.medicalterminologyhub.com</p>
+            <p><strong>SSL:</strong> Check if this URL shows HTTPS</p>
+            <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+        </div>
+
+        <p>The main application should be working. If you see this test page instead:</p>
+        <ol style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>Remove this test-index.html file</li>
+            <li>Redeploy the main application</li>
+            <li>Check the TROUBLESHOOTING.md guide</li>
+        </ol>
+
+        <div style="margin-top: 30px;">
+            <a href="/admin/login" class="button">Test Admin Login</a>
+            <a href="/blog" class="button">Test Blog Page</a>
+            <a href="/cardiovascular" class="button">Test Category Page</a>
+        </div>
+
+        <p style="margin-top: 30px; color: #666; font-size: 14px;">
+            This is a test page to verify deployment. The full Medical Terminology Hub application includes interactive flashcards, admin system, and comprehensive medical content.
+        </p>
+    </div>
+
+    <script>
+        // Show current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Test JavaScript functionality
+        console.log('Deployment test page loaded successfully');
+        
+        // Test if we can access basic DOM functionality
+        setTimeout(() => {
+            const statusDiv = document.querySelector('.status');
+            if (statusDiv) {
+                statusDiv.style.borderLeft = '4px solid #28a745';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
