@@ -1,0 +1,233 @@
+---
+// Clean Footer Component
+---
+
+<footer class="clean-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <h3 class="footer-title">Medical Terminology Hub</h3>
+        <p class="footer-description">
+          Master medical terminology with interactive flashcards designed for healthcare professionals and students.
+        </p>
+        <div class="footer-stats">
+          <span class="footer-stat">30+ Terms</span>
+          <span class="footer-stat">6 Categories</span>
+          <span class="footer-stat">Free Forever</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4 class="section-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/">Study Cards</a></li>
+          <li><a href="/cardiovascular">Cardiovascular</a></li>
+          <li><a href="/respiratory">Respiratory</a></li>
+          <li><a href="/neurology">Neurology</a></li>
+          <li><a href="/blog">Medical Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-section">
+        <h4 class="section-title">Categories</h4>
+        <ul class="footer-links">
+          <li><a href="/dermatology">Dermatology</a></li>
+          <li><a href="/musculoskeletal">Musculoskeletal</a></li>
+          <li><a href="/gastroenterology">Gastroenterology</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="footer-section">
+        <h4 class="section-title">Support</h4>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/admin/login">Admin Login</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © 2024 Medical Terminology Hub. All rights reserved. For educational purposes only.
+        </p>
+        <div class="footer-links-bottom">
+          <a href="/terms">Terms of Use</a>
+          <a href="/privacy">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .clean-footer {
+    background: #4A90E2;
+    color: white;
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 50px 0 30px 0;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: white;
+  }
+
+  .footer-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+    color: white;
+  }
+
+  .footer-stats {
+    display: flex;
+    gap: 16px;
+  }
+
+  .footer-stat {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: white;
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: white;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 20px 0;
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .copyright {
+    font-size: 13px;
+    margin: 0;
+    opacity: 0.8;
+    color: white;
+  }
+
+  .footer-links-bottom {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links-bottom a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links-bottom a:hover {
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 40px 0 20px 0;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+      max-width: none;
+    }
+
+    .footer-stats {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-container {
+      padding: 0 16px;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      padding: 30px 0 15px 0;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .footer-links-bottom {
+      gap: 16px;
+    }
+
+    .footer-stats {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+</style>

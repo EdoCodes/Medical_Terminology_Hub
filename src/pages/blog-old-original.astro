@@ -1,0 +1,1080 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import blogData from '../data/blogPosts.json';
+
+const { posts, categories } = blogData;
+const featuredPosts = posts.filter(post => post.featured);
+const recentPosts = posts.slice(0, 6);
+---
+
+<Layout title="Medical Terminology Blog - Expert Articles & Videos" description="Explore our comprehensive collection of medical terminology articles, videos, and educational content written by healthcare professionals.">
+  <Header />
+  
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="blog-hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Medical Terminology Blog</h1>
+          <p class="hero-subtitle">
+            Expert articles, educational videos, and insights from healthcare professionals to enhance your medical vocabulary
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">{posts.length}</span>
+              <span class="stat-label">Articles</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{categories.length}</span>
+              <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{posts.filter(p => p.videoUrl).length}</span>
+              <span class="stat-label">Videos</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="blog-illustration">
+            <div class="illustration-card">
+              <div class="card-icon">📚</div>
+              <h3>Expert Content</h3>
+              <p>Written by healthcare professionals</p>
+            </div>
+            <div class="illustration-card">
+              <div class="card-icon">🎥</div>
+              <h3>Video Learning</h3>
+              <p>Visual explanations and tutorials</p>
+            </div>
+            <div class="illustration-card">
+              <div class="card-icon">🔬</div>
+              <h3>Evidence-Based</h3>
+              <p>Accurate medical information</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section class="featured-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Articles</h2>
+          <p class="section-subtitle">Must-read content from our medical experts</p>
+        </div>
+        
+        <div class="featured-grid">
+          {featuredPosts.map((post, index) => (
+            <article class={`featured-card ${index === 0 ? 'featured-main' : ''}`}>
+              <div class="card-image">
+                <div class="image-placeholder" style={`background: linear-gradient(135deg, ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}, ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}dd)`}>
+                  <div class="category-icon">
+                    {post.category === 'Cardiovascular' && '❤️'}
+                    {post.category === 'Respiratory' && '🫁'}
+                    {post.category === 'Neurology' && '🧠'}
+                    {post.category === 'Dermatology' && '🩺'}
+                    {post.category === 'Musculoskeletal' && '🦴'}
+                    {post.category === 'Gastroenterology' && '🫃'}
+                  </div>
+                </div>
+                {post.videoUrl && (
+                  <div class="video-indicator">
+                    <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+              
+              <div class="card-content">
+                <div class="card-meta">
+                  <span class="category-badge" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}20; color: ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}`}>
+                    {post.category}
+                  </span>
+                  <span class="difficulty-badge difficulty-{post.difficulty}">{post.difficulty}</span>
+                  <span class="read-time">{post.readTime}</span>
+                </div>
+                
+                <h3 class="card-title">
+                  <a href={`/blog/${post.id}`}>{post.title}</a>
+                </h3>
+                
+                <p class="card-excerpt">{post.excerpt}</p>
+                
+                <div class="card-footer">
+                  <div class="author-info">
+                    <div class="author-avatar">{post.author.charAt(0)}</div>
+                    <div class="author-details">
+                      <span class="author-name">{post.author}</span>
+                      <span class="publish-date">{new Date(post.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    </div>
+                  </div>
+                  
+                  <a href={`/blog/${post.id}`} class="read-more-btn">
+                    Read Article
+                    <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Browse by Category</h2>
+          <p class="section-subtitle">Explore content organized by medical specialty</p>
+        </div>
+        
+        <div class="categories-grid">
+          {categories.map(category => (
+            <a href={`/blog/category/${category.name.toLowerCase()}`} class="category-card" style={`--category-color: ${category.color}`}>
+              <div class="category-header">
+                <div class="category-icon">
+                  {category.name === 'Cardiovascular' && '❤️'}
+                  {category.name === 'Respiratory' && '🫁'}
+                  {category.name === 'Neurology' && '🧠'}
+                  {category.name === 'Dermatology' && '🩺'}
+                  {category.name === 'Musculoskeletal' && '🦴'}
+                  {category.name === 'Gastroenterology' && '🫃'}
+                  {category.name === 'Study Tips' && '💡'}
+                  {category.name === 'Educational' && '🎓'}
+                </div>
+                <div class="post-count">{category.postCount} article{category.postCount !== 1 ? 's' : ''}</div>
+              </div>
+              <h3 class="category-name">{category.name}</h3>
+              <p class="category-description">{category.description}</p>
+              <div class="category-arrow">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="recent-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Recent Articles</h2>
+          <p class="section-subtitle">Latest medical terminology content and updates</p>
+        </div>
+        
+        <div class="posts-grid">
+          {recentPosts.map(post => (
+            <article class="post-card">
+              <div class="card-image-small">
+                <div class="image-placeholder-small" style={`background: linear-gradient(135deg, ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}, ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}dd)`}>
+                  <div class="category-icon-small">
+                    {post.category === 'Cardiovascular' && '❤️'}
+                    {post.category === 'Respiratory' && '🫁'}
+                    {post.category === 'Neurology' && '🧠'}
+                    {post.category === 'Dermatology' && '🩺'}
+                    {post.category === 'Musculoskeletal' && '🦴'}
+                    {post.category === 'Gastroenterology' && '🫃'}
+                    {post.category === 'Study Tips' && '💡'}
+                    {post.category === 'Educational' && '🎓'}
+                  </div>
+                </div>
+                {post.videoUrl && (
+                  <div class="video-indicator-small">
+                    <svg class="play-icon-small" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+              
+              <div class="card-content-small">
+                <div class="card-meta-small">
+                  <span class="category-badge-small" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}20; color: ${categories.find(cat => cat.name === post.category)?.color || '#6366f1'}`}>
+                    {post.category}
+                  </span>
+                  <span class="read-time-small">{post.readTime}</span>
+                </div>
+                
+                <h3 class="card-title-small">
+                  <a href={`/blog/${post.id}`}>{post.title}</a>
+                </h3>
+                
+                <p class="card-excerpt-small">{post.excerpt}</p>
+                
+                <div class="card-footer-small">
+                  <span class="author-name-small">{post.author}</span>
+                  <span class="publish-date-small">{new Date(post.publishDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <div class="view-all-container">
+          <a href="/blog/all" class="view-all-btn">
+            View All Articles
+            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="section-container">
+        <div class="newsletter-card">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Stay Updated with Medical Terminology</h2>
+            <p class="newsletter-description">
+              Get the latest articles, study tips, and medical terminology insights delivered to your inbox weekly.
+            </p>
+            
+            <form class="newsletter-form" id="blogNewsletterForm">
+              <div class="input-group">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email address" 
+                  class="newsletter-input"
+                  required
+                />
+                <button type="submit" class="newsletter-btn">
+                  Subscribe
+                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+            
+            <p class="newsletter-disclaimer">
+              Join 1,000+ healthcare professionals. Unsubscribe anytime.
+            </p>
+          </div>
+          
+          <div class="newsletter-visual">
+            <div class="visual-element">📧</div>
+            <div class="visual-element">🏥</div>
+            <div class="visual-element">📚</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+  /* Global Styles */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Blog Hero */
+  .blog-hero {
+    padding: 80px 0 60px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin: 16px 0;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-family: 'Crimson Text', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .blog-illustration {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .illustration-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .illustration-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  .illustration-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* Featured Section */
+  .featured-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+  }
+
+  .featured-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-main {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  .featured-main .card-image {
+    height: 300px;
+  }
+
+  .card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+  }
+
+  .category-icon {
+    font-size: 4rem;
+    opacity: 0.8;
+  }
+
+  .video-indicator {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .category-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .difficulty-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .difficulty-basic {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .difficulty-intermediate {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .difficulty-advanced {
+    background: #fecaca;
+    color: #991b1b;
+  }
+
+  .read-time {
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+
+  .card-title {
+    margin: 0 0 12px 0;
+  }
+
+  .card-title a {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .card-title a:hover {
+    color: #667eea;
+  }
+
+  .featured-main .card-title a {
+    font-size: 1.8rem;
+  }
+
+  .card-excerpt {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+  }
+
+  .publish-date {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  .read-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .read-more-btn:hover {
+    background: #5a67d8;
+    transform: translateX(4px);
+  }
+
+  .arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Categories Section */
+  .categories-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .category-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--category-color);
+    transition: width 0.3s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-card:hover::before {
+    width: 8px;
+  }
+
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .category-header .category-icon {
+    font-size: 2.5rem;
+  }
+
+  .post-count {
+    background: var(--category-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .category-name {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1e293b;
+  }
+
+  .category-description {
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+  }
+
+  .category-arrow {
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+    margin-left: auto;
+  }
+
+  .category-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .category-card:hover .category-arrow {
+    color: var(--category-color);
+    transform: translateX(4px);
+  }
+
+  /* Recent Posts */
+  .recent-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-image-small {
+    position: relative;
+    height: 120px;
+  }
+
+  .image-placeholder-small {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .category-icon-small {
+    font-size: 2rem;
+    opacity: 0.8;
+  }
+
+  .video-indicator-small {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 6px;
+    border-radius: 50%;
+  }
+
+  .play-icon-small {
+    width: 12px;
+    height: 12px;
+  }
+
+  .card-content-small {
+    padding: 20px;
+  }
+
+  .card-meta-small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .category-badge-small {
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .read-time-small {
+    color: #64748b;
+    font-size: 0.75rem;
+  }
+
+  .card-title-small {
+    margin: 0 0 10px 0;
+  }
+
+  .card-title-small a {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .card-title-small a:hover {
+    color: #667eea;
+  }
+
+  .card-excerpt-small {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+  }
+
+  .card-footer-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .author-name-small {
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.85rem;
+  }
+
+  .publish-date-small {
+    color: #64748b;
+    font-size: 0.75rem;
+  }
+
+  .view-all-container {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .view-all-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+  }
+
+  /* Newsletter Section */
+  .newsletter-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  }
+
+  .newsletter-card {
+    background: white;
+    border-radius: 20px;
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .newsletter-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+  }
+
+  .newsletter-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+    font-size: 1.1rem;
+  }
+
+  .newsletter-form {
+    margin-bottom: 16px;
+  }
+
+  .input-group {
+    display: flex;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .input-group:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+  }
+
+  .newsletter-btn {
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .newsletter-btn:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateX(-4px);
+  }
+
+  .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .newsletter-disclaimer {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .newsletter-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .visual-element {
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .visual-element:nth-child(2) {
+    animation-delay: 1s;
+  }
+
+  .visual-element:nth-child(3) {
+    animation-delay: 2s;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-card {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .hero-stats {
+      justify-content: center;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-card {
+      padding: 40px;
+    }
+
+    .input-group {
+      flex-direction: column;
+    }
+
+    .newsletter-btn {
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-container {
+      padding: 0 16px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .newsletter-card {
+      padding: 24px;
+    }
+
+    .newsletter-title {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  function setupBlogPage() {
+    const newsletterForm = document.getElementById('blogNewsletterForm');
+    
+    newsletterForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = newsletterForm.querySelector('.newsletter-input') as HTMLInputElement;
+      const email = emailInput.value.trim();
+      
+      if (email) {
+        alert('Thank you for subscribing to our medical terminology blog! You\'ll receive our latest content via email.');
+        emailInput.value = '';
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', setupBlogPage);
+</script>

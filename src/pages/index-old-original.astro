@@ -1,0 +1,836 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EnhancedSearchBar from '../components/EnhancedSearchBar.astro';
+import FlashcardCarousel from '../components/FlashcardCarousel.astro';
+import medicalTerms from '../data/medicalTerms.json';
+
+// Flatten all terms for the main page
+const allTerms: any[] = [];
+Object.keys(medicalTerms).forEach((category: string) => {
+  medicalTerms[category as keyof typeof medicalTerms].forEach((term: any) => {
+    allTerms.push({...term, category});
+  });
+});
+---
+
+<Layout title="Medical Terminology Hub - Interactive Flashcards for Healthcare Professionals">
+  <Header />
+  
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Master Medical Terminology with 
+            <span class="gradient-text">Interactive Flashcards</span>
+          </h1>
+          <p class="hero-subtitle">
+            Learn essential medical terms through our beautifully designed college-ruled flashcards. 
+            Perfect for medical students, nurses, and healthcare professionals.
+          </p>
+          
+          <div class="hero-features">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <span class="feature-number">30+</span>
+                <span class="feature-label">Medical Terms</span>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <span class="feature-number">6</span>
+                <span class="feature-label">Categories</span>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <div class="feature-text">
+                <span class="feature-number">100%</span>
+                <span class="feature-label">Free</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="cta-primary" onclick="scrollToFlashcards()">
+              <svg class="cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m2-10v18a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2h14a2 2 0 012 2z"/>
+              </svg>
+              Start Studying Now
+            </button>
+            
+            <a href="/blog" class="cta-secondary">
+              <svg class="cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13"/>
+              </svg>
+              Explore Medical Blog
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="flashcard-preview">
+            <div class="preview-card">
+              <div class="card-header">
+                <span class="difficulty-badge">INTERMEDIATE</span>
+              </div>
+              <div class="card-content">
+                <h3 class="preview-term">Hypertension</h3>
+                <div class="term-line"></div>
+                <p class="preview-hint">Click to reveal definition</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Search Section -->
+    <section class="search-section">
+      <div class="search-container">
+        <EnhancedSearchBar />
+      </div>
+    </section>
+
+    <!-- Flashcards Section -->
+    <section class="flashcards-section" id="flashcardsSection">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Interactive Medical Flashcards</h2>
+          <p class="section-subtitle">
+            Study with our traditional college-ruled flashcards designed for optimal learning
+          </p>
+        </div>
+        
+        <FlashcardCarousel terms={allTerms} category="all" />
+      </div>
+    </section>
+
+    <!-- Categories Overview -->
+    <section class="categories-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Medical Specialties</h2>
+          <p class="section-subtitle">
+            Explore medical terminology organized by healthcare specialties
+          </p>
+        </div>
+        
+        <div class="categories-grid">
+          <a href="/cardiovascular" class="category-card cardiovascular">
+            <div class="category-icon">❤️</div>
+            <div class="category-info">
+              <h3 class="category-name">Cardiovascular System</h3>
+              <p class="category-description">Heart and circulation terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          
+          <a href="/respiratory" class="category-card respiratory">
+            <div class="category-icon">🫁</div>
+            <div class="category-info">
+              <h3 class="category-name">Respiratory System</h3>
+              <p class="category-description">Lung and breathing terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          
+          <a href="/neurology" class="category-card neurology">
+            <div class="category-icon">🧠</div>
+            <div class="category-info">
+              <h3 class="category-name">Neurology</h3>
+              <p class="category-description">Brain and nervous system terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          
+          <a href="/dermatology" class="category-card dermatology">
+            <div class="category-icon">🩺</div>
+            <div class="category-info">
+              <h3 class="category-name">Dermatology</h3>
+              <p class="category-description">Skin condition terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          
+          <a href="/musculoskeletal" class="category-card musculoskeletal">
+            <div class="category-icon">🦴</div>
+            <div class="category-info">
+              <h3 class="category-name">Musculoskeletal System</h3>
+              <p class="category-description">Bone, muscle, and joint terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+          
+          <a href="/gastroenterology" class="category-card gastroenterology">
+            <div class="category-icon">🫃</div>
+            <div class="category-info">
+              <h3 class="category-name">Gastroenterology</h3>
+              <p class="category-description">Digestive system terminology</p>
+              <span class="category-count">5 terms</span>
+            </div>
+            <div class="category-arrow">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Tips Section -->
+    <section class="tips-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Effective Study Tips</h2>
+          <p class="section-subtitle">
+            Maximize your learning with proven study techniques
+          </p>
+        </div>
+        
+        <div class="tips-grid">
+          <div class="tip-card">
+            <div class="tip-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="tip-title">Spaced Repetition</h3>
+            <p class="tip-description">
+              Review flashcards at increasing intervals to strengthen long-term memory retention.
+            </p>
+          </div>
+          
+          <div class="tip-card">
+            <div class="tip-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <h3 class="tip-title">Active Recall</h3>
+            <p class="tip-description">
+              Test yourself actively rather than just re-reading. Try to recall the definition before flipping the card.
+            </p>
+          </div>
+          
+          <div class="tip-card">
+            <div class="tip-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+            </div>
+            <h3 class="tip-title">Mixed Practice</h3>
+            <p class="tip-description">
+              Shuffle cards from different categories to improve discrimination and retention.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+  /* Global Styles */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 16px 0;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 80px 0 60px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 32px;
+    margin: 16px 0;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .feature-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feature-number {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .feature-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .cta-primary {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-primary:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-secondary {
+    background: transparent;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+  }
+
+  .cta-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flashcard-preview {
+    perspective: 1000px;
+    transform: rotateY(-15deg) rotateX(10deg);
+  }
+
+  .preview-card {
+    width: 300px;
+    height: 200px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    color: #1e293b;
+    position: relative;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .preview-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    border-right: 2px solid #dee2e6;
+  }
+
+  .preview-card::after {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #dc3545;
+    opacity: 0.8;
+  }
+
+  .card-header {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .difficulty-badge {
+    background: #f59e0b;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .card-content {
+    padding: 40px 20px 20px 70px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .preview-term {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    text-align: center;
+  }
+
+  .term-line {
+    width: 100%;
+    height: 2px;
+    background: #1e293b;
+    margin-bottom: 20px;
+    border-radius: 1px;
+  }
+
+  .preview-hint {
+    font-size: 0.9rem;
+    color: #64748b;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Search Section */
+  .search-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+
+  .search-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Flashcards Section */
+  .flashcards-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  /* Categories Section */
+  .categories-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+  }
+
+  .category-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--category-color);
+    transition: width 0.3s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-card:hover::before {
+    width: 8px;
+  }
+
+  .category-card.cardiovascular { --category-color: #ef4444; }
+  .category-card.respiratory { --category-color: #3b82f6; }
+  .category-card.neurology { --category-color: #8b5cf6; }
+  .category-card.dermatology { --category-color: #ec4899; }
+  .category-card.musculoskeletal { --category-color: #f59e0b; }
+  .category-card.gastroenterology { --category-color: #10b981; }
+
+  .category-icon {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .category-info {
+    flex: 1;
+  }
+
+  .category-name {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1e293b;
+  }
+
+  .category-description {
+    color: #64748b;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+  }
+
+  .category-count {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .category-arrow {
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+  }
+
+  .category-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .category-card:hover .category-arrow {
+    color: var(--category-color);
+    transform: translateX(4px);
+  }
+
+  /* Tips Section */
+  .tips-section {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .tip-card {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .tip-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 20px auto;
+  }
+
+  .tip-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tip-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: #1e293b;
+  }
+
+  .tip-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0 40px 0;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+    }
+
+    .preview-card {
+      width: 250px;
+      height: 160px;
+    }
+
+    .preview-term {
+      font-size: 1.5rem;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .section-container {
+      padding: 0 16px;
+    }
+
+    .category-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .category-arrow {
+      align-self: flex-end;
+    }
+  }
+</style>
+
+<script>
+  function scrollToFlashcards() {
+    const flashcardsSection = document.getElementById('flashcardsSection');
+    if (flashcardsSection) {
+      flashcardsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+  
+  // Make function globally available
+  (window as any).scrollToFlashcards = scrollToFlashcards;
+</script>
