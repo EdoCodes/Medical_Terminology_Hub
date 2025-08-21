@@ -8,8 +8,33 @@ const { terms, category = 'all' } = Astro.props;
 ---
 
 <div class="study-interface">
-  <!-- Left Sidebar -->
-  <aside class="left-sidebar">
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="search-container">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search medical terms, definitions, examples..."
+          autocomplete="off"
+        >
+        <button class="search-btn" id="searchBtn">
+          <span class="search-icon">🔍</span>
+          Search
+        </button>
+      </div>
+      <h2 class="search-title">SEARCH MEDICAL TERMINOLOGY</h2>
+      <div class="search-suggestions" id="searchSuggestions">
+        <!-- Search suggestions will appear here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Content Grid -->
+  <div class="study-content-grid">
+    <!-- Left Sidebar -->
+    <aside class="left-sidebar">
     <div class="sidebar-section">
       <h3 class="sidebar-title">Study Progress</h3>
       <div class="progress-stats">
@@ -104,6 +129,58 @@ const { terms, category = 'all' } = Astro.props;
         </a>
       </nav>
     </div>
+
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Medical Resources</h3>
+      <div class="resource-links">
+        <a href="https://www.medlineplus.gov/" target="_blank" rel="noopener" class="resource-link">
+          <span class="resource-icon">🏥</span>
+          <div class="resource-content">
+            <div class="resource-name">MedlinePlus</div>
+            <div class="resource-desc">Trusted health information</div>
+          </div>
+        </a>
+        <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener" class="resource-link">
+          <span class="resource-icon">⚕️</span>
+          <div class="resource-content">
+            <div class="resource-name">Mayo Clinic</div>
+            <div class="resource-desc">Medical expertise & care</div>
+          </div>
+        </a>
+        <a href="https://www.webmd.com/" target="_blank" rel="noopener" class="resource-link">
+          <span class="resource-icon">💊</span>
+          <div class="resource-content">
+            <div class="resource-name">WebMD</div>
+            <div class="resource-desc">Medical information</div>
+          </div>
+        </a>
+        <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank" rel="noopener" class="resource-link">
+          <span class="resource-icon">📖</span>
+          <div class="resource-content">
+            <div class="resource-name">PubMed</div>
+            <div class="resource-desc">Medical literature</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Study Tools</h3>
+      <div class="study-tools">
+        <button class="tool-btn" id="quizModeBtn">
+          <span class="tool-icon">❓</span>
+          Quiz Mode
+        </button>
+        <button class="tool-btn" id="flashcardTestBtn">
+          <span class="tool-icon">📝</span>
+          Practice Test
+        </button>
+        <button class="tool-btn" id="printCardsBtn">
+          <span class="tool-icon">🖨️</span>
+          Print Cards
+        </button>
+      </div>
+    </div>
   </aside>
 
   <!-- Main Study Area -->
@@ -161,25 +238,54 @@ const { terms, category = 'all' } = Astro.props;
     </div>
 
     <div class="sidebar-section">
+      <h3 class="sidebar-title">Educational Videos</h3>
+      <div class="video-links">
+        <a href="https://www.kenhub.com/en/library/anatomy" target="_blank" rel="noopener" class="video-link">
+          <span class="video-icon">🎥</span>
+          <div class="video-content">
+            <div class="video-title">Kenhub Anatomy</div>
+            <div class="video-desc">Interactive anatomy videos</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCsvqEZBO-kNmwuDBbKbfL6A" target="_blank" rel="noopener" class="video-link">
+          <span class="video-icon">📺</span>
+          <div class="video-content">
+            <div class="video-title">Crash Course</div>
+            <div class="video-desc">Medical terminology basics</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UC0HmS4yjw2b8OmNaJAGP5kA" target="_blank" rel="noopener" class="video-link">
+          <span class="video-icon">🩺</span>
+          <div class="video-content">
+            <div class="video-title">Medic Tutorials</div>
+            <div class="video-desc">Clinical explanations</div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UC_0uPNcgFA6R9VG1rP7zVjw" target="_blank" rel="noopener" class="video-link">
+          <span class="video-icon">📚</span>
+          <div class="video-content">
+            <div class="video-title">Med School Made Easy</div>
+            <div class="video-desc">Study guides & tutorials</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
       <h3 class="sidebar-title">Quick Actions</h3>
       <div class="quick-actions">
         <a href="/blog" class="action-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M14,2H6A2,2,0,0,0,4,4V20a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V8Z"/>
-            <polyline points="14,2 14,8 20,8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
+          <span class="action-icon">📖</span>
           Medical Blog
         </a>
         <a href="/admin/login" class="action-link admin">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-            <circle cx="12" cy="16" r="1"/>
-            <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
+          <span class="action-icon">🔧</span>
           Admin Panel
         </a>
+        <button class="action-link" id="exportProgressBtn">
+          <span class="action-icon">📊</span>
+          Export Progress
+        </button>
       </div>
     </div>
 
@@ -192,17 +298,123 @@ const { terms, category = 'all' } = Astro.props;
       </div>
     </div>
   </aside>
+  </div>
 </div>
 
 <style>
   .study-interface {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 24px 20px;
+    min-height: calc(100vh - 140px);
+  }
+
+  /* Search Section */
+  .search-section {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    margin: 24px 0;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .search-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #f9fafb;
+    transition: all 0.2s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  }
+
+  .search-btn {
+    padding: 14px 24px;
+    background: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-btn:hover {
+    background: #3b82f6;
+    transform: translateY(-1px);
+  }
+
+  .search-icon {
+    font-size: 18px;
+  }
+
+  .search-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+    letter-spacing: 1px;
+  }
+
+  .search-suggestions {
+    display: none;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .search-suggestions.show {
+    display: block;
+  }
+
+  .suggestion-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.2s ease;
+  }
+
+  .suggestion-item:hover {
+    background: #f9fafb;
+  }
+
+  .suggestion-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Study Content Grid */
+  .study-content-grid {
     display: grid;
     grid-template-columns: 280px 1fr 260px;
     gap: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 24px 20px;
-    min-height: calc(100vh - 140px);
   }
 
   /* Sidebars */
@@ -372,6 +584,128 @@ const { terms, category = 'all' } = Astro.props;
     font-size: 16px;
   }
 
+  /* Resource Links */
+  .resource-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .resource-link:hover {
+    background: #f3f4f6;
+    transform: translateX(2px);
+  }
+
+  .resource-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .resource-content {
+    flex: 1;
+  }
+
+  .resource-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .resource-desc {
+    font-size: 11px;
+    color: #6b7280;
+  }
+
+  /* Study Tools */
+  .study-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tool-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tool-btn:hover {
+    background: #4A90E2;
+    color: white;
+    border-color: #4A90E2;
+  }
+
+  .tool-icon {
+    font-size: 16px;
+  }
+
+  /* Video Links */
+  .video-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .video-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #f3f4f6;
+  }
+
+  .video-link:hover {
+    background: #fef3c7;
+    border-color: #fcd34d;
+    transform: translateX(2px);
+  }
+
+  .video-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .video-content {
+    flex: 1;
+  }
+
+  .video-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .video-desc {
+    font-size: 11px;
+    color: #6b7280;
+  }
+
   /* Main Study Area */
   .study-main {
     background: white;
@@ -526,9 +860,9 @@ const { terms, category = 'all' } = Astro.props;
     border-style: dashed;
   }
 
-  .action-link svg {
-    width: 16px;
-    height: 16px;
+  .action-icon {
+    font-size: 16px;
+    margin-right: 6px;
   }
 
   .streak-display {

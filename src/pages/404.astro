@@ -1,53 +1,210 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import CleanHeader from '../components/CleanHeader.astro';
+import CleanFooter from '../components/CleanFooter.astro';
 ---
 
 <Layout title="Page Not Found - Medical Terminology Hub">
-  <Header />
+  <CleanHeader />
   
-  <main class="flex-1 flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-    <div class="text-center px-4">
-      <div class="mb-8">
-        <div class="mx-auto w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mb-6">
-          <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-          </svg>
+  <main class="clean-404-main">
+    <div class="error-container">
+      <div class="error-content">
+        <div class="error-icon">
+          <span class="icon-text">🔍</span>
         </div>
         
-        <h1 class="text-6xl font-bold text-gray-900 mb-4">404</h1>
-        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Page Not Found</h2>
-        <p class="text-gray-600 max-w-md mx-auto mb-8">
+        <h1 class="error-title">404</h1>
+        <h2 class="error-subtitle">Page Not Found</h2>
+        <p class="error-message">
           Sorry, we couldn't find the page you're looking for. The page may have been moved or doesn't exist.
         </p>
-      </div>
-      
-      <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-        <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-          </svg>
-          Go Home
-        </a>
         
-        <a href="/blog" class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-          </svg>
-          Visit Blog
-        </a>
-      </div>
-      
-      <div class="mt-12 text-sm text-gray-500">
-        <p>Need help? <a href="mailto:support@medicalhub.com" class="text-blue-600 hover:underline">Contact us</a></p>
+        <div class="error-actions">
+          <a href="/" class="action-btn primary">
+            <span class="btn-icon">🏠</span>
+            Go Home
+          </a>
+          
+          <a href="/blog" class="action-btn secondary">
+            <span class="btn-icon">📖</span>
+            Visit Blog
+          </a>
+        </div>
+        
+        <div class="error-footer">
+          <p>Need help? <a href="/admin/login" class="contact-link">Contact admin</a></p>
+        </div>
       </div>
     </div>
   </main>
   
-  <Footer />
+  <CleanFooter />
 </Layout>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:wght@400;600&display=swap');
+  .clean-404-main {
+    min-height: calc(100vh - 140px);
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .error-container {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .error-content {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .error-icon {
+    width: 80px;
+    height: 80px;
+    background: #4A90E2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  .icon-text {
+    font-size: 32px;
+    filter: brightness(0) invert(1);
+  }
+
+  .error-title {
+    font-size: 72px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+    line-height: 1;
+  }
+
+  .error-subtitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 16px 0;
+  }
+
+  .error-message {
+    font-size: 16px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .action-btn.primary {
+    background: #4A90E2;
+    color: white;
+  }
+
+  .action-btn.primary:hover {
+    background: #3b82f6;
+    transform: translateY(-1px);
+  }
+
+  .action-btn.secondary {
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+  }
+
+  .action-btn.secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+  }
+
+  .btn-icon {
+    font-size: 18px;
+  }
+
+  .error-footer {
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .contact-link {
+    color: #4A90E2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .clean-404-main {
+      padding: 1rem;
+    }
+
+    .error-content {
+      padding: 32px 24px;
+    }
+
+    .error-title {
+      font-size: 56px;
+    }
+
+    .error-subtitle {
+      font-size: 24px;
+    }
+
+    .error-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-btn {
+      width: 100%;
+      max-width: 200px;
+      justify-content: center;
+    }
+  }
+
+  /* Global clean styles */
+  :global(body) {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.5;
+    color: #1f2937;
+    background: #f8f9fa;
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
 </style>
