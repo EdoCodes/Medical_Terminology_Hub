@@ -1,6 +1,60 @@
 {
   "posts": [
     {
+      "id": "history-of-medical-terminology",
+      "title": "The Fascinating History of Medical Terminology: From Ancient Greece to Modern Medicine",
+      "excerpt": "Explore the rich history of medical terminology, tracing its evolution from ancient Greek and Latin roots to today's standardized medical language.",
+      "content": "Medical terminology has a fascinating history that spans over 2,500 years, beginning with ancient Greek physicians like Hippocrates. The foundations of modern medical language were laid in ancient Greece and Rome, where scholars systematically documented anatomical structures and medical conditions. Greek physician Hippocrates (460-370 BCE) is often called the 'Father of Medicine,' and many terms he coined are still used today. The word 'anatomy' comes from the Greek 'anatome,' meaning 'to cut up,' while 'physiology' derives from 'physis' (nature) and 'logos' (study). Latin contributions came later through Roman physicians like Galen, whose anatomical observations dominated medicine for over 1,000 years. During the Renaissance, medical terminology expanded rapidly as anatomists like Andreas Vesalius challenged ancient texts with direct observation. The 18th and 19th centuries saw standardization efforts, with the 1895 Basle Nomina Anatomica establishing the first international anatomical terminology. Modern medical terminology continues to evolve, incorporating new discoveries while maintaining its classical roots. Understanding this history helps healthcare professionals appreciate why medical terms are structured as they are and makes learning them more meaningful.",
+      "category": "History",
+      "author": "Dr. Margaret Collins",
+      "authorBio": "Medical historian and professor of medical humanities with expertise in classical medicine",
+      "publishDate": "2024-03-15",
+      "readTime": "12 min read",
+      "tags": ["history", "etymology", "greek", "latin", "medical education", "classical medicine"],
+      "featuredImage": "/images/blog/medical-history.jpg",
+      "videoUrl": null,
+      "featured": true,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Etymology", "Hippocrates", "Galen", "Anatomy"],
+      "seoKeywords": ["medical terminology history", "etymology medical terms", "greek medical terms", "latin medical terminology", "hippocrates medical terms"]
+    },
+    {
+      "id": "pediatric-medical-terminology",
+      "title": "Pediatric Medical Terminology: Essential Terms for Child Healthcare",
+      "excerpt": "Master specialized pediatric medical terminology essential for healthcare professionals working with infants, children, and adolescents.",
+      "content": "Pediatric medical terminology encompasses specialized language for treating patients from birth through adolescence. Understanding age-specific terminology is crucial for effective communication in pediatric healthcare. Key developmental stages include: neonate (0-28 days), infant (1 month-1 year), toddler (1-3 years), preschooler (3-5 years), school-age (5-12 years), and adolescent (12-18 years). Common pediatric prefixes include 'ped-' or 'paed-' meaning child, as in pediatrics or pediatrician. Growth and development terms are essential: 'cephalocaudal' describes head-to-toe development patterns, while 'proximodistal' refers to center-to-extremity growth. Pediatric assessment uses specialized terminology: fontanelles (soft spots on infant skulls), primitive reflexes (automatic responses in newborns), and developmental milestones (expected achievements at specific ages). Common pediatric conditions have specific terminology: bronchiolitis (inflammation of small airways in infants), croup (barking cough from upper airway swelling), and febrile seizures (convulsions caused by fever). Immunization terminology includes vaccines, immunization schedules, and adverse events. Understanding pediatric dosing terminology is critical for medication safety: weight-based dosing, body surface area calculations, and age-appropriate formulations. Pediatric emergency terms include failure to thrive, dehydration severity scales, and pediatric assessment triangles for rapid evaluation.",
+      "category": "Pediatrics",
+      "author": "Dr. Jennifer Martinez",
+      "authorBio": "Pediatrician and neonatologist with 20 years of experience in pediatric emergency medicine",
+      "publishDate": "2024-03-20",
+      "readTime": "10 min read",
+      "tags": ["pediatrics", "children", "infants", "child development", "pediatric nursing"],
+      "featuredImage": "/images/blog/pediatric-terminology.jpg",
+      "videoUrl": "https://www.youtube.com/embed/pediatric-terms",
+      "featured": true,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Neonate", "Fontanelle", "Croup", "Bronchiolitis"],
+      "seoKeywords": ["pediatric medical terminology", "child medical terms", "infant medical terms", "pediatric nursing terminology", "child healthcare terminology"]
+    },
+    {
+      "id": "emt-medical-terminology",
+      "title": "EMT Medical Terminology: Critical Terms for Emergency Medical Services",
+      "excerpt": "Learn essential medical terminology for Emergency Medical Technicians, covering trauma, cardiac emergencies, and pre-hospital care.",
+      "content": "Emergency Medical Technician (EMT) terminology is specialized language essential for pre-hospital emergency care. EMTs must quickly communicate patient conditions using precise medical terms to ensure effective treatment and hospital handoffs. Trauma terminology includes mechanism of injury (MOI), describing how trauma occurred, and index of suspicion, indicating likelihood of serious injury. Common trauma terms: contusion (bruise), laceration (cut), abrasion (scrape), avulsion (tearing away of tissue), and hematoma (blood collection). Cardiac emergency terminology is critical: myocardial infarction (heart attack), angina pectoris (chest pain from reduced heart blood flow), and cardiac arrest (heart stopping). Rhythm assessment uses terms like asystole (flatline), ventricular fibrillation (chaotic heart rhythm), and pulseless electrical activity (PEA). Respiratory emergencies involve dyspnea (difficulty breathing), apnea (absence of breathing), tachypnea (rapid breathing), and bradypnea (slow breathing). Airway management terms include intubation (inserting breathing tube), ventilation (artificial breathing), and aspiration (inhaling foreign material). Assessment terminology includes vital signs (temperature, pulse, respirations, blood pressure), Glasgow Coma Scale (consciousness assessment), and SAMPLE history (symptoms, allergies, medications, past history, last meal, events). Transport terminology covers priority levels, destination decisions, and communication protocols essential for effective patient care coordination.",
+      "category": "Emergency Medicine",
+      "author": "Paramedic John Thompson",
+      "authorBio": "Certified paramedic and EMS instructor with 15 years of field experience and emergency medical education",
+      "publishDate": "2024-03-22",
+      "readTime": "9 min read",
+      "tags": ["EMT", "emergency medicine", "trauma", "paramedic", "pre-hospital care"],
+      "featuredImage": "/images/blog/emt-terminology.jpg",
+      "videoUrl": "https://www.youtube.com/embed/emt-medical-terms",
+      "featured": true,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Trauma", "Tachycardia", "Dyspnea", "Intubation"],
+      "seoKeywords": ["EMT medical terminology", "emergency medical terms", "paramedic terminology", "trauma medical terms", "emergency care terminology"]
+    },
+    {
       "id": "understanding-cardiovascular-terminology",
       "title": "Understanding Cardiovascular Terminology: A Beginner's Guide",
       "excerpt": "Master essential heart and circulation terms with this comprehensive guide to cardiovascular medical terminology.",
@@ -13,7 +67,7 @@
       "tags": ["cardiovascular", "heart", "terminology", "beginner"],
       "featuredImage": "/images/blog/cardiovascular-guide.jpg",
       "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      "featured": true,
+      "featured": false,
       "difficulty": "basic",
       "relatedTerms": ["Hypertension", "Myocardial Infarction", "Arrhythmia"]
     },
@@ -120,6 +174,60 @@
       "relatedTerms": []
     },
     {
+      "id": "pharmacology-terminology-guide",
+      "title": "Pharmacology Terminology: Understanding Drug Classifications and Actions",
+      "excerpt": "Master essential pharmacological terminology including drug classifications, routes of administration, and therapeutic effects.",
+      "content": "Pharmacology terminology is essential for healthcare professionals administering medications and understanding drug interactions. Drug classifications include analgesics (pain relievers), antibiotics (bacteria fighters), antihypertensives (blood pressure reducers), and anticoagulants (blood thinners). Routes of administration have specific terminology: oral (by mouth), sublingual (under tongue), intravenous (into vein), intramuscular (into muscle), subcutaneous (under skin), and topical (on skin surface). Pharmacokinetics describes drug movement through the body: absorption (drug entering bloodstream), distribution (drug spreading through tissues), metabolism (drug breakdown), and excretion (drug elimination). Pharmacodynamics explains drug actions: agonists (activate receptors), antagonists (block receptors), and partial agonists (partially activate receptors). Dosing terminology includes therapeutic dose (effective amount), toxic dose (harmful amount), and lethal dose (deadly amount). Drug interactions terminology covers synergism (enhanced effects), antagonism (opposing effects), and contraindications (reasons not to use). Side effects terminology distinguishes adverse reactions (harmful effects), allergic reactions (immune responses), and idiosyncratic reactions (unusual individual responses). Understanding these terms ensures safe medication administration and effective patient communication about pharmaceutical treatments.",
+      "category": "Pharmacology",
+      "author": "PharmD Lisa Chen",
+      "authorBio": "Clinical pharmacist and medication safety specialist with expertise in drug therapy optimization",
+      "publishDate": "2024-03-25",
+      "readTime": "11 min read",
+      "tags": ["pharmacology", "medications", "drug safety", "pharmacy"],
+      "featuredImage": "/images/blog/pharmacology-guide.jpg",
+      "videoUrl": null,
+      "featured": false,
+      "difficulty": "advanced",
+      "relatedTerms": ["Analgesic", "Antibiotic", "Intravenous", "Pharmacokinetics"],
+      "seoKeywords": ["pharmacology terminology", "drug terminology", "medication terms", "pharmacy terminology"]
+    },
+    {
+      "id": "surgical-terminology-essentials",
+      "title": "Surgical Terminology Essentials: Operating Room Language",
+      "excerpt": "Learn critical surgical terminology used in operating rooms, including procedures, instruments, and anatomical positions.",
+      "content": "Surgical terminology is precise language essential for operating room communication and patient safety. Surgical positions have specific names: supine (lying on back), prone (lying face down), lateral (lying on side), and Trendelenburg (head down, feet up). Incision types include midline (vertical center cut), transverse (horizontal cut), and oblique (diagonal cut). Surgical approaches describe access methods: open (large incision), laparoscopic (small incisions with camera), and endoscopic (through natural openings). Common surgical suffixes include -ectomy (removal), -ostomy (creating opening), -plasty (repair/reconstruction), and -centesis (puncture for fluid removal). Instrument terminology covers forceps (grasping tools), retractors (tissue holders), hemostats (bleeding control), and cautery (tissue burning/cutting). Anesthesia terminology includes general (complete unconsciousness), regional (numbing body area), local (numbing specific spot), and conscious sedation (relaxed but awake). Surgical complications terminology covers hemorrhage (bleeding), infection (bacterial contamination), and dehiscence (wound opening). Post-operative terms include anastomosis (surgical connection), drainage (fluid removal), and wound care protocols essential for successful surgical outcomes.",
+      "category": "Surgery",
+      "author": "Dr. Michael Rodriguez",
+      "authorBio": "Orthopedic surgeon and surgical educator with 18 years of operating room experience",
+      "publishDate": "2024-03-28",
+      "readTime": "13 min read",
+      "tags": ["surgery", "operating room", "surgical procedures", "medical instruments"],
+      "featuredImage": "/images/blog/surgical-terminology.jpg",
+      "videoUrl": "https://www.youtube.com/embed/surgical-terms",
+      "featured": false,
+      "difficulty": "advanced",
+      "relatedTerms": ["Laparoscopy", "Hemorrhage", "Anastomosis", "Cautery"],
+      "seoKeywords": ["surgical terminology", "operating room terms", "surgical procedures terminology", "medical instrument terms"]
+    },
+    {
+      "id": "mental-health-terminology",
+      "title": "Mental Health Medical Terminology: Psychology and Psychiatry Terms",
+      "excerpt": "Understand essential mental health terminology used in psychology, psychiatry, and behavioral health settings.",
+      "content": "Mental health terminology encompasses psychological and psychiatric language essential for behavioral healthcare. Diagnostic categories include mood disorders (depression, bipolar), anxiety disorders (panic, phobias), psychotic disorders (schizophrenia), and personality disorders (borderline, narcissistic). Assessment terminology covers mental status exam (cognitive evaluation), psychiatric history (past mental health), and risk assessment (safety evaluation). Therapeutic modalities include cognitive behavioral therapy (CBT), dialectical behavior therapy (DBT), psychoanalysis, and group therapy. Medication terminology covers psychotropic drugs: antidepressants (mood elevators), anxiolytics (anxiety reducers), antipsychotics (reality disorder treatments), and mood stabilizers (bipolar treatments). Crisis terminology includes suicidal ideation (thoughts of self-harm), homicidal ideation (thoughts of harming others), and psychiatric emergency (immediate mental health crisis). Treatment settings range from outpatient (clinic visits) to inpatient (hospital stays) to partial hospitalization (day programs). Therapeutic relationship terminology includes rapport (trust building), transference (patient projections), countertransference (therapist reactions), and therapeutic alliance (working partnership). Understanding these terms facilitates effective communication in mental health settings and promotes comprehensive patient care.",
+      "category": "Mental Health",
+      "author": "Dr. Rachel Thompson",
+      "authorBio": "Psychiatrist and mental health advocate specializing in trauma and anxiety disorders",
+      "publishDate": "2024-03-30",
+      "readTime": "10 min read",
+      "tags": ["mental health", "psychiatry", "psychology", "behavioral health"],
+      "featuredImage": "/images/blog/mental-health-terms.jpg",
+      "videoUrl": null,
+      "featured": false,
+      "difficulty": "intermediate",
+      "relatedTerms": ["Depression", "Psychosis", "Therapy", "Psychotropic"],
+      "seoKeywords": ["mental health terminology", "psychiatric terms", "psychology terminology", "behavioral health terms"]
+    },
+    {
       "id": "prefix-suffix-medical-terms",
       "title": "Mastering Medical Prefixes and Suffixes",
       "excerpt": "Learn the building blocks of medical terminology through common prefixes, suffixes, and root words.",
@@ -138,6 +246,24 @@
     }
   ],
   "categories": [
+    {
+      "name": "History",
+      "description": "Medical terminology history and etymology",
+      "color": "#8b5cf6",
+      "postCount": 1
+    },
+    {
+      "name": "Pediatrics",
+      "description": "Child and infant medical terminology",
+      "color": "#f59e0b",
+      "postCount": 1
+    },
+    {
+      "name": "Emergency Medicine",
+      "description": "EMT and emergency care terminology",
+      "color": "#ef4444",
+      "postCount": 1
+    },
     {
       "name": "Cardiovascular",
       "description": "Heart and circulation related content",
@@ -172,6 +298,24 @@
       "name": "Gastroenterology", 
       "description": "Digestive system related content",
       "color": "#10b981",
+      "postCount": 1
+    },
+    {
+      "name": "Pharmacology",
+      "description": "Drug and medication terminology",
+      "color": "#06b6d4",
+      "postCount": 1
+    },
+    {
+      "name": "Surgery",
+      "description": "Surgical procedures and operating room terms",
+      "color": "#dc2626",
+      "postCount": 1
+    },
+    {
+      "name": "Mental Health",
+      "description": "Psychology and psychiatry terminology",
+      "color": "#7c3aed",
       "postCount": 1
     },
     {

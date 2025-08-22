@@ -5,11 +5,13 @@ import CleanFooter from '../components/CleanFooter.astro';
 import blogPosts from '../data/blogPosts.json';
 
 const featuredPosts = blogPosts.posts.filter(post => post.featured);
-const recentPosts = blogPosts.posts.filter(post => !post.featured).slice(0, 6);
+const recentPosts = blogPosts.posts.filter(post => !post.featured).slice(0, 8);
 const categories = blogPosts.categories;
+const allPosts = blogPosts.posts;
 ---
 
-<Layout title="Medical Blog - Medical Terminology Hub">
+<Layout title="Medical Terminology Blog - Expert Articles & Study Guides | Medical Terminology Hub" 
+        description="Explore comprehensive medical terminology articles, study guides, and expert insights. From pediatric to EMT terminology, enhance your medical knowledge with our SEO-optimized blog.">
   <CleanHeader />
   
   <main class="blog-main">
@@ -17,7 +19,34 @@ const categories = blogPosts.categories;
       <!-- Blog Header -->
       <header class="blog-header">
         <h1 class="blog-title">Medical Knowledge Hub</h1>
-        <p class="blog-subtitle">Expert articles, study guides, and medical terminology insights</p>
+        <p class="blog-subtitle">Expert articles, study guides, and medical terminology insights for healthcare professionals</p>
+        
+        <!-- Search Bar -->
+        <div class="blog-search">
+          <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="blogSearch" placeholder="Search medical articles..." class="search-input">
+          </div>
+        </div>
+        
+        <!-- Blog Stats -->
+        <div class="blog-stats">
+          <div class="stat-item">
+            <span class="stat-number">{allPosts.length}</span>
+            <span class="stat-label">Articles</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{categories.length}</span>
+            <span class="stat-label">Categories</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{featuredPosts.length}</span>
+            <span class="stat-label">Featured</span>
+          </div>
+        </div>
       </header>
 
       <!-- Blog Content -->
@@ -30,24 +59,36 @@ const categories = blogPosts.categories;
               <h2 class="section-title">Featured Articles</h2>
               <div class="featured-grid">
                 {featuredPosts.map(post => (
-                  <article class="featured-post">
+                  <article class="featured-post" itemscope itemtype="https://schema.org/Article">
                     <div class="post-image">
-                      <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} />
-                      <div class="post-category">{post.category}</div>
+                      <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} itemprop="image" />
+                      <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+                        {post.category}
+                      </div>
+                      <div class={`difficulty-badge ${post.difficulty}`}>
+                        {post.difficulty}
+                      </div>
                     </div>
                     <div class="post-content">
-                      <h3 class="post-title">{post.title}</h3>
-                      <p class="post-excerpt">{post.excerpt}</p>
+                      <h3 class="post-title" itemprop="headline">
+                        <a href={`/blog/${post.id}`} itemprop="url">{post.title}</a>
+                      </h3>
+                      <p class="post-excerpt" itemprop="description">{post.excerpt}</p>
                       <div class="post-meta">
-                        <span class="post-author">By {post.author}</span>
-                        <span class="post-date">{new Date(post.publishDate).toLocaleDateString()}</span>
+                        <span class="post-author" itemprop="author">{post.author}</span>
+                        <time class="post-date" itemprop="datePublished" datetime={post.publishDate}>
+                          {new Date(post.publishDate).toLocaleDateString()}
+                        </time>
                         <span class="post-time">{post.readTime}</span>
                       </div>
                       <div class="post-tags">
-                        {post.tags.slice(0, 3).map(tag => (
-                          <span class="tag">{tag}</span>
+                        {post.tags.slice(0, 4).map(tag => (
+                          <span class="tag" itemprop="keywords">{tag}</span>
                         ))}
                       </div>
+                      {post.seoKeywords && (
+                        <meta itemprop="keywords" content={post.seoKeywords.join(', ')} />
+                      )}
                     </div>
                   </article>
                 ))}
@@ -60,18 +101,32 @@ const categories = blogPosts.categories;
             <h2 class="section-title">Latest Articles</h2>
             <div class="posts-grid">
               {recentPosts.map(post => (
-                <article class="blog-post">
+                <article class="blog-post" itemscope itemtype="https://schema.org/Article">
                   <div class="post-image">
-                    <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} />
-                    <div class="post-category">{post.category}</div>
+                    <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} itemprop="image" />
+                    <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+                      {post.category}
+                    </div>
+                    <div class={`difficulty-badge ${post.difficulty}`}>
+                      {post.difficulty}
+                    </div>
                   </div>
                   <div class="post-content">
-                    <h3 class="post-title">{post.title}</h3>
-                    <p class="post-excerpt">{post.excerpt}</p>
+                    <h3 class="post-title" itemprop="headline">
+                      <a href={`/blog/${post.id}`} itemprop="url">{post.title}</a>
+                    </h3>
+                    <p class="post-excerpt" itemprop="description">{post.excerpt}</p>
                     <div class="post-meta">
-                      <span class="post-author">By {post.author}</span>
-                      <span class="post-date">{new Date(post.publishDate).toLocaleDateString()}</span>
+                      <span class="post-author" itemprop="author">{post.author}</span>
+                      <time class="post-date" itemprop="datePublished" datetime={post.publishDate}>
+                        {new Date(post.publishDate).toLocaleDateString()}
+                      </time>
                       <span class="post-time">{post.readTime}</span>
+                    </div>
+                    <div class="post-tags">
+                      {post.tags.slice(0, 3).map(tag => (
+                        <span class="tag" itemprop="keywords">{tag}</span>
+                      ))}
                     </div>
                   </div>
                   {post.videoUrl && (
@@ -177,8 +232,72 @@ const categories = blogPosts.categories;
   .blog-subtitle {
     font-size: 16px;
     color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  /* Search Bar */
+  .blog-search {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 32px;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    width: 20px;
+    height: 20px;
+    color: #9ca3af;
+    z-index: 1;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 12px 16px 12px 48px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 16px;
+    background: white;
+    transition: all 0.2s ease;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  }
+
+  /* Blog Stats */
+  .blog-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 24px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4A90E2;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .blog-layout {
@@ -267,7 +386,6 @@ const categories = blogPosts.categories;
     position: absolute;
     top: 12px;
     left: 12px;
-    background: #4A90E2;
     color: white;
     padding: 4px 8px;
     border-radius: 6px;
@@ -275,6 +393,33 @@ const categories = blogPosts.categories;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  .difficulty-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .difficulty-badge.basic {
+    background: #10b981;
+    color: white;
+  }
+
+  .difficulty-badge.intermediate {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .difficulty-badge.advanced {
+    background: #ef4444;
+    color: white;
   }
 
   .video-badge {
@@ -544,3 +689,64 @@ const categories = blogPosts.categories;
     }
   }
 </style>
+
+<script>
+  // Blog search functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('blogSearch');
+    const blogPosts = document.querySelectorAll('.blog-post, .featured-post');
+    
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        blogPosts.forEach(post => {
+          const title = post.querySelector('.post-title')?.textContent.toLowerCase() || '';
+          const excerpt = post.querySelector('.post-excerpt')?.textContent.toLowerCase() || '';
+          const category = post.querySelector('.post-category')?.textContent.toLowerCase() || '';
+          const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+          
+          const matches = title.includes(searchTerm) || 
+                         excerpt.includes(searchTerm) || 
+                         category.includes(searchTerm) || 
+                         tags.includes(searchTerm);
+          
+          if (matches || searchTerm === '') {
+            post.style.display = '';
+            post.style.opacity = '1';
+          } else {
+            post.style.display = 'none';
+            post.style.opacity = '0';
+          }
+        });
+        
+        // Show "no results" message if needed
+        const visiblePosts = Array.from(blogPosts).filter(post => post.style.display !== 'none');
+        const sections = document.querySelectorAll('.featured-section, .recent-section');
+        
+        sections.forEach(section => {
+          const sectionPosts = section.querySelectorAll('.blog-post, .featured-post');
+          const visibleSectionPosts = Array.from(sectionPosts).filter(post => post.style.display !== 'none');
+          
+          if (visibleSectionPosts.length === 0 && searchTerm !== '') {
+            if (!section.querySelector('.no-results')) {
+              const noResults = document.createElement('p');
+              noResults.className = 'no-results';
+              noResults.textContent = 'No articles found matching your search.';
+              noResults.style.textAlign = 'center';
+              noResults.style.color = '#6b7280';
+              noResults.style.fontSize = '16px';
+              noResults.style.padding = '48px 0';
+              section.appendChild(noResults);
+            }
+          } else {
+            const noResults = section.querySelector('.no-results');
+            if (noResults) {
+              noResults.remove();
+            }
+          }
+        });
+      });
+    }
+  });
+</script>
