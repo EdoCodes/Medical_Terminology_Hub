@@ -20,8 +20,7 @@ const { terms, category = 'all' } = Astro.props;
           autocomplete="off"
         >
         <button class="search-btn" id="searchBtn">
-          <span class="search-icon">🔍</span>
-          Search
+          <span class="search-icon">Search</span>
         </button>
       </div>
       <h2 class="search-title">SEARCH MEDICAL TERMINOLOGY</h2>
@@ -100,31 +99,31 @@ const { terms, category = 'all' } = Astro.props;
       <h3 class="sidebar-title">Categories</h3>
       <nav class="category-nav">
         <a href="/" class={`category-link ${category === 'all' ? 'active' : ''}`}>
-          <span class="category-icon">📚</span>
+          <span class="category-icon">ALL</span>
           All Terms
         </a>
         <a href="/cardiovascular" class={`category-link ${category === 'cardiovascular' ? 'active' : ''}`}>
-          <span class="category-icon">❤️</span>
+          <span class="category-icon">CARD</span>
           Cardiovascular
         </a>
         <a href="/respiratory" class={`category-link ${category === 'respiratory' ? 'active' : ''}`}>
-          <span class="category-icon">🫁</span>
+          <span class="category-icon">RESP</span>
           Respiratory
         </a>
         <a href="/neurology" class={`category-link ${category === 'neurology' ? 'active' : ''}`}>
-          <span class="category-icon">🧠</span>
+          <span class="category-icon">NEUR</span>
           Neurology
         </a>
         <a href="/dermatology" class={`category-link ${category === 'dermatology' ? 'active' : ''}`}>
-          <span class="category-icon">🩺</span>
+          <span class="category-icon">DERM</span>
           Dermatology
         </a>
         <a href="/musculoskeletal" class={`category-link ${category === 'musculoskeletal' ? 'active' : ''}`}>
-          <span class="category-icon">🦴</span>
+          <span class="category-icon">MUSC</span>
           Musculoskeletal
         </a>
         <a href="/gastroenterology" class={`category-link ${category === 'gastroenterology' ? 'active' : ''}`}>
-          <span class="category-icon">🫃</span>
+          <span class="category-icon">GAST</span>
           Gastroenterology
         </a>
       </nav>
@@ -134,28 +133,28 @@ const { terms, category = 'all' } = Astro.props;
       <h3 class="sidebar-title">Medical Resources</h3>
       <div class="resource-links">
         <a href="https://www.medlineplus.gov/" target="_blank" rel="noopener" class="resource-link">
-          <span class="resource-icon">🏥</span>
+          <span class="resource-icon">MED</span>
           <div class="resource-content">
             <div class="resource-name">MedlinePlus</div>
             <div class="resource-desc">Trusted health information</div>
           </div>
         </a>
         <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener" class="resource-link">
-          <span class="resource-icon">⚕️</span>
+          <span class="resource-icon">MAYO</span>
           <div class="resource-content">
             <div class="resource-name">Mayo Clinic</div>
             <div class="resource-desc">Medical expertise & care</div>
           </div>
         </a>
         <a href="https://www.webmd.com/" target="_blank" rel="noopener" class="resource-link">
-          <span class="resource-icon">💊</span>
+          <span class="resource-icon">WEB</span>
           <div class="resource-content">
             <div class="resource-name">WebMD</div>
             <div class="resource-desc">Medical information</div>
           </div>
         </a>
         <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank" rel="noopener" class="resource-link">
-          <span class="resource-icon">📖</span>
+          <span class="resource-icon">PUB</span>
           <div class="resource-content">
             <div class="resource-name">PubMed</div>
             <div class="resource-desc">Medical literature</div>
@@ -168,15 +167,15 @@ const { terms, category = 'all' } = Astro.props;
       <h3 class="sidebar-title">Study Tools</h3>
       <div class="study-tools">
         <button class="tool-btn" id="quizModeBtn">
-          <span class="tool-icon">❓</span>
+          <span class="tool-icon">QUIZ</span>
           Quiz Mode
         </button>
         <button class="tool-btn" id="flashcardTestBtn">
-          <span class="tool-icon">📝</span>
+          <span class="tool-icon">TEST</span>
           Practice Test
         </button>
         <button class="tool-btn" id="printCardsBtn">
-          <span class="tool-icon">🖨️</span>
+          <span class="tool-icon">PRINT</span>
           Print Cards
         </button>
       </div>
@@ -241,28 +240,28 @@ const { terms, category = 'all' } = Astro.props;
       <h3 class="sidebar-title">Educational Videos</h3>
       <div class="video-links">
         <a href="https://www.kenhub.com/en/library/anatomy" target="_blank" rel="noopener" class="video-link">
-          <span class="video-icon">🎥</span>
+          <span class="video-icon">ANAT</span>
           <div class="video-content">
             <div class="video-title">Kenhub Anatomy</div>
             <div class="video-desc">Interactive anatomy videos</div>
           </div>
         </a>
         <a href="https://www.youtube.com/channel/UCsvqEZBO-kNmwuDBbKbfL6A" target="_blank" rel="noopener" class="video-link">
-          <span class="video-icon">📺</span>
+          <span class="video-icon">CRASH</span>
           <div class="video-content">
             <div class="video-title">Crash Course</div>
             <div class="video-desc">Medical terminology basics</div>
           </div>
         </a>
         <a href="https://www.youtube.com/channel/UC0HmS4yjw2b8OmNaJAGP5kA" target="_blank" rel="noopener" class="video-link">
-          <span class="video-icon">🩺</span>
+          <span class="video-icon">MEDIC</span>
           <div class="video-content">
             <div class="video-title">Medic Tutorials</div>
             <div class="video-desc">Clinical explanations</div>
           </div>
         </a>
         <a href="https://www.youtube.com/channel/UC_0uPNcgFA6R9VG1rP7zVjw" target="_blank" rel="noopener" class="video-link">
-          <span class="video-icon">📚</span>
+          <span class="video-icon">EASY</span>
           <div class="video-content">
             <div class="video-title">Med School Made Easy</div>
             <div class="video-desc">Study guides & tutorials</div>
@@ -275,15 +274,15 @@ const { terms, category = 'all' } = Astro.props;
       <h3 class="sidebar-title">Quick Actions</h3>
       <div class="quick-actions">
         <a href="/blog" class="action-link">
-          <span class="action-icon">📖</span>
+          <span class="action-icon">BLOG</span>
           Medical Blog
         </a>
         <a href="/admin/login" class="action-link admin">
-          <span class="action-icon">🔧</span>
+          <span class="action-icon">ADMIN</span>
           Admin Panel
         </a>
         <button class="action-link" id="exportProgressBtn">
-          <span class="action-icon">📊</span>
+          <span class="action-icon">EXPORT</span>
           Export Progress
         </button>
       </div>
@@ -294,7 +293,7 @@ const { terms, category = 'all' } = Astro.props;
       <div class="streak-display">
         <div class="streak-number" id="streakDays">0</div>
         <div class="streak-label">Days</div>
-        <div class="streak-message">Keep it up! 🔥</div>
+        <div class="streak-message">Keep it up!</div>
       </div>
     </div>
   </aside>
@@ -369,7 +368,9 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .search-icon {
-    font-size: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
   .search-title {
@@ -581,7 +582,16 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .category-icon {
-    font-size: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: #4A90E2;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    min-width: 32px;
+    text-align: center;
+    display: inline-block;
   }
 
   /* Resource Links */
@@ -608,7 +618,16 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .resource-icon {
-    font-size: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: #059669;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 6px;
+    min-width: 36px;
+    text-align: center;
+    display: inline-block;
     flex-shrink: 0;
   }
 
@@ -657,7 +676,17 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .tool-icon {
-    font-size: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: #dc2626;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    min-width: 32px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 8px;
   }
 
   /* Video Links */
@@ -686,7 +715,16 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .video-icon {
-    font-size: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: #7c3aed;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 6px;
+    min-width: 36px;
+    text-align: center;
+    display: inline-block;
     flex-shrink: 0;
   }
 
@@ -861,8 +899,17 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .action-icon {
-    font-size: 16px;
-    margin-right: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: #f59e0b;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    min-width: 32px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 8px;
   }
 
   .streak-display {
