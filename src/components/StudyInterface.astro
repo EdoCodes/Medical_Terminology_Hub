@@ -21,46 +21,166 @@ const { terms, category = 'all' } = Astro.props;
     </div>
   </div>
 
-  <!-- Flashcard Container -->
-  <div class="flashcard-container">
-    <div class="flashcard" id="flashcard">
-      <div class="flashcard-inner" id="flashcardInner">
-        <div class="flashcard-front">
-          <div class="card-header">
-            <span class="card-counter" id="cardCounter">1 / 30</span>
-          </div>
-          <div class="card-content">
-            <h1 class="medical-term" id="medicalTerm">Loading...</h1>
-            <p class="click-hint">Click to reveal definition</p>
-          </div>
+  <!-- Main Content Grid -->
+  <div class="content-grid">
+    <!-- Left Sidebar - Medical Resources -->
+    <aside class="left-sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Medical Resources</h3>
+        <div class="resource-links">
+          <a href="https://www.medlineplus.gov/" target="_blank" rel="noopener" class="resource-link">
+            <span class="resource-icon">📖</span>
+            <div class="resource-content">
+              <div class="resource-name">MedlinePlus</div>
+              <div class="resource-desc">Trusted health information</div>
+            </div>
+          </a>
+          <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener" class="resource-link">
+            <span class="resource-icon">🏥</span>
+            <div class="resource-content">
+              <div class="resource-name">Mayo Clinic</div>
+              <div class="resource-desc">Medical expertise & care</div>
+            </div>
+          </a>
+          <a href="https://www.webmd.com/" target="_blank" rel="noopener" class="resource-link">
+            <span class="resource-icon">💊</span>
+            <div class="resource-content">
+              <div class="resource-name">WebMD</div>
+              <div class="resource-desc">Medical information</div>
+            </div>
+          </a>
+          <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank" rel="noopener" class="resource-link">
+            <span class="resource-icon">🔬</span>
+            <div class="resource-content">
+              <div class="resource-name">PubMed</div>
+              <div class="resource-desc">Medical literature</div>
+            </div>
+          </a>
         </div>
-        <div class="flashcard-back">
-          <div class="card-header">
-            <span class="card-counter" id="cardCounterBack">1 / 30</span>
-          </div>
-          <div class="card-content">
-            <p class="definition" id="definition">Loading definition...</p>
-            <div class="example-section" id="exampleSection" style="display: none;">
-              <h4>Example</h4>
-              <p class="example" id="example"></p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Study Tools</h3>
+        <div class="study-tools">
+          <a href="/cardiovascular" class="tool-link">
+            <span class="tool-icon">❤️</span>
+            Cardiovascular Terms
+          </a>
+          <a href="/respiratory" class="tool-link">
+            <span class="tool-icon">🫁</span>
+            Respiratory Terms
+          </a>
+          <a href="/neurology" class="tool-link">
+            <span class="tool-icon">🧠</span>
+            Neurology Terms
+          </a>
+          <a href="/dermatology" class="tool-link">
+            <span class="tool-icon">🩺</span>
+            Dermatology Terms
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Flashcard Area -->
+    <main class="flashcard-main">
+      <!-- Flashcard Container with gentle blue background -->
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-inner" id="flashcardInner">
+            <div class="flashcard-front">
+              <div class="card-header">
+                <span class="card-counter" id="cardCounter">1 / 30</span>
+              </div>
+              <div class="card-content">
+                <h1 class="medical-term" id="medicalTerm">Loading...</h1>
+                <p class="click-hint">Click to reveal definition</p>
+              </div>
+            </div>
+            <div class="flashcard-back">
+              <div class="card-header">
+                <span class="card-counter" id="cardCounterBack">1 / 30</span>
+              </div>
+              <div class="card-content">
+                <p class="definition" id="definition">Loading definition...</p>
+                <div class="example-section" id="exampleSection" style="display: none;">
+                  <h4>Example</h4>
+                  <p class="example" id="example"></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Navigation -->
-  <div class="navigation">
-    <button class="nav-btn" id="prevBtn">← Previous</button>
-    <button class="nav-btn shuffle-btn" id="shuffleBtn">Shuffle</button>
-    <button class="nav-btn" id="nextBtn">Next →</button>
+      <!-- Navigation -->
+      <div class="navigation">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <button class="nav-btn shuffle-btn" id="shuffleBtn">Shuffle</button>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+      </div>
+    </main>
+
+    <!-- Right Sidebar - Mock Tests -->
+    <aside class="right-sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Practice Tests</h3>
+        <div class="test-links">
+          <a href="/tests/cardiovascular" class="test-link">
+            <span class="test-icon">📝</span>
+            <div class="test-content">
+              <div class="test-name">Cardiovascular Quiz</div>
+              <div class="test-desc">25 multiple choice questions</div>
+            </div>
+          </a>
+          <a href="/tests/respiratory" class="test-link">
+            <span class="test-icon">📝</span>
+            <div class="test-content">
+              <div class="test-name">Respiratory Quiz</div>
+              <div class="test-desc">25 multiple choice questions</div>
+            </div>
+          </a>
+          <a href="/tests/neurology" class="test-link">
+            <span class="test-icon">📝</span>
+            <div class="test-content">
+              <div class="test-name">Neurology Quiz</div>
+              <div class="test-desc">25 multiple choice questions</div>
+            </div>
+          </a>
+          <a href="/tests/comprehensive" class="test-link">
+            <span class="test-icon">🎯</span>
+            <div class="test-content">
+              <div class="test-name">Comprehensive Test</div>
+              <div class="test-desc">100 mixed questions</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Quick Stats</h3>
+        <div class="stats-display">
+          <div class="stat-item">
+            <span class="stat-number" id="studiedToday">0</span>
+            <span class="stat-label">Studied Today</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="totalProgress">0%</span>
+            <span class="stat-label">Progress</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="streak">0</span>
+            <span class="stat-label">Day Streak</span>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 </div>
 
 <style>
   .study-interface {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -70,7 +190,7 @@ const { terms, category = 'all' } = Astro.props;
     background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
     border-radius: 12px;
     padding: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
 
@@ -114,11 +234,136 @@ const { terms, category = 'all' } = Astro.props;
     transform: translateY(-1px);
   }
 
-  /* Flashcard Container */
-  .flashcard-container {
+  /* Three-Column Layout */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Sidebars */
+  .left-sidebar,
+  .right-sidebar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+  }
+
+  .sidebar-section {
+    padding: 20px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .sidebar-section:last-child {
+    border-bottom: none;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 16px 0;
+  }
+
+  /* Medical Resources (Left Sidebar) */
+  .resource-links {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #f3f4f6;
+  }
+
+  .resource-link:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    transform: translateX(2px);
+  }
+
+  .resource-icon {
+    font-size: 20px;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .resource-content {
+    flex: 1;
+  }
+
+  .resource-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .resource-desc {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  /* Study Tools */
+  .study-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tool-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .tool-link:hover {
+    background: #4A90E2;
+    color: white;
+    border-color: #4A90E2;
+  }
+
+  .tool-icon {
+    font-size: 16px;
+  }
+
+  /* Main Flashcard Area */
+  .flashcard-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Gentle blue background behind flashcard */
+  .flashcard-container {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 20px;
+    padding: 40px;
     margin-bottom: 32px;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.1);
   }
 
   .flashcard {
@@ -149,7 +394,7 @@ const { terms, category = 'all' } = Astro.props;
     border-radius: 12px;
     background: white;
     border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
   }
@@ -263,7 +508,103 @@ const { terms, category = 'all' } = Astro.props;
     cursor: not-allowed;
   }
 
-  /* Responsive */
+  /* Practice Tests (Right Sidebar) */
+  .test-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .test-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+  }
+
+  .test-link:hover {
+    background: #fde68a;
+    border-color: #f59e0b;
+    transform: translateX(-2px);
+  }
+
+  .test-icon {
+    font-size: 20px;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .test-content {
+    flex: 1;
+  }
+
+  .test-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 2px;
+  }
+
+  .test-desc {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  /* Quick Stats */
+  .stats-display {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 12px;
+    background: #f0f9ff;
+    border-radius: 8px;
+    border: 1px solid #bae6fd;
+  }
+
+  .stat-number {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+      position: static;
+      display: none;
+    }
+
+    .flashcard-container {
+      padding: 30px;
+    }
+  }
+
   @media (max-width: 768px) {
     .flashcard {
       width: 100%;
@@ -281,6 +622,10 @@ const { terms, category = 'all' } = Astro.props;
     
     .card-content {
       padding: 30px 20px;
+    }
+
+    .flashcard-container {
+      padding: 20px;
     }
   }
 </style>
