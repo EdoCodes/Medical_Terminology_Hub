@@ -973,29 +973,268 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   /* Enhanced Flashcard Typography - v2.0 Clean Medical Terms */
-  .term-text {
-    font-size: 36px !important;
-    font-weight: 800 !important;
-    color: #000000 !important;
-    line-height: 1.2 !important;
-    letter-spacing: -0.01em !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-    text-rendering: optimizeLegibility !important;
-    -webkit-font-smoothing: antialiased !important;
-    margin: 0 0 32px 0 !important;
+  .flashcard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .clean-flashcard {
+    width: 100%;
+    height: 350px;
+    perspective: 1200px;
+    cursor: pointer;
+  }
+
+  .flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+
+  .flashcard-inner.flipped {
+    transform: rotateY(180deg);
   }
 
   .flashcard-front,
   .flashcard-back {
-    background: #ffffff !important;
-    border-radius: 16px !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 3px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    
+    /* Enhanced shadow for better visibility */
     box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 8px 16px rgba(0, 0, 0, 0.06),
-      0 16px 24px rgba(0, 0, 0, 0.08),
-      0 24px 32px rgba(0, 0, 0, 0.06) !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      0 12px 24px rgba(0, 0, 0, 0.12),
+      0 20px 32px rgba(0, 0, 0, 0.10),
+      0 28px 40px rgba(0, 0, 0, 0.08);
+    
+    transition: all 0.3s ease;
+  }
+
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-header {
+    padding: 20px 24px 0 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 48px;
+  }
+
+  .difficulty-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .difficulty-badge.basic {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  }
+
+  .difficulty-badge.intermediate {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  }
+
+  .difficulty-badge.advanced {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  }
+
+  .flashcard-content {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .term-text {
+    font-size: 42px;
+    font-weight: 900;
+    color: #000000;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .flashcard-back .flashcard-content {
+    text-align: left;
+    justify-content: flex-start;
+    padding: 20px 24px 24px 24px;
+  }
+
+  .definition-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .definition-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #111827;
+    margin: 0 0 24px 0;
+    font-weight: 400;
+  }
+
+  .example-section {
+    margin-bottom: 20px;
+  }
+
+  .example-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6b7280;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .example-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #374151;
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Flashcard Controls */
+  .flashcard-controls {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .control-button {
+    padding: 14px 24px;
+    border: 2px solid #4A90E2;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    min-width: 120px;
+  }
+
+  .control-button.prev,
+  .control-button.next {
+    background: #ffffff;
+    color: #4A90E2;
+  }
+
+  .control-button.reveal {
+    background: #4A90E2;
+    color: #ffffff;
+  }
+
+  .control-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+  }
+
+  .control-button.reveal:hover {
+    background: #3b82f6;
+  }
+
+  .control-button.prev:hover,
+  .control-button.next:hover {
+    background: #f8faff;
+    border-color: #3b82f6;
+  }
+
+  .control-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Study Feedback */
+  .study-feedback {
+    text-align: center;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .study-feedback p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    margin: 0 0 16px 0;
+  }
+
+  .feedback-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .feedback-btn {
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+
+  .feedback-btn.correct {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    color: #166534;
+    border-color: #a7f3d0;
+  }
+
+  .feedback-btn.correct:hover {
+    background: linear-gradient(135deg, #bbf7d0 0%, #a7f3d0 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  }
+
+  .feedback-btn.review {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    border-color: #fed7aa;
+  }
+
+  .feedback-btn.review:hover {
+    background: linear-gradient(135deg, #fde68a 0%, #fed7aa 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
   }
 </style>
 
@@ -1037,53 +1276,67 @@ const { terms, category = 'all' } = Astro.props;
     if (container && studyTerms.length > 0) {
       const term = studyTerms[currentIndex];
       container.innerHTML = `
-        <div class="clean-flashcard" data-term-id="${term.id}">
-          <div class="flashcard-inner">
-            <div class="flashcard-front active">
-              <div class="flashcard-header">
-                <span class="difficulty-badge ${term.difficulty}">
-                  ${term.difficulty.toUpperCase()}
-                </span>
+        <div class="flashcard-wrapper">
+          <div class="clean-flashcard" data-term-id="${term.id}">
+            <div class="flashcard-inner">
+              <div class="flashcard-front active">
+                <div class="flashcard-header">
+                  <span class="difficulty-badge ${term.difficulty}">
+                    ${term.difficulty.toUpperCase()}
+                  </span>
+                </div>
+                <div class="flashcard-content">
+                  <h2 class="term-text">${term.term}</h2>
+                </div>
               </div>
-              <div class="flashcard-content">
-                <h2 class="term-text">${term.term}</h2>
-                <div class="reveal-prompt">
-                  <span>Click to reveal definition</span>
+              <div class="flashcard-back">
+                <div class="flashcard-header">
+                  <span class="difficulty-badge ${term.difficulty}">
+                    ${term.difficulty.toUpperCase()}
+                  </span>
+                </div>
+                <div class="flashcard-content">
+                  <h3 class="definition-label">Definition</h3>
+                  <p class="definition-text">${term.definition}</p>
+                  ${term.example ? `
+                    <div class="example-section">
+                      <h4 class="example-label">Clinical Example</h4>
+                      <p class="example-text">${term.example}</p>
+                    </div>
+                  ` : ''}
                 </div>
               </div>
             </div>
-            <div class="flashcard-back">
-              <div class="flashcard-header">
-                <button class="back-btn">
-                  Back to Term
-                </button>
-              </div>
-              <div class="flashcard-content">
-                <h3 class="definition-label">Definition</h3>
-                <p class="definition-text">${term.definition}</p>
-                ${term.example ? `
-                  <div class="example-section">
-                    <h4 class="example-label">Clinical Example</h4>
-                    <p class="example-text">${term.example}</p>
-                  </div>
-                ` : ''}
-                <div class="study-actions">
-                  <button class="study-btn correct" data-action="correct">
-                    Got It!
-                  </button>
-                  <button class="study-btn review" data-action="review">
-                    Review Again
-                  </button>
-                </div>
-              </div>
+          </div>
+          
+          <div class="flashcard-controls">
+            <button class="control-button prev" id="prevCardBtn" ${currentIndex === 0 ? 'disabled' : ''}>
+              Previous
+            </button>
+            <button class="control-button reveal" id="revealBtn">
+              Reveal Definition
+            </button>
+            <button class="control-button next" id="nextCardBtn" ${currentIndex === studyTerms.length - 1 ? 'disabled' : ''}>
+              Next
+            </button>
+          </div>
+          
+          <div class="study-feedback" id="studyFeedback" style="display: none;">
+            <p>How well did you know this term?</p>
+            <div class="feedback-buttons">
+              <button class="feedback-btn correct" data-action="correct">
+                Got It!
+              </button>
+              <button class="feedback-btn review" data-action="review">
+                Review Again
+              </button>
             </div>
           </div>
         </div>
       `;
 
-      // Reinitialize flashcard functionality
-      const event = new Event('flashcardsLoaded');
-      document.dispatchEvent(event);
+      // Initialize new control buttons
+      setupFlashcardControls();
     }
 
     if (currentCardEl) currentCardEl.textContent = currentIndex + 1;
@@ -1151,6 +1404,83 @@ const { terms, category = 'all' } = Astro.props;
       const total = sessionStats.correct + sessionStats.review;
       const accuracy = total > 0 ? Math.round((sessionStats.correct / total) * 100) : 0;
       sessionAccuracy.textContent = `${accuracy}%`;
+    }
+  }
+
+  function setupFlashcardControls() {
+    const flashcard = document.querySelector('.clean-flashcard');
+    const flashcardInner = document.querySelector('.flashcard-inner');
+    const prevBtn = document.getElementById('prevCardBtn');
+    const nextBtn = document.getElementById('nextCardBtn');
+    const revealBtn = document.getElementById('revealBtn');
+    const studyFeedback = document.getElementById('studyFeedback');
+    const feedbackBtns = document.querySelectorAll('.feedback-btn');
+
+    let isFlipped = false;
+
+    // Reveal Definition button
+    if (revealBtn) {
+      revealBtn.addEventListener('click', () => {
+        if (!isFlipped) {
+          flashcardInner.classList.add('flipped');
+          revealBtn.textContent = 'Back to Term';
+          studyFeedback.style.display = 'block';
+          isFlipped = true;
+        } else {
+          flashcardInner.classList.remove('flipped');
+          revealBtn.textContent = 'Reveal Definition';
+          studyFeedback.style.display = 'none';
+          isFlipped = false;
+        }
+      });
+    }
+
+    // Previous button
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          previousCard();
+          resetFlashcard();
+        }
+      });
+    }
+
+    // Next button
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < studyTerms.length - 1) {
+          nextCard();
+          resetFlashcard();
+        }
+      });
+    }
+
+    // Feedback buttons
+    feedbackBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const action = e.target.getAttribute('data-action');
+        if (action === 'correct') {
+          sessionStats.correct++;
+        } else if (action === 'review') {
+          sessionStats.review++;
+        }
+        updateStats();
+        
+        // Auto advance to next card after feedback
+        setTimeout(() => {
+          if (currentIndex < studyTerms.length - 1) {
+            nextCard();
+            resetFlashcard();
+          }
+        }, 500);
+      });
+    });
+
+    function resetFlashcard() {
+      flashcardInner.classList.remove('flipped');
+      revealBtn.textContent = 'Reveal Definition';
+      studyFeedback.style.display = 'none';
+      isFlipped = false;
     }
   }
 
