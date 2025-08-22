@@ -32,6 +32,10 @@ const { terms, category = 'all' } = Astro.props;
 
   <!-- Main Flashcard Section -->
   <section class="main-flashcard-section">
+    <div class="card-info">
+      <span id="cardCounter">1 of 30</span>
+    </div>
+    
     <div class="flashcard-container" id="flashcardContainer">
       <!-- Dynamic flashcards load here -->
     </div>
@@ -987,22 +991,25 @@ const { terms, category = 'all' } = Astro.props;
     }
   }
 
-  /* Main Flashcard Section */
+  /* Main Flashcard Section - UnionTestPrep Style */
   .main-flashcard-section {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto 40px auto;
     padding: 0 20px;
   }
 
   .flashcard-container {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
   }
 
-  /* Large Flashcard Styling */
+  /* UnionTestPrep-Style Flashcard */
   .large-flashcard {
     width: 100%;
-    height: 500px;
-    perspective: 1200px;
+    max-width: 500px;
+    height: 320px;
+    perspective: 1000px;
     cursor: pointer;
     margin: 0 auto;
   }
@@ -1011,7 +1018,7 @@ const { terms, category = 'all' } = Astro.props;
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s ease;
     transform-style: preserve-3d;
   }
 
@@ -1025,20 +1032,23 @@ const { terms, category = 'all' } = Astro.props;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 24px;
+    border-radius: 12px;
     background: #ffffff;
-    border: 4px solid #2c3e50;
+    border: 2px solid #e8e8e8;
     display: flex;
     flex-direction: column;
     
-    /* Prominent shadow for clear contours */
-    box-shadow: 
-      0 8px 16px rgba(0, 0, 0, 0.15),
-      0 16px 32px rgba(0, 0, 0, 0.12),
-      0 24px 48px rgba(0, 0, 0, 0.10),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    /* UnionTestPrep-style crisp shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
     
     transition: all 0.3s ease;
+  }
+
+  .flashcard-front:hover,
+  .flashcard-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #d0d0d0;
   }
 
   .flashcard-back {
@@ -1046,154 +1056,205 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   .flashcard-header {
-    padding: 24px 32px 0 32px;
+    padding: 12px 16px;
+    border-bottom: 2px solid #f5f5f5;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    min-height: 60px;
+    background: #fafafa;
+    border-radius: 10px 10px 0 0;
   }
 
   .difficulty-badge {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 1px;
-    padding: 8px 16px;
-    border-radius: 20px;
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.8px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border: 1px solid;
   }
 
   .difficulty-badge.basic {
-    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
   }
 
   .difficulty-badge.intermediate {
-    background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    background: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
   }
 
   .difficulty-badge.advanced {
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    background: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
   }
 
   .flashcard-content {
     flex: 1;
-    padding: 40px;
+    padding: 30px 24px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: #ffffff;
+    border-radius: 0 0 10px 10px;
   }
 
-  /* Medical Term Front */
+  /* Medical Term Front - UnionTestPrep Style */
   .medical-term {
-    font-size: 52px;
-    font-weight: 900;
-    color: #000000;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.3;
     letter-spacing: -0.02em;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    word-wrap: break-word;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  /* Definition Back */
+  /* Click indicator */
+  .click-indicator {
+    font-size: 12px;
+    color: #95a5a6;
+    margin-top: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Definition Back - UnionTestPrep Style */
   .flashcard-back .flashcard-content {
     text-align: left;
     justify-content: flex-start;
-    padding: 32px 40px 40px 40px;
+    padding: 20px 24px 24px 24px;
   }
 
   .definition-title {
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 700;
-    color: #2c3e50;
-    margin: 0 0 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .definition-text {
-    font-size: 20px;
-    line-height: 1.6;
-    color: #000000;
-    margin: 0 0 30px 0;
-    font-weight: 400;
-  }
-
-  .example-section {
-    margin-bottom: 20px;
-  }
-
-  .example-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #6b7280;
+    color: #7f8c8d;
     margin: 0 0 12px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .definition-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin: 0 0 16px 0;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .example-section {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid #ecf0f1;
+  }
+
+  .example-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #7f8c8d;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-align: center;
   }
 
   .example-text {
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.5;
-    color: #374151;
+    color: #34495e;
     margin: 0;
     font-style: italic;
     font-weight: 400;
+    text-align: center;
   }
 
-  /* Flashcard Controls */
+  /* Flashcard Controls - UnionTestPrep Style */
   .flashcard-controls {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 32px;
   }
 
   .control-button {
-    padding: 16px 32px;
-    border: 3px solid #4A90E2;
-    border-radius: 12px;
-    font-size: 18px;
+    padding: 14px 24px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: inherit;
-    min-width: 140px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 110px;
     background: #ffffff;
-    color: #4A90E2;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .control-button.shuffle-btn {
-    background: #4A90E2;
+    background: #3498db;
     color: #ffffff;
+    border-color: #3498db;
   }
 
   .control-button:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+    background: #ecf0f1;
+    border-color: #95a5a6;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .control-button.shuffle-btn:hover {
-    background: #3b82f6;
-  }
-
-  .control-button.left-btn:hover,
-  .control-button.right-btn:hover {
-    background: #f8faff;
-    border-color: #3b82f6;
+  .control-button.shuffle-btn:hover:not(:disabled) {
+    background: #2980b9;
+    border-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
   }
 
   .control-button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+    background: #f8f9fa;
+    color: #bdc3c7;
+    border-color: #e9ecef;
+  }
+
+  .control-button:active {
+    transform: translateY(0px);
+  }
+
+  /* Card Counter - UnionTestPrep Style */
+  .card-info {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  #cardCounter {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c3e50;
+    background: #ecf0f1;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #bdc3c7;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 </style>
 
@@ -1232,6 +1293,7 @@ const { terms, category = 'all' } = Astro.props;
     const progressPercent = document.getElementById('progressPercent');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const cardCounter = document.getElementById('cardCounter');
 
     if (container && studyTerms.length > 0) {
       const term = studyTerms[currentIndex];
@@ -1247,6 +1309,7 @@ const { terms, category = 'all' } = Astro.props;
               </div>
               <div class="flashcard-content">
                 <h1 class="medical-term">${term.term}</h1>
+                <div class="click-indicator">Click to reveal answer</div>
               </div>
             </div>
             <div class="flashcard-back">
@@ -1276,6 +1339,7 @@ const { terms, category = 'all' } = Astro.props;
 
     if (currentCardEl) currentCardEl.textContent = currentIndex + 1;
     if (totalCardsEl) totalCardsEl.textContent = studyTerms.length;
+    if (cardCounter) cardCounter.textContent = `${currentIndex + 1} of ${studyTerms.length}`;
 
     const progress = studyTerms.length > 0 ? ((currentIndex + 1) / studyTerms.length) * 100 : 0;
     if (progressFill) progressFill.style.width = `${progress}%`;
