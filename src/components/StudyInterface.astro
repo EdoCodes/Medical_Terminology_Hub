@@ -205,7 +205,7 @@ const { terms, category = 'all' } = Astro.props;
     </div>
 
     <div class="flashcard-container" id="flashcardContainer">
-      <!-- Flashcards will be inserted here -->
+      <!-- Dynamic flashcards load here -->
     </div>
 
     <div class="study-footer">
@@ -1244,6 +1244,7 @@ const { terms, category = 'all' } = Astro.props;
   let sessionStats = { correct: 0, review: 0, total: 0 };
 
   function initializeStudyInterface() {
+    console.log('Initializing study interface with', terms.length, 'terms');
     updateDisplay();
     updateStats();
     
@@ -1275,6 +1276,7 @@ const { terms, category = 'all' } = Astro.props;
 
     if (container && studyTerms.length > 0) {
       const term = studyTerms[currentIndex];
+      console.log('Rendering flashcard for term:', term.term);
       container.innerHTML = `
         <div class="flashcard-wrapper">
           <div class="clean-flashcard" data-term-id="${term.id}">
