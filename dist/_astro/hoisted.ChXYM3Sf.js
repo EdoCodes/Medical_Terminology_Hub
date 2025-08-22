@@ -7,7 +7,7 @@ import"./Layout.astro_astro_type_script_index_0_lang.C5a_LS-D.js";import"./Foote
             <div class="result-term">${f(s.term,t.value)}</div>
             <div class="result-definition">${f(s.definition,t.value)}</div>
             <div class="result-meta">
-              <span class="result-category">📚 ${s.category}</span>
+              <span class="result-category">${s.category}</span>
               <span class="result-difficulty difficulty-${s.difficulty}">${s.difficulty}</span>
             </div>
           </div>

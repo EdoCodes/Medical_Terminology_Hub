@@ -26,15 +26,15 @@ const categoryTerms = terms.map((term: any) => ({
 
 // Category display information
 const categoryInfo = {
-  cardiovascular: { name: 'Cardiovascular', icon: '❤️', description: 'Heart and circulation terminology' },
-  respiratory: { name: 'Respiratory', icon: '🫁', description: 'Lung and breathing terminology' },
-  neurology: { name: 'Neurology', icon: '🧠', description: 'Brain and nervous system terminology' },
-  dermatology: { name: 'Dermatology', icon: '🩺', description: 'Skin and dermatological terminology' },
-  musculoskeletal: { name: 'Musculoskeletal', icon: '🦴', description: 'Bone, muscle, and joint terminology' },
-  gastroenterology: { name: 'Gastroenterology', icon: '🫃', description: 'Digestive system terminology' }
+  cardiovascular: { name: 'Cardiovascular', icon: 'CARD', description: 'Heart and circulation terminology' },
+  respiratory: { name: 'Respiratory', icon: 'RESP', description: 'Lung and breathing terminology' },
+  neurology: { name: 'Neurology', icon: 'NEUR', description: 'Brain and nervous system terminology' },
+  dermatology: { name: 'Dermatology', icon: 'DERM', description: 'Skin and dermatological terminology' },
+  musculoskeletal: { name: 'Musculoskeletal', icon: 'MUSC', description: 'Bone, muscle, and joint terminology' },
+  gastroenterology: { name: 'Gastroenterology', icon: 'GAST', description: 'Digestive system terminology' }
 };
 
-const currentCategory = categoryInfo[category] || { name: category, icon: '📚', description: 'Medical terminology' };
+const currentCategory = categoryInfo[category] || { name: category, icon: 'MED', description: 'Medical terminology' };
 ---
 
 <Layout title={`${currentCategory.name} - Medical Terminology Hub`} description={`Study ${currentCategory.description} with interactive flashcards. ${terms.length} medical terms to master.`}>
