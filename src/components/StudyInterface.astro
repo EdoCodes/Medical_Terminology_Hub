@@ -971,6 +971,32 @@ const { terms, category = 'all' } = Astro.props;
       padding: 24px 16px;
     }
   }
+
+  /* Enhanced Flashcard Typography */
+  .term-text {
+    font-size: 36px !important;
+    font-weight: 800 !important;
+    color: #000000 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.01em !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    margin: 0 0 32px 0 !important;
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 8px 16px rgba(0, 0, 0, 0.06),
+      0 16px 24px rgba(0, 0, 0, 0.08),
+      0 24px 32px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
 </style>
 
 <script is:inline define:vars={{ terms, category }}>
@@ -1022,9 +1048,6 @@ const { terms, category = 'all' } = Astro.props;
               <div class="flashcard-content">
                 <h2 class="term-text">${term.term}</h2>
                 <div class="reveal-prompt">
-                  <svg class="click-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M15 3h4a2 2 0 0 1 2 2v4m-6 9l4-4-4-4m-6 4h14"/>
-                  </svg>
                   <span>Click to reveal definition</span>
                 </div>
               </div>
@@ -1032,10 +1055,7 @@ const { terms, category = 'all' } = Astro.props;
             <div class="flashcard-back">
               <div class="flashcard-header">
                 <button class="back-btn">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M19 12H5m7 7-7-7 7-7"/>
-                  </svg>
-                  Back
+                  Back to Term
                 </button>
               </div>
               <div class="flashcard-content">
@@ -1049,15 +1069,9 @@ const { terms, category = 'all' } = Astro.props;
                 ` : ''}
                 <div class="study-actions">
                   <button class="study-btn correct" data-action="correct">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <polyline points="20,6 9,17 4,12"/>
-                    </svg>
                     Got It!
                   </button>
                   <button class="study-btn review" data-action="review">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                      <path d="M1 4v6h6m16 4v6h-6M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/>
-                    </svg>
                     Review Again
                   </button>
                 </div>
