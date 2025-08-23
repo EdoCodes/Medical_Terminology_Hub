@@ -9,7 +9,8 @@ export async function getStaticPaths() {
     {params: {category: 'cardiovascular'}},
     {params: {category: 'respiratory'}},
     {params: {category: 'neurology'}},
-    {params: {category: 'general'}}
+    {params: {category: 'general'}},
+    {params: {category: 'comprehensive'}}
   ];
 }
 
@@ -19,7 +20,8 @@ const categoryTitles = {
   cardiovascular: 'Cardiovascular System',
   respiratory: 'Respiratory System', 
   neurology: 'Neurology',
-  general: 'General Medical Terms'
+  general: 'General Medical Terms',
+  comprehensive: 'Comprehensive Medical Terminology'
 };
 ---
 
@@ -204,6 +206,8 @@ const categoryTitles = {
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    touch-action: manipulation; /* Improves touch responsiveness */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
   }
 
   .option-btn:hover {
@@ -334,30 +338,169 @@ const categoryTitles = {
   }
 
   @media (max-width: 768px) {
+    .quiz-main {
+      padding: 16px 0;
+    }
+
     .quiz-container {
       padding: 0 16px;
     }
     
     .quiz-title {
       font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .quiz-subtitle {
+      font-size: 15px;
+    }
+
+    .quiz-stats {
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-number {
+      font-size: 20px;
     }
     
     .question-section {
-      padding: 24px;
+      padding: 20px 16px;
+    }
+
+    .question-text {
+      font-size: 18px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .option-btn {
+      padding: 16px;
+      font-size: 15px;
+      border-radius: 10px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
     }
     
     .quiz-controls {
-      padding: 0 24px 24px;
+      padding: 0 16px 20px;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 14px 24px;
+      font-size: 15px;
+      border-radius: 10px;
+    }
+
+    .explanation {
+      padding: 0 16px 20px;
+      font-size: 14px;
+      margin-top: 16px;
     }
     
     .results-actions {
       flex-direction: column;
       align-items: center;
+      gap: 12px;
     }
-    
+
+    .results-card {
+      padding: 32px 20px;
+    }
+
+    .results-title {
+      font-size: 24px;
+    }
+
+    .final-score {
+      font-size: 40px;
+    }
+
+    .score-percentage {
+      font-size: 20px;
+    }
+  }
+
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .quiz-container {
+      padding: 0 12px;
+    }
+
+    .quiz-title {
+      font-size: 22px;
+    }
+
+    .quiz-subtitle {
+      font-size: 14px;
+    }
+
+    .quiz-stats {
+      gap: 12px;
+    }
+
+    .stat-number {
+      font-size: 18px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+    }
+
+    .question-section {
+      padding: 16px 12px;
+    }
+
+    .question-text {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .option-btn {
+      padding: 14px 12px;
+      font-size: 14px;
+      min-height: 55px;
+      line-height: 1.3;
+    }
+
+    .quiz-controls {
+      padding: 0 12px 16px;
+    }
+
     .quiz-btn {
-      width: 100%;
-      max-width: 200px;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+
+    .explanation {
+      padding: 0 12px 16px;
+      font-size: 13px;
+    }
+
+    .results-card {
+      padding: 24px 16px;
+    }
+
+    .results-title {
+      font-size: 20px;
+    }
+
+    .final-score {
+      font-size: 36px;
+    }
+
+    .score-percentage {
+      font-size: 18px;
+    }
+
+    .score-message {
+      font-size: 14px;
     }
   }
 </style>

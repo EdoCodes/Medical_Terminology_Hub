@@ -146,5 +146,77 @@
       "correct": 1,
       "explanation": "The prefix 'anti-' means against or opposing."
     }
+  ],
+  "comprehensive": [
+    {
+      "id": 1,
+      "question": "What does the prefix 'cardio-' mean?",
+      "options": ["Heart", "Blood", "Vessel", "Circulation"],
+      "correct": 0,
+      "explanation": "The prefix 'cardio-' comes from the Greek word 'kardia' meaning heart."
+    },
+    {
+      "id": 2,
+      "question": "What is hypertension?",
+      "options": ["Low blood pressure", "High blood pressure", "Irregular heartbeat", "Heart attack"],
+      "correct": 1,
+      "explanation": "Hypertension is the medical term for high blood pressure (hyper = above normal, tension = pressure)."
+    },
+    {
+      "id": 3,
+      "question": "What does 'pneumonia' mean?",
+      "options": ["Heart inflammation", "Lung inflammation", "Brain inflammation", "Stomach inflammation"],
+      "correct": 1,
+      "explanation": "Pneumonia is inflammation of the lungs (pneumon = lung, ia = condition)."
+    },
+    {
+      "id": 4,
+      "question": "What is the meaning of 'encephalitis'?",
+      "options": ["Heart inflammation", "Lung inflammation", "Brain inflammation", "Liver inflammation"],
+      "correct": 2,
+      "explanation": "Encephalitis is inflammation of the brain (encephal = brain, itis = inflammation)."
+    },
+    {
+      "id": 5,
+      "question": "What does 'dermatitis' refer to?",
+      "options": ["Skin inflammation", "Bone inflammation", "Muscle inflammation", "Joint inflammation"],
+      "correct": 0,
+      "explanation": "Dermatitis is inflammation of the skin (dermat = skin, itis = inflammation)."
+    },
+    {
+      "id": 6,
+      "question": "What is 'myalgia'?",
+      "options": ["Bone pain", "Joint pain", "Muscle pain", "Nerve pain"],
+      "correct": 2,
+      "explanation": "Myalgia is muscle pain (my = muscle, algia = pain)."
+    },
+    {
+      "id": 7,
+      "question": "What does 'gastroenterology' study?",
+      "options": ["Heart and circulation", "Brain and nerves", "Digestive system", "Respiratory system"],
+      "correct": 2,
+      "explanation": "Gastroenterology is the study of the digestive system (gastro = stomach, enter = intestine, ology = study of)."
+    },
+    {
+      "id": 8,
+      "question": "What is 'tachycardia'?",
+      "options": ["Slow heart rate", "Fast heart rate", "Irregular heart rate", "Stopped heart rate"],
+      "correct": 1,
+      "explanation": "Tachycardia is fast heart rate (tachy = fast, cardia = heart)."
+    },
+    {
+      "id": 9,
+      "question": "What does 'nephrology' deal with?",
+      "options": ["Kidneys", "Liver", "Heart", "Lungs"],
+      "correct": 0,
+      "explanation": "Nephrology is the study of kidneys (nephr = kidney, ology = study of)."
+    },
+    {
+      "id": 10,
+      "question": "What is 'arthritis'?",
+      "options": ["Muscle inflammation", "Bone inflammation", "Joint inflammation", "Nerve inflammation"],
+      "correct": 2,
+      "explanation": "Arthritis is inflammation of the joints (arthr = joint, itis = inflammation)."
+    }
   ]
 }

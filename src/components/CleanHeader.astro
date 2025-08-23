@@ -154,6 +154,8 @@
     font-weight: 500;
     font-size: 14px;
     transition: all 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .nav-link:hover,
@@ -243,11 +245,14 @@
 
   .mobile-nav-link {
     display: block;
-    padding: 12px 0;
+    padding: 16px 0;
     color: white;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-weight: 500;
+    font-size: 16px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-nav-link:hover {
@@ -261,6 +266,10 @@
 
   /* Responsive Design */
   @media (max-width: 768px) {
+    .header-container {
+      height: 65px;
+    }
+
     .main-nav,
     .user-actions {
       display: none;
@@ -268,10 +277,13 @@
 
     .mobile-menu-toggle {
       display: flex;
+      padding: 12px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .brand-name {
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .brand-tagline {
@@ -280,6 +292,11 @@
 
     .mobile-nav.show {
       display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .mobile-nav-list {
+      padding: 16px 20px;
     }
 
     .mobile-menu-toggle.active span:nth-child(1) {
@@ -295,19 +312,52 @@
     }
   }
 
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @media (max-width: 480px) {
     .header-container {
-      padding: 0 16px;
+      padding: 0 12px;
+      height: 60px;
     }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
     }
 
     .logo-icon svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .brand-name {
+      font-size: 16px;
+    }
+
+    .mobile-menu-toggle {
+      padding: 10px;
+    }
+
+    .mobile-menu-toggle span {
+      width: 18px;
+    }
+
+    .mobile-nav-list {
+      padding: 12px 16px;
+    }
+
+    .mobile-nav-link {
+      padding: 14px 0;
+      font-size: 15px;
     }
   }
 </style>
