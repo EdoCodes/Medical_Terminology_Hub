@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-// Use actual blog post content with enhanced SEO structure and formatting
+// Professional blog content with actual JSON data integration
 const generateFullContent = (post) => {
   const categoryLower = post.category.toLowerCase();
   const sentences = post.content.split('. ');
@@ -37,7 +37,6 @@ const generateFullContent = (post) => {
     }
   }
   
-  // Generate SEO-optimized content structure using actual blog content
   return `
     <div class="article-intro">
       <p class="lead-text">${post.excerpt}</p>
@@ -45,10 +44,10 @@ const generateFullContent = (post) => {
 
     <div class="article-meta-details">
       <div class="author-info">
-        <strong>By ${post.author}</strong> • ${post.readTime} • ${post.difficulty.charAt(0).toUpperCase() + post.difficulty.slice(1)} Level
+        <strong>By ${post.author}</strong> • ${post.readTime} • ${post.difficulty ? post.difficulty.charAt(0).toUpperCase() + post.difficulty.slice(1) : 'Intermediate'} Level
       </div>
       <div class="article-tags">
-        ${post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+        ${post.tags ? post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('') : ''}
       </div>
     </div>
 
@@ -58,7 +57,7 @@ const generateFullContent = (post) => {
     <div class="key-highlights">
       <h3>Key Learning Points</h3>
       <ul>
-        ${post.relatedTerms.map(term => `<li><strong>${term}:</strong> Essential terminology in ${categoryLower}</li>`).join('')}
+        ${post.relatedTerms ? post.relatedTerms.map(term => `<li><strong>${term}:</strong> Essential terminology in ${categoryLower}</li>`).join('') : '<li>Core terminology concepts</li>'}
       </ul>
     </div>
 
@@ -68,16 +67,16 @@ const generateFullContent = (post) => {
     <div class="terminology-highlight">
       <h3>Essential ${post.category} Terms</h3>
       <div class="terms-grid">
-        ${post.relatedTerms.map(term => `
+        ${post.relatedTerms ? post.relatedTerms.map(term => `
           <div class="term-card">
             <h4>${term}</h4>
             <p>Key terminology used in ${categoryLower} practice and education.</p>
           </div>
-        `).join('')}
+        `).join('') : '<div class="term-card"><h4>Medical Terminology</h4><p>Essential terms for healthcare professionals.</p></div>'}
       </div>
     </div>
 
-    <h2>Historical and Clinical Context</h2>
+    <h2>Clinical Applications and Context</h2>
     ${paragraphs.slice(5, 7).map(p => `<p>${p}</p>`).join('')}
 
     <div class="clinical-applications">
