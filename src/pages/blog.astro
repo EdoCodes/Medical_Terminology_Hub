@@ -61,7 +61,7 @@ const allPosts = blogPosts.posts;
                 {featuredPosts.map(post => (
                   <article class="featured-post" itemscope itemtype="https://schema.org/Article">
                     <div class="post-image">
-                      <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} itemprop="image" />
+                      <img src={post.featuredImage || '/images/blog/default.svg'} alt={post.title} itemprop="image" />
                       <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
                         {post.category}
                       </div>
@@ -103,7 +103,7 @@ const allPosts = blogPosts.posts;
               {recentPosts.map(post => (
                 <article class="blog-post" itemscope itemtype="https://schema.org/Article">
                   <div class="post-image">
-                    <img src={post.featuredImage || '/images/blog/default.jpg'} alt={post.title} itemprop="image" />
+                    <img src={post.featuredImage || '/images/blog/default.svg'} alt={post.title} itemprop="image" />
                     <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
                       {post.category}
                     </div>
@@ -156,11 +156,25 @@ const allPosts = blogPosts.posts;
                   <div class="resource-desc">Interactive learning</div>
                 </div>
               </a>
-              <a href="/glossary" class="resource-link">
-                <div class="resource-icon">📖</div>
+              <a href="/cardiovascular" class="resource-link">
+                <div class="resource-icon">❤️</div>
                 <div class="resource-content">
-                  <div class="resource-name">Medical Glossary</div>
-                  <div class="resource-desc">3000+ terms</div>
+                  <div class="resource-name">Cardiovascular</div>
+                  <div class="resource-desc">Heart & circulation</div>
+                </div>
+              </a>
+              <a href="/respiratory" class="resource-link">
+                <div class="resource-icon">🫁</div>
+                <div class="resource-content">
+                  <div class="resource-name">Respiratory</div>
+                  <div class="resource-desc">Lungs & breathing</div>
+                </div>
+              </a>
+              <a href="/neurology" class="resource-link">
+                <div class="resource-icon">🧠</div>
+                <div class="resource-content">
+                  <div class="resource-name">Neurology</div>
+                  <div class="resource-desc">Brain & nervous system</div>
                 </div>
               </a>
             </div>
@@ -189,15 +203,16 @@ const allPosts = blogPosts.posts;
             </div>
           </div>
 
-          <!-- Categories -->
+          <!-- Medical Categories -->
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Browse by Category</h3>
+            <h3 class="sidebar-title">Medical Categories</h3>
             <div class="category-grid">
-              {categories.slice(0, 6).map(category => (
-                <a href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`} class="category-chip">
-                  {category.name}
-                </a>
-              ))}
+              <a href="/cardiovascular" class="category-chip">Cardiovascular</a>
+              <a href="/respiratory" class="category-chip">Respiratory</a>
+              <a href="/neurology" class="category-chip">Neurology</a>
+              <a href="/dermatology" class="category-chip">Dermatology</a>
+              <a href="/musculoskeletal" class="category-chip">Musculoskeletal</a>
+              <a href="/gastroenterology" class="category-chip">Gastroenterology</a>
             </div>
           </div>
         </aside>

@@ -113,6 +113,18 @@ const { terms, category = 'all' } = Astro.props;
         </div>
       </div>
 
+      <!-- Audio Pronunciation -->
+      <div class="pronunciation-section">
+        <button class="pronunciation-btn" id="pronounceBtn" title="Listen to pronunciation">
+          <span class="pronunciation-icon">🔊</span>
+          <span class="pronunciation-text">Pronounce</span>
+        </button>
+        <div class="pronunciation-guide" id="pronunciationGuide">
+          <span class="pronunciation-label">Pronunciation:</span>
+          <span class="pronunciation-phonetic" id="pronunciationText"></span>
+        </div>
+      </div>
+
       <!-- Navigation -->
       <div class="navigation">
         <button class="nav-btn" id="prevBtn">← Previous</button>
@@ -468,6 +480,105 @@ const { terms, category = 'all' } = Astro.props;
   }
 
   /* Navigation */
+  /* Pronunciation Section */
+  .pronunciation-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 16px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .pronunciation-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+  }
+
+  .pronunciation-btn:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #2563eb 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+  }
+
+  .pronunciation-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+  }
+
+  .pronunciation-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .pronunciation-icon {
+    font-size: 16px;
+  }
+
+  .pronunciation-guide {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #4b5563;
+    text-align: center;
+  }
+
+  .pronunciation-label {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  .pronunciation-phonetic {
+    font-style: italic;
+    color: #6b7280;
+    font-weight: 400;
+    background: #f9fafb;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* Mobile responsiveness for pronunciation section */
+  @media (max-width: 768px) {
+    .pronunciation-section {
+      margin: 15px 0;
+      padding: 12px;
+    }
+    
+    .pronunciation-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+    
+    .pronunciation-guide {
+      flex-direction: column;
+      text-align: center;
+      gap: 4px;
+    }
+    
+    .pronunciation-phonetic {
+      padding: 3px 6px;
+      font-size: 13px;
+    }
+  }
+
   .navigation {
     display: flex;
     gap: 16px;
@@ -655,6 +766,12 @@ const { terms, category = 'all' } = Astro.props;
     if (medicalTerm) medicalTerm.textContent = term.term;
     if (definition) definition.textContent = term.definition;
     
+    // Update pronunciation guide
+    const pronunciationText = document.getElementById('pronunciationText');
+    if (pronunciationText) {
+      pronunciationText.textContent = term.pronunciation || term.term;
+    }
+    
     // Handle example
     if (term.example && example && exampleSection) {
       example.textContent = term.example;
@@ -726,6 +843,70 @@ const { terms, category = 'all' } = Astro.props;
     }
   }
 
+  function pronounceTerm() {
+    if (studyTerms.length === 0) return;
+    
+    const term = studyTerms[currentIndex];
+    const pronounceBtn = document.getElementById('pronounceBtn');
+    
+    // Check if speech synthesis is supported
+    if (!('speechSynthesis' in window)) {
+      alert('Sorry, your browser does not support text-to-speech.');
+      return;
+    }
+    
+    // Stop any ongoing speech
+    speechSynthesis.cancel();
+    
+    // Create utterance
+    const utterance = new SpeechSynthesisUtterance(term.term);
+    
+    // Set voice properties for medical terminology
+    utterance.rate = 0.8; // Slightly slower for clarity
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    
+    // Try to find a suitable voice (prefer English voices)
+    const voices = speechSynthesis.getVoices();
+    const preferredVoices = voices.filter(voice => 
+      voice.lang.startsWith('en') && 
+      (voice.name.includes('Female') || voice.name.includes('Male') || voice.default)
+    );
+    
+    if (preferredVoices.length > 0) {
+      utterance.voice = preferredVoices[0];
+    } else if (voices.length > 0) {
+      utterance.voice = voices[0];
+    }
+    
+    // Visual feedback
+    if (pronounceBtn) {
+      const originalText = pronounceBtn.querySelector('.pronunciation-text').textContent;
+      const iconElement = pronounceBtn.querySelector('.pronunciation-icon');
+      
+      pronounceBtn.disabled = true;
+      pronounceBtn.querySelector('.pronunciation-text').textContent = 'Speaking...';
+      iconElement.textContent = '🔈';
+      
+      // Reset button when speech ends
+      utterance.onend = () => {
+        pronounceBtn.disabled = false;
+        pronounceBtn.querySelector('.pronunciation-text').textContent = originalText;
+        iconElement.textContent = '🔊';
+      };
+      
+      utterance.onerror = () => {
+        pronounceBtn.disabled = false;
+        pronounceBtn.querySelector('.pronunciation-text').textContent = originalText;
+        iconElement.textContent = '🔊';
+        console.error('Speech synthesis error');
+      };
+    }
+    
+    // Speak the term
+    speechSynthesis.speak(utterance);
+  }
+
   // Initialize when DOM is loaded
   document.addEventListener('DOMContentLoaded', function() {
     // Update initial display
@@ -736,6 +917,7 @@ const { terms, category = 'all' } = Astro.props;
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const shuffleBtn = document.getElementById('shuffleBtn');
+    const pronounceBtn = document.getElementById('pronounceBtn');
     
     if (flashcard) {
       flashcard.addEventListener('click', flipCard);
@@ -752,5 +934,24 @@ const { terms, category = 'all' } = Astro.props;
     if (shuffleBtn) {
       shuffleBtn.addEventListener('click', shuffleCards);
     }
+    
+    if (pronounceBtn) {
+      pronounceBtn.addEventListener('click', pronounceTerm);
+    }
+    
+    // Load voices when they become available (some browsers load them asynchronously)
+    if ('speechSynthesis' in window) {
+      speechSynthesis.onvoiceschanged = () => {
+        // Voices are now loaded
+      };
+    }
+    
+    // Add keyboard shortcut for pronunciation (Space bar)
+    document.addEventListener('keydown', function(event) {
+      if (event.code === 'Space' && event.target.tagName !== 'INPUT') {
+        event.preventDefault();
+        pronounceTerm();
+      }
+    });
   });
 </script>
