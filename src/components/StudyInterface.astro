@@ -23,8 +23,30 @@ const { terms, category = 'all' } = Astro.props;
 
   <!-- Main Content Grid -->
   <div class="content-grid">
-    <!-- Left Sidebar - Medical Resources -->
+    <!-- Left Sidebar - Study Tools First -->
     <aside class="left-sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Study Tools</h3>
+        <div class="study-tools">
+          <a href="/cardiovascular" class="tool-link">
+            <span class="tool-icon">❤️</span>
+            Cardiovascular Terms
+          </a>
+          <a href="/respiratory" class="tool-link">
+            <span class="tool-icon">🫁</span>
+            Respiratory Terms
+          </a>
+          <a href="/neurology" class="tool-link">
+            <span class="tool-icon">🧠</span>
+            Neurology Terms
+          </a>
+          <a href="/dermatology" class="tool-link">
+            <span class="tool-icon">🩺</span>
+            Dermatology Terms
+          </a>
+        </div>
+      </div>
+
       <div class="sidebar-section">
         <h3 class="sidebar-title">Medical Resources</h3>
         <div class="resource-links">
@@ -55,28 +77,6 @@ const { terms, category = 'all' } = Astro.props;
               <div class="resource-name">PubMed</div>
               <div class="resource-desc">Medical literature</div>
             </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <h3 class="sidebar-title">Study Tools</h3>
-        <div class="study-tools">
-          <a href="/cardiovascular" class="tool-link">
-            <span class="tool-icon">❤️</span>
-            Cardiovascular Terms
-          </a>
-          <a href="/respiratory" class="tool-link">
-            <span class="tool-icon">🫁</span>
-            Respiratory Terms
-          </a>
-          <a href="/neurology" class="tool-link">
-            <span class="tool-icon">🧠</span>
-            Neurology Terms
-          </a>
-          <a href="/dermatology" class="tool-link">
-            <span class="tool-icon">🩺</span>
-            Dermatology Terms
           </a>
         </div>
       </div>
