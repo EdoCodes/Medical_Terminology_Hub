@@ -6,23 +6,24 @@ import StudyInterface from '../components/StudyInterface.astro';
 import medicalTerms from '../data/medicalTerms.json';
 
 export function getStaticPaths() {
-  return Object.keys(medicalTerms).map(category => ({
+  // Get unique categories from the terms
+  const categories = [...new Set(medicalTerms.terms?.map((term: any) => term.category.toLowerCase()) || [])];
+  return categories.map(category => ({
     params: { category },
   }));
 }
 
 const { category } = Astro.params;
-const terms = medicalTerms[category] || [];
+// Filter terms by category (case-insensitive)
+const terms = medicalTerms.terms?.filter((term: any) => 
+  term.category.toLowerCase() === category.toLowerCase()
+) || [];
 
 if (!terms.length) {
   return Astro.redirect('/404');
 }
 
-// Add category info to each term
-const categoryTerms = terms.map((term: any) => ({
-  ...term,
-  category: category
-}));
+const categoryTerms = terms;
 
 // Category display information
 const categoryInfo = {
@@ -31,7 +32,21 @@ const categoryInfo = {
   neurology: { name: 'Neurology', icon: 'NEUR', description: 'Brain and nervous system terminology' },
   dermatology: { name: 'Dermatology', icon: 'DERM', description: 'Skin and dermatological terminology' },
   musculoskeletal: { name: 'Musculoskeletal', icon: 'MUSC', description: 'Bone, muscle, and joint terminology' },
-  gastroenterology: { name: 'Gastroenterology', icon: 'GAST', description: 'Digestive system terminology' }
+  gastroenterology: { name: 'Gastroenterology', icon: 'GAST', description: 'Digestive system terminology' },
+  endocrinology: { name: 'Endocrinology', icon: 'ENDO', description: 'Hormone and endocrine system terminology' },
+  hematology: { name: 'Hematology', icon: 'HEMA', description: 'Blood and blood disorder terminology' },
+  oncology: { name: 'Oncology', icon: 'ONCO', description: 'Cancer and tumor terminology' },
+  immunology: { name: 'Immunology', icon: 'IMMU', description: 'Immune system terminology' },
+  nephrology: { name: 'Nephrology', icon: 'NEPH', description: 'Kidney and urinary system terminology' },
+  obstetrics: { name: 'Obstetrics', icon: 'OBST', description: 'Pregnancy and childbirth terminology' },
+  ophthalmology: { name: 'Ophthalmology', icon: 'OPHT', description: 'Eye and vision terminology' },
+  otolaryngology: { name: 'Otolaryngology', icon: 'ENT', description: 'Ear, nose, and throat terminology' },
+  psychiatry: { name: 'Psychiatry', icon: 'PSYC', description: 'Mental health terminology' },
+  radiology: { name: 'Radiology', icon: 'RADI', description: 'Medical imaging terminology' },
+  surgery: { name: 'Surgery', icon: 'SURG', description: 'Surgical procedure terminology' },
+  pharmacology: { name: 'Pharmacology', icon: 'PHAR', description: 'Drug and medication terminology' },
+  emergency: { name: 'Emergency Medicine', icon: 'EMRG', description: 'Emergency medical terminology' },
+  pathology: { name: 'Pathology', icon: 'PATH', description: 'Disease and diagnostic terminology' }
 };
 
 const currentCategory = categoryInfo[category] || { name: category, icon: 'MED', description: 'Medical terminology' };

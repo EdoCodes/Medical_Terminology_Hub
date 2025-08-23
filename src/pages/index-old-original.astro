@@ -6,13 +6,8 @@ import EnhancedSearchBar from '../components/EnhancedSearchBar.astro';
 import FlashcardCarousel from '../components/FlashcardCarousel.astro';
 import medicalTerms from '../data/medicalTerms.json';
 
-// Flatten all terms for the main page
-const allTerms: any[] = [];
-Object.keys(medicalTerms).forEach((category: string) => {
-  medicalTerms[category as keyof typeof medicalTerms].forEach((term: any) => {
-    allTerms.push({...term, category});
-  });
-});
+// Use the new flat structure
+const allTerms = medicalTerms.terms || [];
 ---
 
 <Layout title="Medical Terminology Hub - Interactive Flashcards for Healthcare Professionals">

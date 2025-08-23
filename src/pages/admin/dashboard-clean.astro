@@ -3,14 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import medicalTerms from '../../data/medicalTerms.json';
 import blogPosts from '../../data/blogPosts.json';
 
-// Count total terms across all categories
-let totalTerms = 0;
-Object.keys(medicalTerms).forEach((category) => {
-  totalTerms += medicalTerms[category as keyof typeof medicalTerms].length;
-});
-
+// Count total terms and categories
+const totalTerms = medicalTerms.terms?.length || 0;
 const totalPosts = blogPosts.posts.length;
-const categories = Object.keys(medicalTerms).length;
+const categories = [...new Set(medicalTerms.terms?.map((term: any) => term.category) || [])].length;
 ---
 
 <Layout title="Admin Dashboard - Medical Terminology Hub">
