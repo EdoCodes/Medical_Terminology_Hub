@@ -217,6 +217,636 @@
       "options": ["Muscle inflammation", "Bone inflammation", "Joint inflammation", "Nerve inflammation"],
       "correct": 2,
       "explanation": "Arthritis is inflammation of the joints (arthr = joint, itis = inflammation)."
+    },
+    {
+      "id": 11,
+      "question": "What does 'bradycardia' mean?",
+      "options": ["Fast heart rate", "Slow heart rate", "Irregular heart rate", "Stopped heart rate"],
+      "correct": 1,
+      "explanation": "Bradycardia means slow heart rate (brady = slow, cardia = heart)."
+    },
+    {
+      "id": 12,
+      "question": "What is 'anemia'?",
+      "options": ["High red blood cell count", "Low red blood cell count", "High white blood cell count", "Low platelet count"],
+      "correct": 1,
+      "explanation": "Anemia is a condition characterized by low red blood cell count or low hemoglobin."
+    },
+    {
+      "id": 13,
+      "question": "What does 'osteoporosis' mean?",
+      "options": ["Bone growth", "Bone softening", "Bone hardening", "Bone weakening"],
+      "correct": 3,
+      "explanation": "Osteoporosis means bone weakening due to loss of bone density (osteo = bone, porosis = porous)."
+    },
+    {
+      "id": 14,
+      "question": "What is 'hepatitis'?",
+      "options": ["Heart inflammation", "Liver inflammation", "Kidney inflammation", "Lung inflammation"],
+      "correct": 1,
+      "explanation": "Hepatitis is inflammation of the liver (hepat = liver, itis = inflammation)."
+    },
+    {
+      "id": 15,
+      "question": "What does 'rhinitis' refer to?",
+      "options": ["Ear inflammation", "Eye inflammation", "Nose inflammation", "Throat inflammation"],
+      "correct": 2,
+      "explanation": "Rhinitis is inflammation of the nose (rhin = nose, itis = inflammation)."
+    },
+    {
+      "id": 16,
+      "question": "What is 'diabetes'?",
+      "options": ["Low blood sugar", "High blood sugar", "Low blood pressure", "High blood pressure"],
+      "correct": 1,
+      "explanation": "Diabetes is a condition characterized by high blood glucose levels."
+    },
+    {
+      "id": 17,
+      "question": "What does 'otitis' mean?",
+      "options": ["Eye inflammation", "Ear inflammation", "Nose inflammation", "Mouth inflammation"],
+      "correct": 1,
+      "explanation": "Otitis is inflammation of the ear (ot = ear, itis = inflammation)."
+    },
+    {
+      "id": 18,
+      "question": "What is 'asthma'?",
+      "options": ["Heart disease", "Lung disease", "Kidney disease", "Liver disease"],
+      "correct": 1,
+      "explanation": "Asthma is a respiratory condition affecting the airways in the lungs."
+    },
+    {
+      "id": 19,
+      "question": "What does 'gastritis' mean?",
+      "options": ["Liver inflammation", "Stomach inflammation", "Intestine inflammation", "Pancreas inflammation"],
+      "correct": 1,
+      "explanation": "Gastritis is inflammation of the stomach (gastr = stomach, itis = inflammation)."
+    },
+    {
+      "id": 20,
+      "question": "What is 'thrombosis'?",
+      "options": ["Blood clotting", "Blood thinning", "Blood loss", "Blood infection"],
+      "correct": 0,
+      "explanation": "Thrombosis is the formation of blood clots in blood vessels."
+    },
+    {
+      "id": 21,
+      "question": "What does the suffix '-ectomy' mean?",
+      "options": ["Surgical repair", "Surgical removal", "Surgical creation", "Surgical examination"],
+      "correct": 1,
+      "explanation": "The suffix '-ectomy' means surgical removal or excision."
+    },
+    {
+      "id": 22,
+      "question": "What is 'pneumothorax'?",
+      "options": ["Lung infection", "Collapsed lung", "Lung cancer", "Lung transplant"],
+      "correct": 1,
+      "explanation": "Pneumothorax is a collapsed lung caused by air in the pleural space."
+    },
+    {
+      "id": 23,
+      "question": "What does 'hematoma' mean?",
+      "options": ["Blood clot", "Blood collection", "Blood loss", "Blood infection"],
+      "correct": 1,
+      "explanation": "A hematoma is a collection of blood outside blood vessels, often forming a bruise."
+    },
+    {
+      "id": 24,
+      "question": "What is 'tonsillitis'?",
+      "options": ["Throat cancer", "Throat infection", "Tonsil inflammation", "Voice box inflammation"],
+      "correct": 2,
+      "explanation": "Tonsillitis is inflammation of the tonsils (tonsill = tonsils, itis = inflammation)."
+    },
+    {
+      "id": 25,
+      "question": "What does 'bronchitis' mean?",
+      "options": ["Lung inflammation", "Bronchi inflammation", "Throat inflammation", "Chest inflammation"],
+      "correct": 1,
+      "explanation": "Bronchitis is inflammation of the bronchi (bronch = bronchi, itis = inflammation)."
+    },
+    {
+      "id": 26,
+      "question": "What is 'appendicitis'?",
+      "options": ["Stomach inflammation", "Appendix inflammation", "Intestine inflammation", "Colon inflammation"],
+      "correct": 1,
+      "explanation": "Appendicitis is inflammation of the appendix."
+    },
+    {
+      "id": 27,
+      "question": "What does 'cyanosis' mean?",
+      "options": ["Red skin color", "Blue skin color", "Yellow skin color", "Green skin color"],
+      "correct": 1,
+      "explanation": "Cyanosis is a bluish discoloration of skin due to lack of oxygen."
+    },
+    {
+      "id": 28,
+      "question": "What is 'edema'?",
+      "options": ["Tissue swelling", "Tissue shrinking", "Tissue hardening", "Tissue softening"],
+      "correct": 0,
+      "explanation": "Edema is swelling caused by fluid retention in tissues."
+    },
+    {
+      "id": 29,
+      "question": "What does 'jaundice' mean?",
+      "options": ["Pale skin", "Red skin", "Yellow skin", "Blue skin"],
+      "correct": 2,
+      "explanation": "Jaundice is yellowing of the skin and eyes due to elevated bilirubin."
+    },
+    {
+      "id": 30,
+      "question": "What is 'syncope'?",
+      "options": ["Seizure", "Fainting", "Headache", "Dizziness"],
+      "correct": 1,
+      "explanation": "Syncope is temporary loss of consciousness, commonly known as fainting."
+    },
+    {
+      "id": 31,
+      "question": "What does 'dyspnea' mean?",
+      "options": ["Fast breathing", "Slow breathing", "Difficulty breathing", "No breathing"],
+      "correct": 2,
+      "explanation": "Dyspnea is difficulty breathing or shortness of breath."
+    },
+    {
+      "id": 32,
+      "question": "What is 'atrophy'?",
+      "options": ["Tissue growth", "Tissue shrinkage", "Tissue inflammation", "Tissue death"],
+      "correct": 1,
+      "explanation": "Atrophy is the wasting away or decrease in size of tissue or organs."
+    },
+    {
+      "id": 33,
+      "question": "What does 'hypertrophy' mean?",
+      "options": ["Tissue shrinkage", "Tissue growth", "Tissue inflammation", "Tissue death"],
+      "correct": 1,
+      "explanation": "Hypertrophy is the enlargement or overgrowth of tissue or organs."
+    },
+    {
+      "id": 34,
+      "question": "What is 'ischemia'?",
+      "options": ["Excess blood flow", "Reduced blood flow", "Blood infection", "Blood clotting"],
+      "correct": 1,
+      "explanation": "Ischemia is reduced blood supply to tissues or organs."
+    },
+    {
+      "id": 35,
+      "question": "What does 'necrosis' mean?",
+      "options": ["Tissue growth", "Tissue repair", "Tissue death", "Tissue inflammation"],
+      "correct": 2,
+      "explanation": "Necrosis is the death of tissue or cells in living organisms."
+    },
+    {
+      "id": 36,
+      "question": "What is 'sepsis'?",
+      "options": ["Blood infection", "Blood clotting", "Blood loss", "Blood cancer"],
+      "correct": 0,
+      "explanation": "Sepsis is a serious infection that spreads throughout the bloodstream."
+    },
+    {
+      "id": 37,
+      "question": "What does 'dysphagia' mean?",
+      "options": ["Difficulty speaking", "Difficulty swallowing", "Difficulty breathing", "Difficulty hearing"],
+      "correct": 1,
+      "explanation": "Dysphagia is difficulty swallowing (dys = difficult, phagia = swallowing)."
+    },
+    {
+      "id": 38,
+      "question": "What is 'aphasia'?",
+      "options": ["Loss of vision", "Loss of hearing", "Loss of speech", "Loss of smell"],
+      "correct": 2,
+      "explanation": "Aphasia is loss or impairment of speech and language abilities."
+    },
+    {
+      "id": 39,
+      "question": "What does 'hemiplegia' mean?",
+      "options": ["Total paralysis", "Arm paralysis", "Leg paralysis", "Half-body paralysis"],
+      "correct": 3,
+      "explanation": "Hemiplegia is paralysis of one side of the body (hemi = half, plegia = paralysis)."
+    },
+    {
+      "id": 40,
+      "question": "What is 'paraplegia'?",
+      "options": ["Arm paralysis", "Leg paralysis", "Total paralysis", "Partial paralysis"],
+      "correct": 1,
+      "explanation": "Paraplegia is paralysis of the lower half of the body, especially the legs."
+    },
+    {
+      "id": 41,
+      "question": "What does 'quadriplegia' mean?",
+      "options": ["Arm paralysis", "Leg paralysis", "Half-body paralysis", "Total body paralysis"],
+      "correct": 3,
+      "explanation": "Quadriplegia is paralysis of all four limbs and torso."
+    },
+    {
+      "id": 42,
+      "question": "What is 'stenosis'?",
+      "options": ["Vessel widening", "Vessel narrowing", "Vessel blockage", "Vessel rupture"],
+      "correct": 1,
+      "explanation": "Stenosis is the abnormal narrowing of a blood vessel or other tubular organ."
+    },
+    {
+      "id": 43,
+      "question": "What does 'aneurysm' mean?",
+      "options": ["Vessel narrowing", "Vessel widening", "Vessel rupture", "Vessel blockage"],
+      "correct": 1,
+      "explanation": "An aneurysm is an abnormal widening or ballooning of a blood vessel."
+    },
+    {
+      "id": 44,
+      "question": "What is 'embolism'?",
+      "options": ["Blood infection", "Blood clot blockage", "Blood loss", "Blood cancer"],
+      "correct": 1,
+      "explanation": "An embolism is blockage of a blood vessel by a clot or other material."
+    },
+    {
+      "id": 45,
+      "question": "What does 'infarction' mean?",
+      "options": ["Tissue growth", "Tissue death", "Tissue repair", "Tissue inflammation"],
+      "correct": 1,
+      "explanation": "Infarction is tissue death due to lack of blood supply."
+    },
+    {
+      "id": 46,
+      "question": "What is 'angina'?",
+      "options": ["Heart attack", "Chest pain", "Heart rhythm disorder", "Heart valve problem"],
+      "correct": 1,
+      "explanation": "Angina is chest pain caused by reduced blood flow to the heart."
+    },
+    {
+      "id": 47,
+      "question": "What does 'arrhythmia' mean?",
+      "options": ["Fast heart rate", "Slow heart rate", "Irregular heart rhythm", "Stopped heart"],
+      "correct": 2,
+      "explanation": "Arrhythmia is an irregular or abnormal heart rhythm."
+    },
+    {
+      "id": 48,
+      "question": "What is 'fibrillation'?",
+      "options": ["Regular heart rhythm", "Irregular heart rhythm", "Fast heart rate", "Slow heart rate"],
+      "correct": 1,
+      "explanation": "Fibrillation is a rapid, irregular heartbeat."
+    },
+    {
+      "id": 49,
+      "question": "What does 'palpitation' mean?",
+      "options": ["Chest pain", "Heart murmur", "Feeling heartbeat", "Heart attack"],
+      "correct": 2,
+      "explanation": "Palpitation is the feeling of a rapid, strong, or irregular heartbeat."
+    },
+    {
+      "id": 50,
+      "question": "What is 'murmur'?",
+      "options": ["Heart rhythm disorder", "Abnormal heart sound", "Chest pain", "Heart attack"],
+      "correct": 1,
+      "explanation": "A heart murmur is an abnormal sound heard during heartbeat."
+    },
+    {
+      "id": 51,
+      "question": "What does 'dyslexia' mean?",
+      "options": ["Difficulty reading", "Difficulty writing", "Difficulty speaking", "Difficulty hearing"],
+      "correct": 0,
+      "explanation": "Dyslexia is a learning disorder characterized by difficulty reading."
+    },
+    {
+      "id": 52,
+      "question": "What is 'vertigo'?",
+      "options": ["Headache", "Dizziness", "Nausea", "Vision problems"],
+      "correct": 1,
+      "explanation": "Vertigo is a sensation of spinning or dizziness."
+    },
+    {
+      "id": 53,
+      "question": "What does 'migraine' mean?",
+      "options": ["Mild headache", "Severe headache", "Head injury", "Head infection"],
+      "correct": 1,
+      "explanation": "A migraine is a severe, throbbing headache often with nausea."
+    },
+    {
+      "id": 54,
+      "question": "What is 'epilepsy'?",
+      "options": ["Sleep disorder", "Seizure disorder", "Memory disorder", "Movement disorder"],
+      "correct": 1,
+      "explanation": "Epilepsy is a neurological disorder characterized by recurrent seizures."
+    },
+    {
+      "id": 55,
+      "question": "What does 'amnesia' mean?",
+      "options": ["Memory loss", "Vision loss", "Hearing loss", "Speech loss"],
+      "correct": 0,
+      "explanation": "Amnesia is partial or complete loss of memory."
+    },
+    {
+      "id": 56,
+      "question": "What is 'dementia'?",
+      "options": ["Memory improvement", "Memory loss", "Learning difficulty", "Attention disorder"],
+      "correct": 1,
+      "explanation": "Dementia is a decline in cognitive function affecting memory and thinking."
+    },
+    {
+      "id": 57,
+      "question": "What does 'insomnia' mean?",
+      "options": ["Excessive sleep", "Sleep disorder", "Sleep walking", "Sleep talking"],
+      "correct": 1,
+      "explanation": "Insomnia is the inability to fall asleep or stay asleep."
+    },
+    {
+      "id": 58,
+      "question": "What is 'narcolepsy'?",
+      "options": ["Inability to sleep", "Excessive daytime sleepiness", "Sleep walking", "Sleep talking"],
+      "correct": 1,
+      "explanation": "Narcolepsy is a disorder causing excessive daytime sleepiness."
+    },
+    {
+      "id": 59,
+      "question": "What does 'apnea' mean?",
+      "options": ["Fast breathing", "Slow breathing", "Stopped breathing", "Loud breathing"],
+      "correct": 2,
+      "explanation": "Apnea is the temporary cessation of breathing, especially during sleep."
+    },
+    {
+      "id": 60,
+      "question": "What is 'orthopnea'?",
+      "options": ["Difficulty breathing while lying down", "Difficulty breathing while standing", "Difficulty breathing while exercising", "Difficulty breathing while sleeping"],
+      "correct": 0,
+      "explanation": "Orthopnea is difficulty breathing when lying down."
+    },
+    {
+      "id": 61,
+      "question": "What does 'tachypnea' mean?",
+      "options": ["Fast breathing", "Slow breathing", "Deep breathing", "Shallow breathing"],
+      "correct": 0,
+      "explanation": "Tachypnea is abnormally rapid breathing."
+    },
+    {
+      "id": 62,
+      "question": "What is 'bradypnea'?",
+      "options": ["Fast breathing", "Slow breathing", "Deep breathing", "No breathing"],
+      "correct": 1,
+      "explanation": "Bradypnea is abnormally slow breathing."
+    },
+    {
+      "id": 63,
+      "question": "What does 'hyperventilation' mean?",
+      "options": ["Slow breathing", "Fast, deep breathing", "Shallow breathing", "Stopped breathing"],
+      "correct": 1,
+      "explanation": "Hyperventilation is rapid, deep breathing that lowers CO2 levels."
+    },
+    {
+      "id": 64,
+      "question": "What is 'hypoventilation'?",
+      "options": ["Fast breathing", "Slow, shallow breathing", "Deep breathing", "No breathing"],
+      "correct": 1,
+      "explanation": "Hypoventilation is slow, shallow breathing that retains CO2."
+    },
+    {
+      "id": 65,
+      "question": "What does 'hemoptysis' mean?",
+      "options": ["Coughing up blood", "Vomiting blood", "Blood in urine", "Blood in stool"],
+      "correct": 0,
+      "explanation": "Hemoptysis is coughing up blood from the respiratory tract."
+    },
+    {
+      "id": 66,
+      "question": "What is 'hematemesis'?",
+      "options": ["Coughing up blood", "Vomiting blood", "Blood in urine", "Blood in stool"],
+      "correct": 1,
+      "explanation": "Hematemesis is vomiting blood from the upper digestive tract."
+    },
+    {
+      "id": 67,
+      "question": "What does 'hematuria' mean?",
+      "options": ["Blood in vomit", "Blood in stool", "Blood in urine", "Blood in sputum"],
+      "correct": 2,
+      "explanation": "Hematuria is the presence of blood in urine."
+    },
+    {
+      "id": 68,
+      "question": "What is 'melena'?",
+      "options": ["Black, tarry stool", "Bloody stool", "Clay-colored stool", "Green stool"],
+      "correct": 0,
+      "explanation": "Melena is black, tarry stool containing digested blood."
+    },
+    {
+      "id": 69,
+      "question": "What does 'polyuria' mean?",
+      "options": ["No urination", "Painful urination", "Excessive urination", "Blood in urine"],
+      "correct": 2,
+      "explanation": "Polyuria is excessive production and passage of urine."
+    },
+    {
+      "id": 70,
+      "question": "What is 'oliguria'?",
+      "options": ["No urination", "Decreased urination", "Excessive urination", "Painful urination"],
+      "correct": 1,
+      "explanation": "Oliguria is decreased urine production or output."
+    },
+    {
+      "id": 71,
+      "question": "What does 'anuria' mean?",
+      "options": ["Excessive urination", "Decreased urination", "No urination", "Painful urination"],
+      "correct": 2,
+      "explanation": "Anuria is the absence of urine production."
+    },
+    {
+      "id": 72,
+      "question": "What is 'dysuria'?",
+      "options": ["No urination", "Excessive urination", "Decreased urination", "Painful urination"],
+      "correct": 3,
+      "explanation": "Dysuria is painful or difficult urination."
+    },
+    {
+      "id": 73,
+      "question": "What does 'nocturia' mean?",
+      "options": ["Daytime urination", "Nighttime urination", "Painful urination", "Blood in urine"],
+      "correct": 1,
+      "explanation": "Nocturia is excessive urination at night."
+    },
+    {
+      "id": 74,
+      "question": "What is 'incontinence'?",
+      "options": ["Inability to urinate", "Loss of bladder control", "Painful urination", "Excessive urination"],
+      "correct": 1,
+      "explanation": "Incontinence is the inability to control urination or defecation."
+    },
+    {
+      "id": 75,
+      "question": "What does 'constipation' mean?",
+      "options": ["Frequent bowel movements", "Difficulty having bowel movements", "Loose stools", "Blood in stool"],
+      "correct": 1,
+      "explanation": "Constipation is difficulty having bowel movements or infrequent stools."
+    },
+    {
+      "id": 76,
+      "question": "What is 'diarrhea'?",
+      "options": ["Hard stools", "Loose, watery stools", "No bowel movements", "Blood in stool"],
+      "correct": 1,
+      "explanation": "Diarrhea is frequent, loose, or watery bowel movements."
+    },
+    {
+      "id": 77,
+      "question": "What does 'dyspepsia' mean?",
+      "options": ["Difficulty swallowing", "Indigestion", "Nausea", "Vomiting"],
+      "correct": 1,
+      "explanation": "Dyspepsia is indigestion or difficulty digesting food."
+    },
+    {
+      "id": 78,
+      "question": "What is 'emesis'?",
+      "options": ["Nausea", "Vomiting", "Diarrhea", "Constipation"],
+      "correct": 1,
+      "explanation": "Emesis is the medical term for vomiting."
+    },
+    {
+      "id": 79,
+      "question": "What does 'pyrexia' mean?",
+      "options": ["Low temperature", "Fever", "Normal temperature", "Chills"],
+      "correct": 1,
+      "explanation": "Pyrexia is the medical term for fever or elevated body temperature."
+    },
+    {
+      "id": 80,
+      "question": "What is 'hypothermia'?",
+      "options": ["High body temperature", "Low body temperature", "Normal body temperature", "Fever"],
+      "correct": 1,
+      "explanation": "Hypothermia is abnormally low body temperature."
+    },
+    {
+      "id": 81,
+      "question": "What does 'hyperthermia' mean?",
+      "options": ["Low body temperature", "High body temperature", "Normal temperature", "Chills"],
+      "correct": 1,
+      "explanation": "Hyperthermia is abnormally high body temperature."
+    },
+    {
+      "id": 82,
+      "question": "What is 'afebrile'?",
+      "options": ["Having fever", "Without fever", "High fever", "Low fever"],
+      "correct": 1,
+      "explanation": "Afebrile means without fever or having normal temperature."
+    },
+    {
+      "id": 83,
+      "question": "What does 'malaise' mean?",
+      "options": ["Feeling well", "General discomfort", "Severe pain", "High energy"],
+      "correct": 1,
+      "explanation": "Malaise is a general feeling of discomfort, illness, or unease."
+    },
+    {
+      "id": 84,
+      "question": "What is 'lethargy'?",
+      "options": ["High energy", "Tiredness", "Alertness", "Hyperactivity"],
+      "correct": 1,
+      "explanation": "Lethargy is a state of tiredness, weariness, or lack of energy."
+    },
+    {
+      "id": 85,
+      "question": "What does 'fatigue' mean?",
+      "options": ["High energy", "Extreme tiredness", "Alertness", "Restlessness"],
+      "correct": 1,
+      "explanation": "Fatigue is extreme tiredness resulting from mental or physical exertion."
+    },
+    {
+      "id": 86,
+      "question": "What is 'cachexia'?",
+      "options": ["Weight gain", "Weight loss and muscle wasting", "Muscle growth", "Fat accumulation"],
+      "correct": 1,
+      "explanation": "Cachexia is severe weight loss and muscle wasting due to chronic illness."
+    },
+    {
+      "id": 87,
+      "question": "What does 'obesity' mean?",
+      "options": ["Normal weight", "Underweight", "Excessive body fat", "Muscle wasting"],
+      "correct": 2,
+      "explanation": "Obesity is a condition characterized by excessive accumulation of body fat."
+    },
+    {
+      "id": 88,
+      "question": "What is 'emaciation'?",
+      "options": ["Weight gain", "Extreme thinness", "Normal weight", "Muscle building"],
+      "correct": 1,
+      "explanation": "Emaciation is extreme thinness and weakness from lack of nutrition."
+    },
+    {
+      "id": 89,
+      "question": "What does 'pruritus' mean?",
+      "options": ["Rash", "Itching", "Pain", "Numbness"],
+      "correct": 1,
+      "explanation": "Pruritus is the medical term for itching."
+    },
+    {
+      "id": 90,
+      "question": "What is 'urticaria'?",
+      "options": ["Dry skin", "Hives", "Acne", "Eczema"],
+      "correct": 1,
+      "explanation": "Urticaria is the medical term for hives, raised itchy skin welts."
+    },
+    {
+      "id": 91,
+      "question": "What does 'erythema' mean?",
+      "options": ["Skin paleness", "Skin redness", "Skin yellowing", "Skin blueness"],
+      "correct": 1,
+      "explanation": "Erythema is redness of the skin due to increased blood flow."
+    },
+    {
+      "id": 92,
+      "question": "What is 'pallor'?",
+      "options": ["Skin redness", "Skin paleness", "Skin yellowing", "Skin darkness"],
+      "correct": 1,
+      "explanation": "Pallor is unusual paleness of the skin."
+    },
+    {
+      "id": 93,
+      "question": "What does 'alopecia' mean?",
+      "options": ["Hair growth", "Hair loss", "Hair color change", "Hair thickness"],
+      "correct": 1,
+      "explanation": "Alopecia is partial or complete loss of hair."
+    },
+    {
+      "id": 94,
+      "question": "What is 'hirsutism'?",
+      "options": ["Hair loss", "Excessive hair growth", "Normal hair growth", "Gray hair"],
+      "correct": 1,
+      "explanation": "Hirsutism is excessive growth of hair, especially in women."
+    },
+    {
+      "id": 95,
+      "question": "What does 'lesion' mean?",
+      "options": ["Normal tissue", "Damaged tissue", "Growing tissue", "Healthy tissue"],
+      "correct": 1,
+      "explanation": "A lesion is any abnormal damage or change in tissue."
+    },
+    {
+      "id": 96,
+      "question": "What is 'nodule'?",
+      "options": ["Flat spot", "Small lump", "Open sore", "Thin line"],
+      "correct": 1,
+      "explanation": "A nodule is a small, solid lump that can be felt under the skin."
+    },
+    {
+      "id": 97,
+      "question": "What does 'ulcer' mean?",
+      "options": ["Raised bump", "Open sore", "Flat spot", "Small lump"],
+      "correct": 1,
+      "explanation": "An ulcer is an open sore on the skin or mucous membrane."
+    },
+    {
+      "id": 98,
+      "question": "What is 'abscess'?",
+      "options": ["Dry patch", "Pus-filled cavity", "Flat mole", "Thin scar"],
+      "correct": 1,
+      "explanation": "An abscess is a localized collection of pus in tissues."
+    },
+    {
+      "id": 99,
+      "question": "What does 'contusion' mean?",
+      "options": ["Cut", "Bruise", "Burn", "Scratch"],
+      "correct": 1,
+      "explanation": "A contusion is a bruise - injury without breaking the skin."
+    },
+    {
+      "id": 100,
+      "question": "What is 'laceration'?",
+      "options": ["Bruise", "Burn", "Deep cut", "Scratch"],
+      "correct": 2,
+      "explanation": "A laceration is a deep cut or tear in the skin or tissue."
     }
   ]
 }

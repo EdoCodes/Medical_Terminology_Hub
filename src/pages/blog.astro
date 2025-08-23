@@ -4,467 +4,618 @@ import CleanHeader from '../components/CleanHeader.astro';
 import CleanFooter from '../components/CleanFooter.astro';
 import blogPosts from '../data/blogPosts.json';
 
-const featuredPosts = blogPosts.posts.filter(post => post.featured);
-const recentPosts = blogPosts.posts.filter(post => !post.featured).slice(0, 8);
+const featuredPosts = blogPosts.posts.filter(post => post.featured).slice(0, 3);
+const recentPosts = blogPosts.posts.filter(post => !post.featured).slice(0, 9);
 const categories = blogPosts.categories;
 const allPosts = blogPosts.posts;
+
+// SEO Schema data
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Medical Terminology Hub Blog",
+  "description": "Expert medical terminology articles, study guides, and educational resources for healthcare professionals and students",
+  "url": "https://medicalterminologyhub.netlify.app/blog/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://medicalterminologyhub.netlify.app/blog/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Medical Terminology Hub",
+    "url": "https://medicalterminologyhub.netlify.app/"
+  }
+};
 ---
 
-<Layout title="Medical Terminology Blog - Expert Articles & Study Guides | Medical Terminology Hub" 
-        description="Explore comprehensive medical terminology articles, study guides, and expert insights. From pediatric to EMT terminology, enhance your medical knowledge with our SEO-optimized blog.">
+<Layout 
+  title="Medical Terminology Blog - Expert Articles & Study Guides | Medical Terminology Hub" 
+  description="Discover comprehensive medical terminology articles, interactive study guides, and expert insights. From EMT to nursing terminology, master medical language with our SEO-optimized educational blog."
+>
   <CleanHeader />
   
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)}></script>
+  
   <main class="blog-main">
-    <div class="blog-container">
-      <!-- SEO Optimized Blog Header -->
-      <header class="blog-header">
-        <h1 class="blog-title">Medical Terminology Blog & Study Hub</h1>
-        <p class="blog-subtitle">Master medical terminology with expert articles, interactive flashcards, and comprehensive practice tests for healthcare professionals and students</p>
-        
-        <!-- Breadcrumb Navigation for SEO -->
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/" itemscope itemtype="https://schema.org/WebPage">
-                <span itemprop="name">Home</span>
-              </a>
-              <meta itemprop="position" content="1" />
-            </li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <span itemprop="name">Medical Terminology Blog</span>
-              <meta itemprop="position" content="2" />
-            </li>
-          </ol>
-        </nav>
-        
-        <!-- Search Bar -->
-        <div class="blog-search">
-          <div class="search-container">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input type="text" id="blogSearch" placeholder="Search medical articles..." class="search-input">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/">
+                  <span itemprop="name">Home</span>
+                </a>
+                <meta itemprop="position" content="1" />
+              </li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name">Medical Blog</span>
+                <meta itemprop="position" content="2" />
+              </li>
+            </ol>
+          </nav>
+          
+          <h1 class="hero-title">Medical Terminology Hub</h1>
+          <p class="hero-subtitle">Expert articles, study guides, and comprehensive resources to master medical terminology for healthcare professionals and students</p>
+          
+          <!-- Search Section -->
+          <div class="search-section">
+            <div class="search-container">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              <input 
+                type="text" 
+                id="blogSearch" 
+                placeholder="Search medical articles and topics..." 
+                class="search-input"
+                autocomplete="off"
+                aria-label="Search articles"
+              >
+              <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number">{allPosts.length}</span>
+              <span class="stat-label">Expert Articles</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">{categories.length}</span>
+              <span class="stat-label">Medical Categories</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Practice Questions</span>
+            </div>
           </div>
         </div>
-        
-        <!-- Blog Stats -->
-        <div class="blog-stats">
-          <div class="stat-item">
-            <span class="stat-number">{allPosts.length}</span>
-            <span class="stat-label">Articles</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">{categories.length}</span>
-            <span class="stat-label">Categories</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">{featuredPosts.length}</span>
-            <span class="stat-label">Featured</span>
-          </div>
-        </div>
-      </header>
+      </div>
+    </section>
 
-      <!-- Blog Content -->
-      <div class="blog-layout">
-        <!-- Main Content -->
-        <section class="blog-content">
-          <!-- Featured Posts -->
-          {featuredPosts.length > 0 && (
-            <section class="featured-section">
+    <!-- Content Section -->
+    <section class="content-section">
+      <div class="content-container">
+        
+        <!-- Featured Articles -->
+        {featuredPosts.length > 0 && (
+          <section class="featured-section">
+            <div class="section-header">
               <h2 class="section-title">Featured Articles</h2>
-              <div class="featured-grid">
-                {featuredPosts.map(post => (
-                  <article class="featured-post" itemscope itemtype="https://schema.org/Article">
-                    <div class="post-image">
-                      <img src={post.featuredImage || '/images/blog/default.svg'} alt={post.title} itemprop="image" />
-                      <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
-                        {post.category}
-                      </div>
-                      <div class={`difficulty-badge ${post.difficulty}`}>
-                        {post.difficulty}
-                      </div>
-                    </div>
-                    <div class="post-content">
-                      <h3 class="post-title" itemprop="headline">
-                        <a href={`/blog/${post.id}`} itemprop="url">{post.title}</a>
-                      </h3>
-                      <p class="post-excerpt" itemprop="description">{post.excerpt}</p>
-                      <div class="post-meta">
-                        <span class="post-author" itemprop="author">{post.author}</span>
-                        <time class="post-date" itemprop="datePublished" datetime={post.publishDate}>
-                          {new Date(post.publishDate).toLocaleDateString()}
-                        </time>
-                        <span class="post-time">{post.readTime}</span>
-                      </div>
-                      <div class="post-tags">
-                        {post.tags.slice(0, 4).map(tag => (
-                          <span class="tag" itemprop="keywords">{tag}</span>
-                        ))}
-                      </div>
-                      {post.seoKeywords && (
-                        <meta itemprop="keywords" content={post.seoKeywords.join(', ')} />
-                      )}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
-
-          <!-- Recent Posts -->
-          <section class="recent-section">
-            <h2 class="section-title">Latest Articles</h2>
-            <div class="posts-grid">
-              {recentPosts.map(post => (
-                <article class="blog-post" itemscope itemtype="https://schema.org/Article">
-                  <div class="post-image">
-                    <img src={post.featuredImage || '/images/blog/default.svg'} alt={post.title} itemprop="image" />
-                    <div class="post-category" style={`background-color: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+              <p class="section-subtitle">Hand-picked educational content from medical experts</p>
+            </div>
+            
+            <div class="featured-grid">
+              {featuredPosts.map(post => (
+                <article class="featured-article" itemscope itemtype="https://schema.org/Article">
+                  <div class="article-image">
+                    <img 
+                      src={post.featuredImage || '/images/blog/default.svg'} 
+                      alt={post.title}
+                      loading="lazy"
+                      itemprop="image"
+                    />
+                    <div class="article-category" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
                       {post.category}
                     </div>
-                    <div class={`difficulty-badge ${post.difficulty}`}>
-                      {post.difficulty}
-                    </div>
+                    <div class="article-badge featured-badge">Featured</div>
                   </div>
-                  <div class="post-content">
-                    <h3 class="post-title" itemprop="headline">
+                  
+                  <div class="article-content">
+                    <div class="article-meta">
+                      <span class="article-author" itemprop="author">{post.author}</span>
+                      <time class="article-date" itemprop="datePublished" datetime={post.publishDate}>
+                        {new Date(post.publishDate).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}
+                      </time>
+                      <span class="article-read-time">{post.readTime}</span>
+                    </div>
+                    
+                    <h3 class="article-title" itemprop="headline">
                       <a href={`/blog/${post.id}`} itemprop="url">{post.title}</a>
                     </h3>
-                    <p class="post-excerpt" itemprop="description">{post.excerpt}</p>
-                    <div class="post-meta">
-                      <span class="post-author" itemprop="author">{post.author}</span>
-                      <time class="post-date" itemprop="datePublished" datetime={post.publishDate}>
-                        {new Date(post.publishDate).toLocaleDateString()}
-                      </time>
-                      <span class="post-time">{post.readTime}</span>
-                    </div>
-                    <div class="post-tags">
+                    
+                    <p class="article-excerpt" itemprop="description">{post.excerpt}</p>
+                    
+                    <div class="article-tags">
                       {post.tags.slice(0, 3).map(tag => (
-                        <span class="tag" itemprop="keywords">{tag}</span>
+                        <span class="article-tag" itemprop="keywords">{tag}</span>
                       ))}
                     </div>
-                  </div>
-                  {post.videoUrl && (
-                    <div class="video-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <polygon points="5,3 19,12 5,21"/>
+                    
+                    <a href={`/blog/${post.id}`} class="read-more-btn">
+                      Read Article
+                      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
-                      Video
-                    </div>
-                  )}
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
           </section>
+        )}
+
+        <!-- Recent Articles -->
+        <section class="recent-section">
+          <div class="section-header">
+            <h2 class="section-title">Latest Articles</h2>
+            <p class="section-subtitle">Stay updated with the newest medical terminology insights</p>
+          </div>
+          
+          <div class="articles-grid">
+            {recentPosts.map(post => (
+              <article class="article-card" itemscope itemtype="https://schema.org/Article">
+                <div class="article-image">
+                  <img 
+                    src={post.featuredImage || '/images/blog/default.svg'} 
+                    alt={post.title}
+                    loading="lazy"
+                    itemprop="image"
+                  />
+                  <div class="article-category" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+                    {post.category}
+                  </div>
+                  <div class={`difficulty-badge ${post.difficulty}`}>
+                    {post.difficulty}
+                  </div>
+                  {post.videoUrl && (
+                    <div class="video-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5,3 19,12 5,21"/>
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                
+                <div class="article-content">
+                  <div class="article-meta">
+                    <span class="article-author" itemprop="author">{post.author}</span>
+                    <time class="article-date" itemprop="datePublished" datetime={post.publishDate}>
+                      {new Date(post.publishDate).toLocaleDateString()}
+                    </time>
+                    <span class="article-read-time">{post.readTime}</span>
+                  </div>
+                  
+                  <h3 class="article-title" itemprop="headline">
+                    <a href={`/blog/${post.id}`} itemprop="url">{post.title}</a>
+                  </h3>
+                  
+                  <p class="article-excerpt" itemprop="description">{post.excerpt}</p>
+                  
+                  <div class="article-footer">
+                    <div class="article-tags">
+                      {post.tags.slice(0, 2).map(tag => (
+                        <span class="article-tag" itemprop="keywords">{tag}</span>
+                      ))}
+                    </div>
+                    <a href={`/blog/${post.id}`} class="read-more-link">Read More</a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
-        <!-- Sidebar -->
-        <aside class="blog-sidebar">
-          <!-- Study Resources -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">Study Resources</h3>
-            <div class="resource-links">
-              <a href="/" class="resource-link primary">
-                <div class="resource-icon">📚</div>
-                <div class="resource-content">
-                  <div class="resource-name">Study Flashcards</div>
-                  <div class="resource-desc">Interactive learning</div>
-                </div>
-              </a>
-              <a href="/cardiovascular" class="resource-link">
-                <div class="resource-icon">❤️</div>
-                <div class="resource-content">
-                  <div class="resource-name">Cardiovascular</div>
-                  <div class="resource-desc">Heart & circulation</div>
-                </div>
-              </a>
-              <a href="/respiratory" class="resource-link">
-                <div class="resource-icon">🫁</div>
-                <div class="resource-content">
-                  <div class="resource-name">Respiratory</div>
-                  <div class="resource-desc">Lungs & breathing</div>
-                </div>
-              </a>
-              <a href="/neurology" class="resource-link">
-                <div class="resource-icon">🧠</div>
-                <div class="resource-content">
-                  <div class="resource-name">Neurology</div>
-                  <div class="resource-desc">Brain & nervous system</div>
-                </div>
-              </a>
+        <!-- Categories & Resources Section -->
+        <section class="resources-section">
+          <div class="resources-grid">
+            <!-- Categories -->
+            <div class="resource-card">
+              <h3 class="resource-title">Medical Categories</h3>
+              <p class="resource-description">Explore medical terminology by system and specialty</p>
+              <div class="category-tags">
+                {categories.slice(0, 8).map(category => (
+                  <a href={`/${category.name.toLowerCase().replace(/\s+/g, '-')}`} class="category-tag">
+                    {category.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Study Tools -->
+            <div class="resource-card">
+              <h3 class="resource-title">Study Tools</h3>
+              <p class="resource-description">Interactive flashcards and practice tests</p>
+              <div class="study-links">
+                <a href="/" class="study-link primary">
+                  <span class="study-icon">📚</span>
+                  <div class="study-content">
+                    <span class="study-name">Interactive Flashcards</span>
+                    <span class="study-desc">Learn with spaced repetition</span>
+                  </div>
+                </a>
+                <a href="/tests/comprehensive" class="study-link">
+                  <span class="study-icon">🎯</span>
+                  <div class="study-content">
+                    <span class="study-name">Comprehensive Test</span>
+                    <span class="study-desc">100 practice questions</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Quick Access -->
+            <div class="resource-card">
+              <h3 class="resource-title">Quick Access</h3>
+              <p class="resource-description">Jump to popular medical terminology topics</p>
+              <div class="quick-links">
+                <a href="/cardiovascular" class="quick-link">❤️ Cardiovascular</a>
+                <a href="/respiratory" class="quick-link">🫁 Respiratory</a>
+                <a href="/neurology" class="quick-link">🧠 Neurology</a>
+                <a href="/dermatology" class="quick-link">🩺 Dermatology</a>
+              </div>
             </div>
           </div>
+        </section>
 
-          <!-- Practice Tests -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">Practice Tests</h3>
-            <div class="test-grid">
-              <a href="/tests/cardiovascular" class="test-card">
-                <div class="test-icon cardio">♥</div>
-                <div class="test-name">Cardiovascular</div>
-              </a>
-              <a href="/tests/respiratory" class="test-card">
-                <div class="test-icon resp">◎</div>
-                <div class="test-name">Respiratory</div>
-              </a>
-              <a href="/tests/neurology" class="test-card">
-                <div class="test-icon neuro">◉</div>
-                <div class="test-name">Neurology</div>
-              </a>
-              <a href="/tests/general" class="test-card">
-                <div class="test-icon general">★</div>
-                <div class="test-name">General Terms</div>
-              </a>
-            </div>
-          </div>
-
-          <!-- Medical Categories -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">Medical Categories</h3>
-            <div class="category-grid">
-              <a href="/cardiovascular" class="category-chip">Cardiovascular</a>
-              <a href="/respiratory" class="category-chip">Respiratory</a>
-              <a href="/neurology" class="category-chip">Neurology</a>
-              <a href="/dermatology" class="category-chip">Dermatology</a>
-              <a href="/musculoskeletal" class="category-chip">Musculoskeletal</a>
-              <a href="/gastroenterology" class="category-chip">Gastroenterology</a>
-            </div>
-          </div>
-        </aside>
       </div>
-    </div>
+    </section>
   </main>
 
   <CleanFooter />
 </Layout>
 
 <style>
-  .blog-main {
-    min-height: calc(100vh - 140px);
-    background: #f8f9fa;
-    padding: 24px 0;
+  /* Global Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  .blog-container {
+  .blog-main {
+    min-height: calc(100vh - 140px);
+    background: linear-gradient(135deg, #f8faff 0%, #f1f5f9 100%);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    color: white;
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10,2 L10,18 M2,10 L18,10" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23medical)"/></svg>');
+  }
+
+  .hero-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
   }
 
-  .blog-header {
+  .hero-content {
     text-align: center;
-    margin-bottom: 48px;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  /* Breadcrumb Navigation */
+  /* Breadcrumb */
   .breadcrumb {
-    margin: 16px auto 0;
-    max-width: 600px;
+    margin-bottom: 24px;
   }
 
   .breadcrumb ol {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 8px;
     list-style: none;
-    margin: 0;
-    padding: 0;
     font-size: 14px;
   }
 
   .breadcrumb li:not(:last-child)::after {
     content: '/';
-    color: #9ca3af;
     margin-left: 8px;
+    opacity: 0.6;
   }
 
   .breadcrumb a {
-    color: #4A90E2;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .breadcrumb a:hover {
-    color: #3b82f6;
-    text-decoration: underline;
+    color: white;
   }
 
   .breadcrumb span {
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.9);
   }
 
-  .blog-title {
-    font-size: 32px;
+  /* Hero Typography */
+  .hero-title {
+    font-size: 48px;
     font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .blog-subtitle {
-    font-size: 16px;
-    color: #6b7280;
+  .hero-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    line-height: 1.6;
     max-width: 600px;
-    margin: 0 auto 32px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Search Bar */
-  .blog-search {
-    max-width: 500px;
-    margin: 0 auto 32px;
+  /* Search Section */
+  .search-section {
+    margin-bottom: 40px;
   }
 
   .search-container {
     position: relative;
-    display: flex;
-    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   .search-icon {
     position: absolute;
-    left: 16px;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 20px;
     height: 20px;
     color: #9ca3af;
-    z-index: 1;
+    z-index: 2;
   }
 
   .search-input {
     width: 100%;
-    padding: 12px 16px 12px 48px;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    font-size: 16px; /* Prevents zoom on iOS */
-    background: white;
-    transition: all 0.2s ease;
-    -webkit-appearance: none; /* Remove iOS styling */
+    padding: 16px 20px 16px 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+  }
+
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .search-input:focus {
     outline: none;
-    border-color: #4A90E2;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 
-  /* Blog Stats */
-  .blog-stats {
+  .search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    display: none;
+  }
+
+  /* Hero Stats */
+  .hero-stats {
     display: flex;
     justify-content: center;
-    gap: 32px;
-    margin-bottom: 24px;
+    gap: 40px;
+    flex-wrap: wrap;
   }
 
-  .stat-item {
+  .stat-card {
     text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 140px;
+    transition: transform 0.2s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
   }
 
   .stat-number {
     display: block;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    color: #4A90E2;
     margin-bottom: 4px;
+    color: white;
   }
 
   .stat-label {
     font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    color: white;
+  }
+
+  /* Content Section */
+  .content-section {
+    padding: 80px 0;
+  }
+
+  .content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
     color: #6b7280;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Featured Articles */
+  .featured-section {
+    margin-bottom: 100px;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+
+  .featured-article {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .featured-article:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .featured-article .article-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .featured-article .article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .featured-article:hover .article-image img {
+    transform: scale(1.05);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
-  .blog-layout {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 48px;
-  }
-
-  /* Main Content */
-  .blog-content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .section-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 24px;
-  }
-
-  /* Featured Posts */
-  .featured-grid {
-    display: grid;
-    gap: 24px;
-  }
-
-  .featured-post {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 24px;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
-  }
-
-  .featured-post:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-  }
-
-  /* Regular Posts */
-  .posts-grid {
+  /* Article Cards */
+  .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
   }
 
-  .blog-post {
+  .article-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f1f5f9;
     transition: all 0.2s ease;
-    position: relative;
   }
 
-  .blog-post:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   }
 
-  .post-image {
+  .article-image {
     position: relative;
     height: 180px;
     overflow: hidden;
   }
 
-  .featured-post .post-image {
-    height: 200px;
-  }
-
-  .post-image img {
+  .article-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
   }
 
-  .post-category {
+  .article-category {
     position: absolute;
     top: 12px;
     left: 12px;
     color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -473,10 +624,10 @@ const allPosts = blogPosts.posts;
     position: absolute;
     top: 12px;
     right: 12px;
-    padding: 4px 8px;
-    border-radius: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -498,664 +649,749 @@ const allPosts = blogPosts.posts;
 
   .video-badge {
     position: absolute;
-    top: 12px;
+    bottom: 12px;
     right: 12px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 500;
+    padding: 8px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
   }
 
   .video-badge svg {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
   }
 
-  .post-content {
-    padding: 20px;
-  }
-
-  .featured-post .post-content {
+  .article-content {
     padding: 24px;
   }
 
-  .post-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1f2937;
-    line-height: 1.3;
-    margin-bottom: 12px;
+  .featured-article .article-content {
+    padding: 32px;
   }
 
-  .featured-post .post-title {
-    font-size: 20px;
-    margin-bottom: 16px;
-  }
-
-  .post-excerpt {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-
-  .post-meta {
+  .article-meta {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    margin-bottom: 16px;
     font-size: 12px;
     color: #9ca3af;
-    margin-bottom: 12px;
-  }
-
-  .post-author {
-    font-weight: 500;
-  }
-
-  .post-tags {
-    display: flex;
-    gap: 6px;
     flex-wrap: wrap;
   }
 
-  .tag {
-    background: #f3f4f6;
+  .article-author {
+    font-weight: 500;
+    color: #4A90E2;
+  }
+
+  .article-date,
+  .article-read-time {
     color: #6b7280;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: 500;
   }
 
-  /* Sidebar */
-  .blog-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  .article-title {
+    margin-bottom: 12px;
+    line-height: 1.4;
   }
 
-  .sidebar-section {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
-    overflow: hidden;
-  }
-
-  .sidebar-title {
-    font-size: 16px;
-    font-weight: 600;
+  .article-title a {
     color: #1f2937;
-    padding: 20px 20px 0 20px;
-    margin-bottom: 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.2s ease;
   }
 
-  .categories-list {
-    padding: 0 20px 20px 20px;
+  .featured-article .article-title a {
+    font-size: 20px;
+  }
+
+  .article-title a:hover {
+    color: #4A90E2;
+  }
+
+  .article-excerpt {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .featured-article .article-excerpt {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .article-tags {
     display: flex;
-    flex-direction: column;
     gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
-  .category-item {
+  .article-tag {
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .article-footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-    font-size: 14px;
-  }
-
-  .category-item:hover {
-    background: #f3f4f6;
-  }
-
-  .category-name {
-    color: #374151;
-    font-weight: 500;
-  }
-
-  .category-count {
-    color: #9ca3af;
-    font-size: 12px;
-  }
-
-  .quick-links {
-    padding: 0 20px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .quick-link {
-    display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
+  }
+
+  .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
     font-size: 14px;
-    color: #374151;
     font-weight: 500;
+    transition: all 0.2s ease;
   }
 
-  .quick-link:hover {
-    background: #f3f4f6;
+  .read-more-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 144, 226, 0.3);
   }
 
-  .quick-link svg {
+  .read-more-btn .btn-icon {
     width: 16px;
     height: 16px;
-    color: #6b7280;
   }
 
-  /* Study Resources */
-  .resource-links {
-    padding: 0 20px 20px 20px;
+  .read-more-link {
+    color: #4A90E2;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .read-more-link:hover {
+    color: #357ABD;
+  }
+
+  /* Resources Section */
+  .resources-section {
+    margin-top: 60px;
+    padding: 60px 0;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    padding: 0 32px;
+  }
+
+  .resource-card {
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .resource-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+  }
+
+  .resource-description {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .category-tag {
+    background: #f8faff;
+    color: #4A90E2;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border: 2px solid #e2e8f0;
+    transition: all 0.2s ease;
+  }
+
+  .category-tag:hover {
+    background: #4A90E2;
+    color: white;
+    border-color: #4A90E2;
+    transform: translateY(-1px);
+  }
+
+  .study-links {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  .resource-link {
+  .study-link {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     padding: 16px;
-    border-radius: 12px;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    transition: all 0.2s ease;
+    background: #f8faff;
+    border-radius: 16px;
     text-decoration: none;
     color: inherit;
+    border: 2px solid #e2e8f0;
+    transition: all 0.2s ease;
   }
 
-  .resource-link:hover {
-    background: #e9ecef;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .resource-link.primary {
-    background: linear-gradient(135deg, #4A90E2, #3b82f6);
+  .study-link.primary {
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
     color: white;
     border-color: #4A90E2;
   }
 
-  .resource-link.primary:hover {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+  .study-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(74, 144, 226, 0.15);
   }
 
-  .resource-icon {
+  .study-icon {
     font-size: 24px;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border-radius: 12px;
+    flex-shrink: 0;
   }
 
-  .resource-link:not(.primary) .resource-icon {
+  .study-link:not(.primary) .study-icon {
     background: white;
-    border: 1px solid #e9ecef;
   }
 
-  .resource-content {
-    flex: 1;
+  .study-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
   }
 
-  .resource-name {
-    font-size: 14px;
+  .study-name {
     font-weight: 600;
+    font-size: 14px;
     margin-bottom: 2px;
   }
 
-  .resource-desc {
+  .study-desc {
     font-size: 12px;
     opacity: 0.8;
   }
 
-  /* Test Grid */
-  .test-grid {
-    padding: 0 20px 20px 20px;
+  .quick-links {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 12px;
   }
 
-  .test-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 16px 8px;
-    border-radius: 8px;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    transition: all 0.2s ease;
+  .quick-link {
+    background: #f8faff;
+    color: #4A90E2;
+    padding: 12px 16px;
+    border-radius: 12px;
     text-decoration: none;
-    color: #374151;
-  }
-
-  .test-card:hover {
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
-  }
-
-  .test-icon {
-    font-size: 20px;
-    font-weight: 600;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    color: white;
-  }
-
-  .test-icon.cardio {
-    background: #ef4444;
-  }
-
-  .test-icon.resp {
-    background: #3b82f6;
-  }
-
-  .test-icon.neuro {
-    background: #8b5cf6;
-  }
-
-  .test-icon.general {
-    background: #10b981;
-  }
-
-  .test-name {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  /* Category Grid */
-  .category-grid {
-    padding: 0 20px 20px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .category-chip {
-    padding: 6px 12px;
-    background: #f3f4f6;
-    color: #6b7280;
-    border-radius: 16px;
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
+    border: 2px solid #e2e8f0;
     transition: all 0.2s ease;
-    border: 1px solid #e5e7eb;
   }
 
-  .category-chip:hover {
+  .quick-link:hover {
     background: #4A90E2;
     color: white;
     border-color: #4A90E2;
-  }
-
-  /* Newsletter */
-  .newsletter {
-    background: linear-gradient(135deg, #4A90E2, #3b82f6);
-    color: white;
-  }
-
-  .newsletter .sidebar-title {
-    color: white;
-  }
-
-  .newsletter-text {
-    padding: 0 20px;
-    font-size: 14px;
-    opacity: 0.9;
-    margin-bottom: 16px;
-  }
-
-  .newsletter-form {
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .newsletter-input {
-    padding: 10px 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-
-  .newsletter-btn {
-    padding: 10px 12px;
-    background: white;
-    color: #4A90E2;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-  }
-
-  .newsletter-btn:hover {
-    opacity: 0.9;
-  }
-
-  .newsletter-disclaimer {
-    padding: 0 20px 20px 20px;
-    font-size: 11px;
-    opacity: 0.7;
+    transform: translateY(-1px);
   }
 
   /* Responsive Design */
   @media (max-width: 968px) {
-    .blog-layout {
-      grid-template-columns: 1fr;
+    .hero-title {
+      font-size: 36px;
+    }
+    
+    .hero-subtitle {
+      font-size: 16px;
+    }
+
+    .hero-stats {
       gap: 24px;
     }
 
-    .blog-sidebar {
-      order: -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .stat-card {
+      min-width: 120px;
+      padding: 16px;
     }
 
-    .featured-post {
+    .section-title {
+      font-size: 28px;
+    }
+
+    .featured-grid {
       grid-template-columns: 1fr;
     }
 
-    .featured-post .post-image {
-      height: 180px;
+    .articles-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    .blog-stats {
-      gap: 20px;
+    .resources-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+
+    .hero-container {
+      padding: 0 16px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .search-input {
+      padding: 14px 18px 14px 46px;
+      font-size: 16px;
+    }
+
+    .hero-stats {
+      gap: 16px;
+    }
+
+    .stat-card {
+      min-width: 100px;
+      padding: 12px;
     }
 
     .stat-number {
       font-size: 20px;
     }
-  }
 
-  @media (max-width: 768px) {
-    .blog-container {
+    .content-section {
+      padding: 60px 0;
+    }
+
+    .content-container {
       padding: 0 16px;
     }
 
-    .blog-main {
-      padding: 16px 0;
+    .section-header {
+      margin-bottom: 40px;
     }
 
-    .blog-header {
-      margin-bottom: 32px;
-    }
-
-    .blog-title {
-      font-size: 26px;
-      line-height: 1.2;
-    }
-
-    .blog-subtitle {
-      font-size: 15px;
-      margin-bottom: 24px;
-    }
-
-    .blog-search {
-      margin-bottom: 24px;
-    }
-
-    .search-input {
-      padding: 14px 16px 14px 48px;
-      font-size: 16px;
-    }
-
-    .posts-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .blog-content {
-      gap: 24px;
-    }
-
-    .blog-layout {
-      gap: 20px;
-    }
-
-    .blog-sidebar {
-      display: block;
-    }
-
-    .sidebar-section {
-      margin-bottom: 16px;
-    }
-
-    .resource-links {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    .resource-link {
-      padding: 12px;
-    }
-
-    .test-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-    }
-
-    .test-card {
-      padding: 12px 6px;
-    }
-
-    .test-name {
-      font-size: 10px;
-    }
-
-    .category-grid {
-      gap: 6px;
-    }
-
-    .category-chip {
-      padding: 4px 8px;
-      font-size: 11px;
-    }
-
-    /* Blog post optimizations */
-    .post-content {
-      padding: 16px;
-    }
-
-    .post-title {
-      font-size: 16px;
-      line-height: 1.4;
-    }
-
-    .post-excerpt {
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .post-meta {
-      font-size: 11px;
-      gap: 8px;
-    }
-
-    .post-tags {
-      gap: 4px;
-    }
-
-    .tag {
-      font-size: 9px;
-      padding: 2px 4px;
-    }
-
-    /* Featured posts on mobile */
-    .featured-post .post-content {
-      padding: 20px 16px;
-    }
-
-    .featured-post .post-title {
-      font-size: 18px;
-    }
-
-    .featured-post .post-excerpt {
-      font-size: 14px;
-    }
-  }
-
-  /* Extra small mobile devices */
-  @media (max-width: 480px) {
-    .blog-container {
-      padding: 0 12px;
-    }
-
-    .blog-title {
+    .section-title {
       font-size: 24px;
     }
 
-    .blog-subtitle {
+    .section-subtitle {
       font-size: 14px;
     }
 
-    .blog-stats {
-      flex-wrap: wrap;
+    .featured-section {
+      margin-bottom: 60px;
+    }
+
+    .featured-grid {
+      gap: 20px;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
       gap: 16px;
-      justify-content: center;
     }
 
-    .stat-item {
-      min-width: 80px;
+    .article-content {
+      padding: 20px;
     }
 
-    .search-container {
-      position: relative;
+    .featured-article .article-content {
+      padding: 24px;
+    }
+
+    .resources-section {
+      margin-top: 40px;
+      padding: 40px 0;
+    }
+
+    .resources-grid {
+      padding: 0 16px;
+    }
+
+    .resource-card {
+      padding: 24px 16px;
+    }
+
+    .quick-links {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+    }
+
+    .search-input {
+      padding: 12px 16px 12px 40px;
     }
 
     .search-icon {
-      left: 12px;
+      left: 14px;
       width: 18px;
       height: 18px;
     }
 
-    .search-input {
-      padding: 12px 12px 12px 40px;
+    .hero-stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    .sidebar-title {
-      font-size: 14px;
+    .stat-card {
+      min-width: 200px;
     }
 
-    .resource-link {
-      padding: 10px;
+    .section-title {
+      font-size: 22px;
     }
 
-    .resource-name {
-      font-size: 13px;
+    .article-image {
+      height: 160px;
     }
 
-    .resource-desc {
-      font-size: 11px;
+    .featured-article .article-image {
+      height: 180px;
     }
 
-    .test-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .test-card {
-      padding: 10px 6px;
-    }
-
-    .test-icon {
+    .article-title a {
       font-size: 16px;
-      width: 28px;
-      height: 28px;
     }
 
-    .test-name {
-      font-size: 9px;
+    .featured-article .article-title a {
+      font-size: 18px;
     }
+  }
+
+  /* Loading Animation */
+  .loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Search Results */
+  .search-results {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(74, 144, 226, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(74, 144, 226, 0.1);
+  }
+
+  .search-results h3 {
+    color: #4A90E2;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6b7280;
+  }
+
+  .no-results h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #9ca3af;
+  }
+
+  .no-results p {
+    font-size: 14px;
   }
 </style>
 
 <script>
-  // Blog search functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('blogSearch');
-    const blogPosts = document.querySelectorAll('.blog-post, .featured-post');
+  // Enhanced Search Functionality
+  class BlogSearch {
+    constructor() {
+      this.searchInput = document.getElementById('blogSearch');
+      this.searchSuggestions = document.getElementById('searchSuggestions');
+      this.articles = document.querySelectorAll('.featured-article, .article-card');
+      this.sections = document.querySelectorAll('.featured-section, .recent-section');
+      
+      this.searchTerms = this.extractSearchTerms();
+      this.debounceTimer = null;
+      
+      this.init();
+    }
     
-    if (searchInput) {
-      searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase();
+    init() {
+      if (!this.searchInput) return;
+      
+      this.searchInput.addEventListener('input', (e) => {
+        clearTimeout(this.debounceTimer);
+        this.debounceTimer = setTimeout(() => {
+          this.performSearch(e.target.value);
+        }, 300);
+      });
+      
+      this.searchInput.addEventListener('focus', () => {
+        if (this.searchInput.value.trim()) {
+          this.showSuggestions();
+        }
+      });
+      
+      document.addEventListener('click', (e) => {
+        if (!this.searchInput.contains(e.target) && !this.searchSuggestions.contains(e.target)) {
+          this.hideSuggestions();
+        }
+      });
+    }
+    
+    extractSearchTerms() {
+      const terms = new Set();
+      this.articles.forEach(article => {
+        const title = article.querySelector('.article-title')?.textContent?.toLowerCase() || '';
+        const excerpt = article.querySelector('.article-excerpt')?.textContent?.toLowerCase() || '';
+        const category = article.querySelector('.article-category')?.textContent?.toLowerCase() || '';
+        const tags = Array.from(article.querySelectorAll('.article-tag')).map(tag => tag.textContent.toLowerCase());
         
-        blogPosts.forEach(post => {
-          const title = post.querySelector('.post-title')?.textContent.toLowerCase() || '';
-          const excerpt = post.querySelector('.post-excerpt')?.textContent.toLowerCase() || '';
-          const category = post.querySelector('.post-category')?.textContent.toLowerCase() || '';
-          const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
-          
-          const matches = title.includes(searchTerm) || 
-                         excerpt.includes(searchTerm) || 
-                         category.includes(searchTerm) || 
-                         tags.includes(searchTerm);
-          
-          if (matches || searchTerm === '') {
-            post.style.display = '';
-            post.style.opacity = '1';
-          } else {
-            post.style.display = 'none';
-            post.style.opacity = '0';
-          }
+        // Extract individual words
+        [...title.split(' '), ...excerpt.split(' '), category, ...tags].forEach(word => {
+          if (word.length > 2) terms.add(word.trim());
         });
+      });
+      
+      return Array.from(terms);
+    }
+    
+    performSearch(query) {
+      const searchTerm = query.toLowerCase().trim();
+      
+      if (searchTerm === '') {
+        this.showAllArticles();
+        this.hideSuggestions();
+        this.removeSearchResults();
+        return;
+      }
+      
+      let visibleCount = 0;
+      
+      this.articles.forEach(article => {
+        const title = article.querySelector('.article-title')?.textContent?.toLowerCase() || '';
+        const excerpt = article.querySelector('.article-excerpt')?.textContent?.toLowerCase() || '';
+        const category = article.querySelector('.article-category')?.textContent?.toLowerCase() || '';
+        const tags = Array.from(article.querySelectorAll('.article-tag')).map(tag => tag.textContent.toLowerCase());
+        const author = article.querySelector('.article-author')?.textContent?.toLowerCase() || '';
         
-        // Show "no results" message if needed
-        const visiblePosts = Array.from(blogPosts).filter(post => post.style.display !== 'none');
-        const sections = document.querySelectorAll('.featured-section, .recent-section');
+        const content = `${title} ${excerpt} ${category} ${tags.join(' ')} ${author}`;
+        const matches = searchTerm.split(' ').every(term => content.includes(term));
         
-        sections.forEach(section => {
-          const sectionPosts = section.querySelectorAll('.blog-post, .featured-post');
-          const visibleSectionPosts = Array.from(sectionPosts).filter(post => post.style.display !== 'none');
-          
-          if (visibleSectionPosts.length === 0 && searchTerm !== '') {
-            if (!section.querySelector('.no-results')) {
-              const noResults = document.createElement('p');
-              noResults.className = 'no-results';
-              noResults.textContent = 'No articles found matching your search.';
-              noResults.style.textAlign = 'center';
-              noResults.style.color = '#6b7280';
-              noResults.style.fontSize = '16px';
-              noResults.style.padding = '48px 0';
-              section.appendChild(noResults);
-            }
-          } else {
-            const noResults = section.querySelector('.no-results');
-            if (noResults) {
-              noResults.remove();
-            }
-          }
+        if (matches) {
+          article.style.display = 'block';
+          article.style.opacity = '1';
+          this.highlightSearchTerms(article, searchTerm);
+          visibleCount++;
+        } else {
+          article.style.display = 'none';
+        }
+      });
+      
+      this.updateSectionVisibility();
+      this.showSearchResults(query, visibleCount);
+      this.updateSuggestions(searchTerm);
+    }
+    
+    highlightSearchTerms(article, searchTerm) {
+      // Simple highlighting - can be enhanced further
+      const title = article.querySelector('.article-title a');
+      if (title && title.textContent.toLowerCase().includes(searchTerm)) {
+        title.style.background = 'linear-gradient(120deg, #fef3c7, #fde68a)';
+        title.style.padding = '2px 4px';
+        title.style.borderRadius = '4px';
+      }
+    }
+    
+    showAllArticles() {
+      this.articles.forEach(article => {
+        article.style.display = 'block';
+        article.style.opacity = '1';
+        
+        // Remove highlighting
+        const title = article.querySelector('.article-title a');
+        if (title) {
+          title.style.background = 'none';
+          title.style.padding = '0';
+        }
+      });
+      
+      this.sections.forEach(section => {
+        section.style.display = 'block';
+      });
+    }
+    
+    updateSectionVisibility() {
+      this.sections.forEach(section => {
+        const visibleArticles = section.querySelectorAll('.featured-article:not([style*="display: none"]), .article-card:not([style*="display: none"])');
+        section.style.display = visibleArticles.length > 0 ? 'block' : 'none';
+      });
+    }
+    
+    showSearchResults(query, count) {
+      this.removeSearchResults();
+      
+      const resultsDiv = document.createElement('div');
+      resultsDiv.className = 'search-results';
+      resultsDiv.innerHTML = `
+        <h3>Search Results for "${query}"</h3>
+        <p>${count} article${count !== 1 ? 's' : ''} found</p>
+      `;
+      
+      const contentSection = document.querySelector('.content-section .content-container');
+      contentSection.insertBefore(resultsDiv, contentSection.firstChild);
+      
+      if (count === 0) {
+        this.showNoResults(query);
+      }
+    }
+    
+    showNoResults(query) {
+      const noResultsDiv = document.createElement('div');
+      noResultsDiv.className = 'no-results';
+      noResultsDiv.innerHTML = `
+        <h3>No articles found</h3>
+        <p>Try different keywords or browse our categories below</p>
+      `;
+      
+      const contentSection = document.querySelector('.content-section .content-container');
+      const searchResults = document.querySelector('.search-results');
+      contentSection.insertBefore(noResultsDiv, searchResults.nextSibling);
+    }
+    
+    removeSearchResults() {
+      const existing = document.querySelectorAll('.search-results, .no-results');
+      existing.forEach(el => el.remove());
+    }
+    
+    updateSuggestions(query) {
+      if (query.length < 2) {
+        this.hideSuggestions();
+        return;
+      }
+      
+      const matches = this.searchTerms
+        .filter(term => term.includes(query) && term !== query)
+        .slice(0, 5);
+      
+      if (matches.length > 0) {
+        this.showSuggestions(matches);
+      } else {
+        this.hideSuggestions();
+      }
+    }
+    
+    showSuggestions(suggestions = []) {
+      if (suggestions.length === 0) {
+        this.hideSuggestions();
+        return;
+      }
+      
+      this.searchSuggestions.innerHTML = suggestions
+        .map(suggestion => `
+          <div class="suggestion-item" data-suggestion="${suggestion}">
+            ${suggestion}
+          </div>
+        `).join('');
+      
+      this.searchSuggestions.style.display = 'block';
+      
+      // Add click handlers
+      this.searchSuggestions.querySelectorAll('.suggestion-item').forEach(item => {
+        item.addEventListener('click', () => {
+          this.searchInput.value = item.dataset.suggestion;
+          this.performSearch(item.dataset.suggestion);
+          this.hideSuggestions();
         });
       });
     }
+    
+    hideSuggestions() {
+      this.searchSuggestions.style.display = 'none';
+    }
+  }
+  
+  // Initialize search when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new BlogSearch();
+    
+    // Add loading states for better UX
+    const searchInput = document.getElementById('blogSearch');
+    if (searchInput) {
+      let loadingTimeout;
+      
+      searchInput.addEventListener('input', () => {
+        clearTimeout(loadingTimeout);
+        document.body.classList.add('loading');
+        
+        loadingTimeout = setTimeout(() => {
+          document.body.classList.remove('loading');
+        }, 500);
+      });
+    }
+    
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   });
 </script>
