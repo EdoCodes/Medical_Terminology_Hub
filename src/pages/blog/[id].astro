@@ -23,43 +23,86 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-// Generate full content for the blog post
+// Generate full content for the blog post with proper SEO structure
 const generateFullContent = (post) => {
+  const categoryLower = post.category.toLowerCase();
+  const titleLower = post.title.toLowerCase();
+  
   return `
-    <p>Welcome to this comprehensive guide on ${post.title.toLowerCase()}. This article will provide you with essential knowledge for healthcare professionals and students.</p>
+    <p>Master ${titleLower} with this comprehensive guide designed for healthcare professionals and medical students. This article provides essential knowledge and practical applications.</p>
     
-    <h2>Introduction</h2>
+    <h2>Understanding ${post.category} Medical Terminology</h2>
     <p>${post.excerpt}</p>
     
-    <h2>Key Medical Terms</h2>
-    <p>Understanding medical terminology is crucial for effective communication in healthcare settings. In this section, we'll explore the most important terms related to ${post.category.toLowerCase()}.</p>
+    <p>Medical terminology in ${categoryLower} requires precise understanding to ensure accurate communication in healthcare settings. Let's explore the fundamental concepts and terminology you need to know.</p>
     
-    <h3>Essential Terminology</h3>
+    <h2>Essential Medical Terms and Definitions</h2>
+    <p>Building a strong foundation in ${categoryLower} terminology begins with understanding core vocabulary. These terms form the backbone of professional medical communication.</p>
+    
+    <h3>Primary Terminology Categories</h3>
     <ul>
-      <li><strong>Primary Terms:</strong> Learn the fundamental vocabulary used in ${post.category.toLowerCase()}</li>
-      <li><strong>Anatomical References:</strong> Understand body system terminology</li>
-      <li><strong>Clinical Applications:</strong> Apply terminology in real healthcare scenarios</li>
-      <li><strong>Documentation:</strong> Use proper medical language in patient records</li>
+      <li><strong>Anatomical Terms:</strong> Specific vocabulary for body structures in ${categoryLower}</li>
+      <li><strong>Pathological Terms:</strong> Terminology describing diseases and conditions</li>
+      <li><strong>Diagnostic Terms:</strong> Language used in medical testing and evaluation</li>
+      <li><strong>Treatment Terms:</strong> Vocabulary for therapeutic interventions and procedures</li>
+      <li><strong>Pharmaceutical Terms:</strong> Medical terminology related to medications and treatments</li>
     </ul>
     
-    <h2>Clinical Applications</h2>
-    <p>Medical terminology serves as the foundation for clear communication among healthcare professionals. Whether you're a student preparing for exams or a practitioner reviewing concepts, this guide provides practical insights.</p>
+    <h3>Word Formation Patterns</h3>
+    <p>Medical terms in ${categoryLower} follow predictable patterns using Greek and Latin roots, prefixes, and suffixes. Understanding these patterns helps decode complex terminology:</p>
     
-    <h3>Study Tips</h3>
+    <ul>
+      <li><strong>Prefixes:</strong> Word beginnings that modify meaning (examples: hyper-, hypo-, pre-, post-)</li>
+      <li><strong>Root Words:</strong> Core meanings that form the foundation of terms</li>
+      <li><strong>Suffixes:</strong> Word endings that specify conditions, procedures, or states</li>
+    </ul>
+    
+    <h2>Clinical Applications and Real-World Usage</h2>
+    <p>Understanding how to apply ${categoryLower} terminology in clinical practice is essential for effective healthcare communication.</p>
+    
+    <h3>Documentation and Record Keeping</h3>
+    <p>Accurate medical documentation requires precise terminology. Healthcare professionals must use standardized language to ensure clear communication across different providers and specialties.</p>
+    
+    <h3>Patient Communication</h3>
+    <p>While technical terminology is essential for professional communication, healthcare providers must also translate complex terms for patient understanding while maintaining accuracy.</p>
+    
+    <h3>Interdisciplinary Communication</h3>
+    <p>Medical terminology serves as a universal language among healthcare professionals, enabling clear communication between different specialties and departments.</p>
+    
+    <h2>Study Strategies and Learning Techniques</h2>
+    <p>Effective mastery of ${categoryLower} terminology requires systematic study approaches and consistent practice.</p>
+    
+    <h3>Memory Techniques</h3>
     <ol>
-      <li>Break down complex terms into prefixes, roots, and suffixes</li>
-      <li>Practice with flashcards and interactive tools</li>
-      <li>Use medical terminology in context</li>
-      <li>Review regularly to maintain retention</li>
+      <li><strong>Etymology Method:</strong> Learn the Greek and Latin origins of medical terms</li>
+      <li><strong>Word Association:</strong> Connect new terms to familiar concepts or images</li>
+      <li><strong>Acronym Creation:</strong> Develop memorable acronyms for complex terminology groups</li>
+      <li><strong>Visual Learning:</strong> Use diagrams and anatomical illustrations to reinforce terminology</li>
     </ol>
     
-    <h2>Practice and Assessment</h2>
-    <p>To reinforce your learning, we recommend using our interactive study tools:</p>
+    <h3>Practice and Retention</h3>
+    <ul>
+      <li>Use spaced repetition systems for long-term retention</li>
+      <li>Practice with interactive flashcards and digital tools</li>
+      <li>Apply terminology in context through case studies</li>
+      <li>Regular review sessions to maintain knowledge</li>
+    </ul>
     
-    <h2>Conclusion</h2>
-    <p>Mastering medical terminology takes time and practice. Use this knowledge as a foundation for your continued learning in healthcare. Remember to review regularly and apply these terms in clinical contexts.</p>
+    <h2>Professional Development and Continuing Education</h2>
+    <p>Medical terminology continues to evolve with advances in healthcare. Staying current requires ongoing education and practice.</p>
     
-    <p>Continue your medical terminology journey with our comprehensive study resources and interactive flashcards.</p>
+    <h3>Industry Updates</h3>
+    <p>New medical discoveries and technological advances regularly introduce new terminology. Healthcare professionals must stay informed about current terminology standards and updates.</p>
+    
+    <h3>Certification and Competency</h3>
+    <p>Many healthcare positions require demonstrated competency in medical terminology. Regular assessment and continuing education ensure professional standards are maintained.</p>
+    
+    <h2>Final Thoughts</h2>
+    <p>Mastering ${categoryLower} medical terminology is a crucial investment in your healthcare career. These terms form the foundation for professional communication, accurate documentation, and effective patient care.</p>
+    
+    <p>Remember that learning medical terminology is an ongoing process. Use our interactive study tools, practice regularly, and apply your knowledge in real-world scenarios to build lasting competency.</p>
+    
+    <p>Continue developing your medical terminology expertise with our comprehensive flashcard system and specialized quizzes designed for ${categoryLower} terminology mastery.</p>
   `;
 };
 
@@ -340,18 +383,32 @@ const schemaData = {
 
   .post-content h2 {
     font-size: 1.75rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #212529;
-    margin: 40px 0 20px 0;
-    line-height: 1.3;
+    margin: 48px 0 24px 0;
+    line-height: 1.2;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 12px;
   }
 
   .post-content h3 {
     font-size: 1.375rem;
     font-weight: 600;
-    color: #212529;
-    margin: 32px 0 16px 0;
+    color: #343a40;
+    margin: 36px 0 18px 0;
     line-height: 1.3;
+    position: relative;
+  }
+
+  .post-content h3::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #0d6efd;
+    border-radius: 2px;
   }
 
   .post-content p {
@@ -426,55 +483,154 @@ const schemaData = {
     line-height: 1.4;
   }
 
-  /* Responsive Design */
+  /* Mobile Responsive Design */
   @media (max-width: 768px) {
     .container {
       padding: 0 16px;
     }
 
+    .breadcrumb {
+      padding: 12px 0;
+    }
+
+    .breadcrumb ol {
+      font-size: 0.8125rem;
+    }
+
     .blog-post {
-      padding: 40px 0;
+      padding: 32px 0;
+    }
+
+    .post-header {
+      margin-bottom: 32px;
+      text-align: left;
     }
 
     .post-title {
-      font-size: 2rem;
+      font-size: 1.875rem;
+      line-height: 1.2;
+      text-align: left;
     }
 
     .post-meta {
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .post-tags {
+      justify-content: flex-start;
+    }
+
+    .post-image {
+      margin-bottom: 32px;
     }
 
     .post-image img {
-      height: 200px;
+      height: 220px;
+    }
+
+    .post-content {
+      margin-bottom: 48px;
+    }
+
+    .post-content p {
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     .post-content h2 {
       font-size: 1.5rem;
+      margin: 36px 0 18px 0;
     }
 
     .post-content h3 {
       font-size: 1.25rem;
+      margin: 28px 0 14px 0;
+    }
+
+    .post-content h3::before {
+      left: -12px;
+      width: 3px;
+    }
+
+    .post-content ul,
+    .post-content ol {
+      padding-left: 20px;
+    }
+
+    .post-content li {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .related-resources {
+      padding-top: 32px;
     }
 
     .resources-grid {
       grid-template-columns: 1fr;
       gap: 16px;
     }
-  }
-
-  @media (max-width: 480px) {
-    .post-title {
-      font-size: 1.75rem;
-    }
-
-    .post-image img {
-      height: 160px;
-    }
 
     .resource-card {
       padding: 20px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 12px;
+    }
+
+    .post-title {
+      font-size: 1.625rem;
+      line-height: 1.3;
+    }
+
+    .post-meta {
+      gap: 8px;
+    }
+
+    .category {
+      font-size: 0.6875rem;
+      padding: 3px 8px;
+    }
+
+    .post-image img {
+      height: 180px;
+    }
+
+    .post-content p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .post-content h2 {
+      font-size: 1.375rem;
+      margin: 32px 0 16px 0;
+    }
+
+    .post-content h3 {
+      font-size: 1.125rem;
+      margin: 24px 0 12px 0;
+    }
+
+    .post-content li {
+      font-size: 0.9375rem;
+    }
+
+    .resource-card {
+      padding: 16px 12px;
+    }
+
+    .resource-card h3 {
+      font-size: 0.9375rem;
+    }
+
+    .resource-card p {
+      font-size: 0.8125rem;
     }
   }
 
