@@ -38,108 +38,120 @@ const generateFullContent = (post) => {
   }
   
   return `
-    <div class="article-intro">
-      <p class="lead-text">${post.excerpt}</p>
+    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 24px; border-radius: 12px; margin-bottom: 32px; border-left: 4px solid #007bff;">
+      <p style="font-size: 1.25rem; font-weight: 400; color: #495057; line-height: 1.6; margin: 0; font-style: italic;">
+        ${post.excerpt}
+      </p>
     </div>
 
-    <div class="article-meta-details">
-      <div class="author-info">
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 32px; border-left: 4px solid #007bff;">
+      <div style="font-size: 14px; color: #6c757d; margin-bottom: 12px;">
         <strong>By ${post.author}</strong> • ${post.readTime} • ${post.difficulty ? post.difficulty.charAt(0).toUpperCase() + post.difficulty.slice(1) : 'Intermediate'} Level
       </div>
-      <div class="article-tags">
-        ${post.tags ? post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('') : ''}
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        ${post.tags ? post.tags.map(tag => `<span style="background: #007bff; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; text-decoration: none;">#${tag}</span>`).join('') : ''}
       </div>
     </div>
 
-    <h2>Introduction to ${post.category} Medical Terminology</h2>
-    ${paragraphs.slice(0, 2).map(p => `<p>${p}</p>`).join('')}
+    <h2 style="font-size: 1.875rem; font-weight: 700; color: #212529; margin: 48px 0 24px 0; line-height: 1.3; border-bottom: 2px solid #007bff; padding-bottom: 12px;">
+      Introduction to ${post.category} Medical Terminology
+    </h2>
+    ${paragraphs.slice(0, 2).map(p => `<p style="margin-bottom: 18px; font-size: 16px; line-height: 1.8; color: #333;">${p}</p>`).join('')}
 
-    <div class="key-highlights">
-      <h3>Key Learning Points</h3>
-      <ul>
-        ${post.relatedTerms ? post.relatedTerms.map(term => `<li><strong>${term}:</strong> Essential terminology in ${categoryLower}</li>`).join('') : '<li>Core terminology concepts</li>'}
+    <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); padding: 24px; border-radius: 12px; margin: 32px 0; border: 1px solid #e3f2fd;">
+      <h3 style="color: #1976d2; margin-top: 0; margin-bottom: 16px; font-size: 1.5rem; font-weight: 600;">Key Learning Points</h3>
+      <ul style="margin: 18px 0; padding-left: 24px;">
+        ${post.relatedTerms ? post.relatedTerms.map(term => `<li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;"><strong>${term}:</strong> Essential terminology in ${categoryLower}</li>`).join('') : '<li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;">Core terminology concepts</li>'}
       </ul>
     </div>
 
-    <h2>Understanding ${post.category} Terminology in Detail</h2>
-    ${paragraphs.slice(2, 5).map(p => `<p>${p}</p>`).join('')}
+    <h2 style="font-size: 1.875rem; font-weight: 700; color: #212529; margin: 48px 0 24px 0; line-height: 1.3; border-bottom: 2px solid #007bff; padding-bottom: 12px;">
+      Understanding ${post.category} Terminology in Detail
+    </h2>
+    ${paragraphs.slice(2, 5).map(p => `<p style="margin-bottom: 18px; font-size: 16px; line-height: 1.8; color: #333;">${p}</p>`).join('')}
 
-    <div class="terminology-highlight">
-      <h3>Essential ${post.category} Terms</h3>
-      <div class="terms-grid">
+    <div style="background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 24px; margin: 32px 0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
+      <h3 style="font-size: 1.5rem; font-weight: 600; color: #343a40; margin: 0 0 18px 0; line-height: 1.4;">Essential ${post.category} Terms</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
         ${post.relatedTerms ? post.relatedTerms.map(term => `
-          <div class="term-card">
-            <h4>${term}</h4>
-            <p>Key terminology used in ${categoryLower} practice and education.</p>
+          <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; border-left: 4px solid #28a745; transition: transform 0.2s ease;">
+            <h4 style="color: #28a745; margin: 0 0 8px 0; font-size: 1rem; font-weight: 600;">${term}</h4>
+            <p style="margin: 0; font-size: 14px; color: #6c757d;">Key terminology used in ${categoryLower} practice and education.</p>
           </div>
-        `).join('') : '<div class="term-card"><h4>Medical Terminology</h4><p>Essential terms for healthcare professionals.</p></div>'}
+        `).join('') : '<div style="background: #f8f9fa; padding: 16px; border-radius: 8px; border-left: 4px solid #28a745;"><h4 style="color: #28a745; margin: 0 0 8px 0; font-size: 1rem;">Medical Terminology</h4><p style="margin: 0; font-size: 14px; color: #6c757d;">Essential terms for healthcare professionals.</p></div>'}
       </div>
     </div>
 
-    <h2>Clinical Applications and Context</h2>
-    ${paragraphs.slice(5, 7).map(p => `<p>${p}</p>`).join('')}
+    <h2 style="font-size: 1.875rem; font-weight: 700; color: #212529; margin: 48px 0 24px 0; line-height: 1.3; border-bottom: 2px solid #007bff; padding-bottom: 12px;">
+      Clinical Applications and Context
+    </h2>
+    ${paragraphs.slice(5, 7).map(p => `<p style="margin-bottom: 18px; font-size: 16px; line-height: 1.8; color: #333;">${p}</p>`).join('')}
 
-    <div class="clinical-applications">
-      <h3>Clinical Applications</h3>
-      <div class="application-points">
-        <div class="app-point">
-          <h4>Professional Communication</h4>
-          <p>Master these terms for effective healthcare team communication</p>
+    <div style="margin: 40px 0;">
+      <h3 style="font-size: 1.5rem; font-weight: 600; color: #343a40; margin: 0 0 18px 0; line-height: 1.4;">Clinical Applications</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 20px;">
+        <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+          <h4 style="color: #dc3545; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Professional Communication</h4>
+          <p style="margin: 0; font-size: 15px; color: #495057;">Master these terms for effective healthcare team communication</p>
         </div>
-        <div class="app-point">
-          <h4>Patient Documentation</h4>
-          <p>Accurate terminology ensures precise medical records</p>
+        <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+          <h4 style="color: #dc3545; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Patient Documentation</h4>
+          <p style="margin: 0; font-size: 15px; color: #495057;">Accurate terminology ensures precise medical records</p>
         </div>
-        <div class="app-point">
-          <h4>Continuing Education</h4>
-          <p>Build expertise for career advancement opportunities</p>
+        <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+          <h4 style="color: #dc3545; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Continuing Education</h4>
+          <p style="margin: 0; font-size: 15px; color: #495057;">Build expertise for career advancement opportunities</p>
         </div>
       </div>
     </div>
 
-    <h2>Advanced Concepts and Modern Applications</h2>
-    ${paragraphs.slice(7).map(p => `<p>${p}</p>`).join('')}
+    <h2 style="font-size: 1.875rem; font-weight: 700; color: #212529; margin: 48px 0 24px 0; line-height: 1.3; border-bottom: 2px solid #007bff; padding-bottom: 12px;">
+      Advanced Concepts and Modern Applications
+    </h2>
+    ${paragraphs.slice(7).map(p => `<p style="margin-bottom: 18px; font-size: 16px; line-height: 1.8; color: #333;">${p}</p>`).join('')}
 
-    <div class="learning-resources">
-      <h3>Recommended Study Resources</h3>
-      <ul>
-        <li><strong>Interactive Flashcards:</strong> Use our spaced repetition system for ${categoryLower} terms</li>
-        <li><strong>Practice Quizzes:</strong> Test your knowledge with comprehensive assessments</li>
-        <li><strong>Visual Learning:</strong> Connect terms to anatomical diagrams and medical illustrations</li>
-        <li><strong>Real-World Practice:</strong> Apply terminology in clinical documentation exercises</li>
+    <div style="background: #e8f5e8; padding: 24px; border-radius: 12px; margin: 32px 0; border-left: 4px solid #28a745;">
+      <h3 style="color: #155724; margin-top: 0; font-size: 1.5rem; font-weight: 600;">Recommended Study Resources</h3>
+      <ul style="margin: 18px 0; padding-left: 24px;">
+        <li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;"><strong>Interactive Flashcards:</strong> Use our spaced repetition system for ${categoryLower} terms</li>
+        <li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;"><strong>Practice Quizzes:</strong> Test your knowledge with comprehensive assessments</li>
+        <li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;"><strong>Visual Learning:</strong> Connect terms to anatomical diagrams and medical illustrations</li>
+        <li style="margin-bottom: 8px; font-size: 16px; line-height: 1.7; color: #333;"><strong>Real-World Practice:</strong> Apply terminology in clinical documentation exercises</li>
       </ul>
     </div>
 
-    <div class="expert-insights">
-      <h3>Expert Insights</h3>
-      <blockquote>
-        <p>"${post.authorBio}"</p>
-        <cite>— ${post.author}</cite>
+    <div style="margin: 40px 0;">
+      <h3 style="font-size: 1.5rem; font-weight: 600; color: #343a40; margin: 0 0 18px 0; line-height: 1.4;">Expert Insights</h3>
+      <blockquote style="background: #f1f3f4; border-left: 4px solid #6c757d; padding: 20px 24px; margin: 20px 0; font-style: italic; font-size: 1.1rem; line-height: 1.6;">
+        <p style="margin-bottom: 18px; font-size: 16px; line-height: 1.8; color: #333;">"${post.authorBio}"</p>
+        <cite style="font-weight: 600; color: #495057; font-style: normal;">— ${post.author}</cite>
       </blockquote>
     </div>
 
-    <h2>Key Takeaways and Next Steps</h2>
-    <div class="takeaways-grid">
-      <div class="takeaway">
-        <h4>Master the Fundamentals</h4>
-        <p>Focus on core ${categoryLower} terminology used in daily practice</p>
+    <h2 style="font-size: 1.875rem; font-weight: 700; color: #212529; margin: 48px 0 24px 0; line-height: 1.3; border-bottom: 2px solid #007bff; padding-bottom: 12px;">
+      Key Takeaways and Next Steps
+    </h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 24px 0;">
+      <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
+        <h4 style="color: #856404; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Master the Fundamentals</h4>
+        <p style="margin: 0; color: #856404; font-size: 15px;">Focus on core ${categoryLower} terminology used in daily practice</p>
       </div>
-      <div class="takeaway">
-        <h4>Practice Regularly</h4>
-        <p>Use spaced repetition and interactive study tools for retention</p>
+      <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
+        <h4 style="color: #856404; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Practice Regularly</h4>
+        <p style="margin: 0; color: #856404; font-size: 15px;">Use spaced repetition and interactive study tools for retention</p>
       </div>
-      <div class="takeaway">
-        <h4>Apply Knowledge</h4>
-        <p>Integrate new terminology into professional communication</p>
+      <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
+        <h4 style="color: #856404; margin: 0 0 12px 0; font-size: 1.1rem; font-weight: 600;">Apply Knowledge</h4>
+        <p style="margin: 0; color: #856404; font-size: 15px;">Integrate new terminology into professional communication</p>
       </div>
     </div>
 
-    <div class="call-to-action">
-      <h3>Start Your Learning Journey</h3>
-      <p>Ready to master ${categoryLower} medical terminology? Begin with our interactive flashcard system and build expertise that will advance your healthcare career.</p>
-      <div class="cta-buttons">
-        <a href="/" class="cta-primary">Start Learning</a>
-        <a href="/tests/comprehensive" class="cta-secondary">Take Assessment</a>
+    <div style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; padding: 32px; border-radius: 12px; text-align: center; margin: 40px 0;">
+      <h3 style="color: white; margin-top: 0; margin-bottom: 16px; font-size: 1.5rem; font-weight: 600;">Start Your Learning Journey</h3>
+      <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 24px; font-size: 16px; line-height: 1.8;">Ready to master ${categoryLower} medical terminology? Begin with our interactive flashcard system and build expertise that will advance your healthcare career.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/" style="padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s ease; display: inline-block; background: white; color: #007bff;">Start Learning</a>
+        <a href="/tests/comprehensive" style="padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s ease; display: inline-block; background: transparent; color: white; border: 2px solid white;">Take Assessment</a>
       </div>
     </div>
   `;
