@@ -1,0 +1,512 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CleanHeader from '../../components/CleanHeader.astro';
+import CleanFooter from '../../components/CleanFooter.astro';
+import quizData from '../../data/quizQuestions.json';
+
+export async function getStaticPaths() {
+  return [
+    {params: {category: 'cardiovascular'}},
+    {params: {category: 'respiratory'}},
+    {params: {category: 'neurology'}},
+    {params: {category: 'general'}}
+  ];
+}
+
+const { category } = Astro.params;
+const questions = quizData[category] || [];
+const categoryTitles = {
+  cardiovascular: 'Cardiovascular System',
+  respiratory: 'Respiratory System', 
+  neurology: 'Neurology',
+  general: 'General Medical Terms'
+};
+---
+
+<Layout title={`${categoryTitles[category]} Quiz - Medical Terminology Hub`}
+        description={`Test your knowledge of ${categoryTitles[category].toLowerCase()} medical terminology with our interactive quiz.`}>
+  <CleanHeader />
+  
+  <main class="quiz-main">
+    <div class="quiz-container">
+      <header class="quiz-header">
+        <h1 class="quiz-title">{categoryTitles[category]} Quiz</h1>
+        <p class="quiz-subtitle">Test your knowledge with {questions.length} multiple choice questions</p>
+        
+        <div class="quiz-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="currentQuestion">1</span>
+            <span class="stat-label">Question</span>
+          </div>
+          <div class="stat-divider">/</div>
+          <div class="stat-item">
+            <span class="stat-number">{questions.length}</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="score">0</span>
+            <span class="stat-label">Score</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="quiz-content">
+        <div class="quiz-card" id="quizCard">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          
+          <div class="question-section">
+            <h2 class="question-text" id="questionText"></h2>
+            <div class="options-container" id="optionsContainer"></div>
+          </div>
+          
+          <div class="quiz-controls">
+            <button id="nextBtn" class="quiz-btn" style="display: none;">Next Question</button>
+            <button id="restartBtn" class="quiz-btn secondary" style="display: none;">Restart Quiz</button>
+          </div>
+          
+          <div class="explanation" id="explanation" style="display: none;"></div>
+        </div>
+        
+        <div class="quiz-results" id="quizResults" style="display: none;">
+          <div class="results-card">
+            <h2 class="results-title">Quiz Complete!</h2>
+            <div class="final-score">
+              <span class="score-number" id="finalScore">0</span>
+              <span class="score-total">/ {questions.length}</span>
+            </div>
+            <div class="score-percentage" id="scorePercentage">0%</div>
+            <div class="score-message" id="scoreMessage"></div>
+            <div class="results-actions">
+              <button id="retakeBtn" class="quiz-btn">Retake Quiz</button>
+              <a href="/blog" class="quiz-btn secondary">Back to Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <CleanFooter />
+</Layout>
+
+<style>
+  .quiz-main {
+    min-height: calc(100vh - 140px);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 24px 0;
+  }
+
+  .quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .quiz-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .quiz-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 12px;
+  }
+
+  .quiz-subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+
+  .quiz-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4A90E2;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-divider {
+    font-size: 24px;
+    color: #9ca3af;
+    font-weight: 300;
+  }
+
+  .quiz-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #f3f4f6;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4A90E2, #3b82f6);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .question-section {
+    padding: 32px;
+  }
+
+  .question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option-btn {
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    color: #374151;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .option-btn:hover {
+    border-color: #4A90E2;
+    background: #f8faff;
+  }
+
+  .option-btn.selected {
+    border-color: #4A90E2;
+    background: #eff6ff;
+    color: #1e40af;
+  }
+
+  .option-btn.correct {
+    border-color: #10b981;
+    background: #ecfdf5;
+    color: #065f46;
+  }
+
+  .option-btn.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #991b1b;
+  }
+
+  .option-btn:disabled {
+    cursor: not-allowed;
+  }
+
+  .quiz-controls {
+    padding: 0 32px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .quiz-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .quiz-btn:not(.secondary) {
+    background: #4A90E2;
+    color: white;
+  }
+
+  .quiz-btn:not(.secondary):hover {
+    background: #3b82f6;
+    transform: translateY(-1px);
+  }
+
+  .quiz-btn.secondary {
+    background: white;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+  }
+
+  .quiz-btn.secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+  }
+
+  .explanation {
+    padding: 0 32px 32px;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+    background: #f8f9fa;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 24px;
+  }
+
+  .quiz-results {
+    text-align: center;
+  }
+
+  .results-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 48px 32px;
+  }
+
+  .results-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+  }
+
+  .final-score {
+    font-size: 48px;
+    font-weight: 700;
+    color: #4A90E2;
+    margin-bottom: 12px;
+  }
+
+  .score-total {
+    color: #9ca3af;
+  }
+
+  .score-percentage {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 16px;
+  }
+
+  .score-message {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 32px;
+  }
+
+  .results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .quiz-container {
+      padding: 0 16px;
+    }
+    
+    .quiz-title {
+      font-size: 24px;
+    }
+    
+    .question-section {
+      padding: 24px;
+    }
+    
+    .quiz-controls {
+      padding: 0 24px 24px;
+    }
+    
+    .results-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .quiz-btn {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+</style>
+
+<script define:vars={{ questions, category }}>
+  class MedicalQuiz {
+    constructor(questions) {
+      this.questions = questions;
+      this.currentQuestionIndex = 0;
+      this.score = 0;
+      this.selectedAnswer = null;
+      this.answered = false;
+      
+      this.initializeElements();
+      this.loadQuestion();
+    }
+    
+    initializeElements() {
+      this.questionText = document.getElementById('questionText');
+      this.optionsContainer = document.getElementById('optionsContainer');
+      this.nextBtn = document.getElementById('nextBtn');
+      this.restartBtn = document.getElementById('restartBtn');
+      this.explanation = document.getElementById('explanation');
+      this.quizCard = document.getElementById('quizCard');
+      this.quizResults = document.getElementById('quizResults');
+      this.currentQuestionEl = document.getElementById('currentQuestion');
+      this.scoreEl = document.getElementById('score');
+      this.progressFill = document.getElementById('progressFill');
+      this.finalScore = document.getElementById('finalScore');
+      this.scorePercentage = document.getElementById('scorePercentage');
+      this.scoreMessage = document.getElementById('scoreMessage');
+      this.retakeBtn = document.getElementById('retakeBtn');
+      
+      this.nextBtn.addEventListener('click', () => this.nextQuestion());
+      this.restartBtn.addEventListener('click', () => this.restartQuiz());
+      this.retakeBtn.addEventListener('click', () => this.restartQuiz());
+    }
+    
+    loadQuestion() {
+      const question = this.questions[this.currentQuestionIndex];
+      this.questionText.textContent = question.question;
+      this.answered = false;
+      this.selectedAnswer = null;
+      
+      // Update progress
+      this.currentQuestionEl.textContent = this.currentQuestionIndex + 1;
+      const progress = ((this.currentQuestionIndex + 1) / this.questions.length) * 100;
+      this.progressFill.style.width = `${progress}%`;
+      
+      // Clear options
+      this.optionsContainer.innerHTML = '';
+      
+      // Create option buttons
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.textContent = option;
+        button.addEventListener('click', () => this.selectAnswer(index));
+        this.optionsContainer.appendChild(button);
+      });
+      
+      // Hide controls and explanation
+      this.nextBtn.style.display = 'none';
+      this.explanation.style.display = 'none';
+    }
+    
+    selectAnswer(selectedIndex) {
+      if (this.answered) return;
+      
+      this.selectedAnswer = selectedIndex;
+      this.answered = true;
+      
+      const question = this.questions[this.currentQuestionIndex];
+      const buttons = this.optionsContainer.querySelectorAll('.option-btn');
+      
+      // Disable all buttons and show results
+      buttons.forEach((button, index) => {
+        button.disabled = true;
+        if (index === question.correct) {
+          button.classList.add('correct');
+        } else if (index === selectedIndex && index !== question.correct) {
+          button.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      if (selectedIndex === question.correct) {
+        this.score++;
+        this.scoreEl.textContent = this.score;
+      }
+      
+      // Show explanation
+      this.explanation.textContent = question.explanation;
+      this.explanation.style.display = 'block';
+      
+      // Show next button or finish
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.nextBtn.style.display = 'block';
+      } else {
+        setTimeout(() => this.showResults(), 1000);
+      }
+    }
+    
+    nextQuestion() {
+      this.currentQuestionIndex++;
+      this.loadQuestion();
+    }
+    
+    showResults() {
+      this.quizCard.style.display = 'none';
+      this.quizResults.style.display = 'block';
+      
+      const percentage = Math.round((this.score / this.questions.length) * 100);
+      this.finalScore.textContent = this.score;
+      this.scorePercentage.textContent = `${percentage}%`;
+      
+      let message = '';
+      if (percentage >= 90) {
+        message = 'Excellent! You have mastered this topic.';
+      } else if (percentage >= 80) {
+        message = 'Great job! You have a solid understanding.';
+      } else if (percentage >= 70) {
+        message = 'Good work! Keep studying to improve.';
+      } else if (percentage >= 60) {
+        message = 'Fair. Review the material and try again.';
+      } else {
+        message = 'Keep studying! Practice makes perfect.';
+      }
+      this.scoreMessage.textContent = message;
+    }
+    
+    restartQuiz() {
+      this.currentQuestionIndex = 0;
+      this.score = 0;
+      this.selectedAnswer = null;
+      this.answered = false;
+      
+      this.scoreEl.textContent = '0';
+      this.quizCard.style.display = 'block';
+      this.quizResults.style.display = 'none';
+      
+      this.loadQuestion();
+    }
+  }
+  
+  // Initialize quiz when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    if (questions && questions.length > 0) {
+      new MedicalQuiz(questions);
+    }
+  });
+</script>

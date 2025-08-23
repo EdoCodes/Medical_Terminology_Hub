@@ -147,10 +147,10 @@ const allPosts = blogPosts.posts;
         <aside class="blog-sidebar">
           <!-- Categories -->
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Categories</h3>
+            <h3 class="sidebar-title">Medical Categories</h3>
             <div class="categories-list">
-              {categories.map(category => (
-                <a href={`/category/${category.name.toLowerCase()}`} class="category-item">
+              {categories.slice(0, 8).map(category => (
+                <a href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`} class="category-item">
                   <span class="category-name">{category.name}</span>
                   <span class="category-count">{category.postCount}</span>
                 </a>
@@ -158,9 +158,32 @@ const allPosts = blogPosts.posts;
             </div>
           </div>
 
-          <!-- Quick Links -->
+          <!-- Mock Tests -->
           <div class="sidebar-section">
-            <h3 class="sidebar-title">Quick Study</h3>
+            <h3 class="sidebar-title">Practice Tests</h3>
+            <div class="quick-links">
+              <a href="/tests/cardiovascular" class="quick-link">
+                <span class="link-icon">♥</span>
+                Cardiovascular Quiz
+              </a>
+              <a href="/tests/respiratory" class="quick-link">
+                <span class="link-icon">◉</span>
+                Respiratory Quiz
+              </a>
+              <a href="/tests/neurology" class="quick-link">
+                <span class="link-icon">●</span>
+                Neurology Quiz
+              </a>
+              <a href="/tests/general" class="quick-link">
+                <span class="link-icon">★</span>
+                General Medical Terms
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Study -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Study Tools</h3>
             <div class="quick-links">
               <a href="/" class="quick-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -171,30 +194,15 @@ const allPosts = blogPosts.posts;
                 </svg>
                 Study Flashcards
               </a>
-              <a href="/cardiovascular" class="quick-link">
-                <span class="emoji">❤️</span>
-                Cardiovascular Terms
+              <a href="/glossary" class="quick-link">
+                <span class="link-icon">◈</span>
+                Medical Glossary
               </a>
-              <a href="/respiratory" class="quick-link">
-                <span class="emoji">🫁</span>
-                Respiratory Terms
-              </a>
-              <a href="/neurology" class="quick-link">
-                <span class="emoji">🧠</span>
-                Neurology Terms
+              <a href="/etymology" class="quick-link">
+                <span class="link-icon">◆</span>
+                Word Origins
               </a>
             </div>
-          </div>
-
-          <!-- Newsletter -->
-          <div class="sidebar-section newsletter">
-            <h3 class="sidebar-title">Stay Updated</h3>
-            <p class="newsletter-text">Get the latest medical terminology articles and study tips.</p>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Your email address" class="newsletter-input" />
-              <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
           </div>
         </aside>
       </div>
@@ -581,8 +589,13 @@ const allPosts = blogPosts.posts;
     color: #6b7280;
   }
 
-  .emoji {
+  .link-icon {
     font-size: 16px;
+    color: #4A90E2;
+    font-weight: 600;
+    width: 16px;
+    display: inline-block;
+    text-align: center;
   }
 
   /* Newsletter */

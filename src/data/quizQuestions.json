@@ -1,0 +1,150 @@
+{
+  "cardiovascular": [
+    {
+      "id": 1,
+      "question": "What does the prefix 'cardio-' mean?",
+      "options": ["Heart", "Blood", "Vessel", "Circulation"],
+      "correct": 0,
+      "explanation": "The prefix 'cardio-' comes from the Greek word 'kardia' meaning heart."
+    },
+    {
+      "id": 2,
+      "question": "What is hypertension?",
+      "options": ["Low blood pressure", "High blood pressure", "Irregular heartbeat", "Heart attack"],
+      "correct": 1,
+      "explanation": "Hypertension is the medical term for high blood pressure (hyper = above normal, tension = pressure)."
+    },
+    {
+      "id": 3,
+      "question": "What does 'myocardial infarction' mean?",
+      "options": ["Heart rhythm disorder", "Heart valve problem", "Heart attack", "Heart murmur"],
+      "correct": 2,
+      "explanation": "Myocardial infarction is the medical term for a heart attack (myo = muscle, cardial = heart, infarction = tissue death)."
+    },
+    {
+      "id": 4,
+      "question": "What is the meaning of 'bradycardia'?",
+      "options": ["Fast heart rate", "Slow heart rate", "Irregular heart rate", "Normal heart rate"],
+      "correct": 1,
+      "explanation": "Bradycardia means slow heart rate (brady = slow, cardia = heart)."
+    },
+    {
+      "id": 5,
+      "question": "What does 'angioplasty' mean?",
+      "options": ["Heart surgery", "Blood vessel repair", "Heart transplant", "Pacemaker insertion"],
+      "correct": 1,
+      "explanation": "Angioplasty is a procedure to repair or widen blood vessels (angio = vessel, plasty = repair)."
+    }
+  ],
+  "respiratory": [
+    {
+      "id": 1,
+      "question": "What does 'pneumonia' mean?",
+      "options": ["Lung infection", "Collapsed lung", "Difficulty breathing", "Lung cancer"],
+      "correct": 0,
+      "explanation": "Pneumonia is an infection of the lungs (pneumon = lung, ia = condition)."
+    },
+    {
+      "id": 2,
+      "question": "What is 'dyspnea'?",
+      "options": ["Rapid breathing", "Difficulty breathing", "No breathing", "Deep breathing"],
+      "correct": 1,
+      "explanation": "Dyspnea means difficulty breathing (dys = difficult, pnea = breathing)."
+    },
+    {
+      "id": 3,
+      "question": "What does 'tachypnea' mean?",
+      "options": ["Slow breathing", "Rapid breathing", "Deep breathing", "Shallow breathing"],
+      "correct": 1,
+      "explanation": "Tachypnea means rapid breathing (tachy = fast, pnea = breathing)."
+    },
+    {
+      "id": 4,
+      "question": "What is a 'pneumothorax'?",
+      "options": ["Lung infection", "Collapsed lung", "Lung tumor", "Fluid in lungs"],
+      "correct": 1,
+      "explanation": "Pneumothorax is a collapsed lung (pneumo = lung, thorax = chest cavity)."
+    },
+    {
+      "id": 5,
+      "question": "What does 'rhinitis' mean?",
+      "options": ["Ear infection", "Throat infection", "Nose inflammation", "Sinus infection"],
+      "correct": 2,
+      "explanation": "Rhinitis is inflammation of the nose (rhino = nose, itis = inflammation)."
+    }
+  ],
+  "neurology": [
+    {
+      "id": 1,
+      "question": "What does 'encephalitis' mean?",
+      "options": ["Brain tumor", "Brain inflammation", "Brain bleeding", "Brain infection"],
+      "correct": 1,
+      "explanation": "Encephalitis is inflammation of the brain (encephalo = brain, itis = inflammation)."
+    },
+    {
+      "id": 2,
+      "question": "What is 'hemiplegia'?",
+      "options": ["Complete paralysis", "Paralysis of one side", "Temporary paralysis", "Partial paralysis"],
+      "correct": 1,
+      "explanation": "Hemiplegia is paralysis of one side of the body (hemi = half, plegia = paralysis)."
+    },
+    {
+      "id": 3,
+      "question": "What does 'aphasia' mean?",
+      "options": ["Memory loss", "Speech difficulty", "Vision problems", "Hearing loss"],
+      "correct": 1,
+      "explanation": "Aphasia is difficulty with speech and language (a = without, phasia = speech)."
+    },
+    {
+      "id": 4,
+      "question": "What is 'meningitis'?",
+      "options": ["Brain tumor", "Spinal cord injury", "Brain membrane inflammation", "Nerve damage"],
+      "correct": 2,
+      "explanation": "Meningitis is inflammation of the meninges (brain membranes) (mening = membrane, itis = inflammation)."
+    },
+    {
+      "id": 5,
+      "question": "What does 'neuralgia' mean?",
+      "options": ["Nerve pain", "Nerve damage", "Nerve inflammation", "Nerve tumor"],
+      "correct": 0,
+      "explanation": "Neuralgia is nerve pain (neur = nerve, algia = pain)."
+    }
+  ],
+  "general": [
+    {
+      "id": 1,
+      "question": "What does the suffix '-itis' mean?",
+      "options": ["Pain", "Inflammation", "Tumor", "Removal"],
+      "correct": 1,
+      "explanation": "The suffix '-itis' means inflammation."
+    },
+    {
+      "id": 2,
+      "question": "What does the prefix 'hyper-' mean?",
+      "options": ["Under", "Above", "Around", "Through"],
+      "correct": 1,
+      "explanation": "The prefix 'hyper-' means above normal or excessive."
+    },
+    {
+      "id": 3,
+      "question": "What does the suffix '-ectomy' mean?",
+      "options": ["Repair", "Removal", "Creation", "Examination"],
+      "correct": 1,
+      "explanation": "The suffix '-ectomy' means surgical removal."
+    },
+    {
+      "id": 4,
+      "question": "What does 'bilateral' mean?",
+      "options": ["One side", "Both sides", "Multiple sides", "No sides"],
+      "correct": 1,
+      "explanation": "Bilateral means affecting both sides (bi = two, lateral = side)."
+    },
+    {
+      "id": 5,
+      "question": "What does the prefix 'anti-' mean?",
+      "options": ["For", "Against", "Around", "Through"],
+      "correct": 1,
+      "explanation": "The prefix 'anti-' means against or opposing."
+    }
+  ]
+}
