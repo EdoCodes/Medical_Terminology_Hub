@@ -120,7 +120,7 @@ const schemaData = {
                       loading="lazy"
                       itemprop="image"
                     />
-                    <div class="article-category" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+                    <div class="article-category">
                       {post.category}
                     </div>
                     <div class="article-badge featured-badge">Featured</div>
@@ -181,7 +181,7 @@ const schemaData = {
                     loading="lazy"
                     itemprop="image"
                   />
-                  <div class="article-category" style={`background: ${categories.find(cat => cat.name === post.category)?.color || '#4A90E2'}`}>
+                  <div class="article-category">
                     {post.category}
                   </div>
                   <div class={`difficulty-badge ${post.difficulty}`}>
@@ -290,6 +290,18 @@ const schemaData = {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  /* Ensure clean backgrounds */
+  .blog-main * {
+    background-clip: padding-box;
+  }
+
+  /* Remove any unwanted color inheritance */
+  .article-card,
+  .featured-article {
+    background: white !important;
+    isolation: isolate;
   }
 
   .blog-main {
@@ -563,7 +575,7 @@ const schemaData = {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: rgba(16, 185, 129, 0.9);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
@@ -571,6 +583,8 @@ const schemaData = {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   /* Article Cards */
@@ -611,6 +625,7 @@ const schemaData = {
     position: absolute;
     top: 12px;
     left: 12px;
+    background: rgba(74, 144, 226, 0.9);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
@@ -618,6 +633,8 @@ const schemaData = {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .difficulty-badge {
@@ -633,31 +650,39 @@ const schemaData = {
   }
 
   .difficulty-badge.basic {
-    background: #10b981;
+    background: rgba(16, 185, 129, 0.9);
     color: white;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .difficulty-badge.intermediate {
-    background: #f59e0b;
+    background: rgba(74, 144, 226, 0.9);
     color: white;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .difficulty-badge.advanced {
-    background: #ef4444;
+    background: rgba(107, 114, 128, 0.9);
     color: white;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .video-badge {
     position: absolute;
     bottom: 12px;
     right: 12px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(74, 144, 226, 0.9);
     color: white;
     padding: 8px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .video-badge svg {
@@ -1126,13 +1151,14 @@ const schemaData = {
   .search-results {
     margin-top: 40px;
     padding: 20px;
-    background: rgba(74, 144, 226, 0.05);
+    background: rgba(248, 250, 252, 0.8);
     border-radius: 12px;
-    border: 1px solid rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+    backdrop-filter: blur(4px);
   }
 
   .search-results h3 {
-    color: #4A90E2;
+    color: #374151;
     margin-bottom: 16px;
     font-size: 18px;
   }
@@ -1247,12 +1273,13 @@ const schemaData = {
     }
     
     highlightSearchTerms(article, searchTerm) {
-      // Simple highlighting - can be enhanced further
+      // Simple highlighting with subtle effect
       const title = article.querySelector('.article-title a');
       if (title && title.textContent.toLowerCase().includes(searchTerm)) {
-        title.style.background = 'linear-gradient(120deg, #fef3c7, #fde68a)';
+        title.style.background = 'rgba(74, 144, 226, 0.1)';
         title.style.padding = '2px 4px';
         title.style.borderRadius = '4px';
+        title.style.boxShadow = '0 0 0 1px rgba(74, 144, 226, 0.2)';
       }
     }
     
@@ -1266,6 +1293,7 @@ const schemaData = {
         if (title) {
           title.style.background = 'none';
           title.style.padding = '0';
+          title.style.boxShadow = 'none';
         }
       });
       
