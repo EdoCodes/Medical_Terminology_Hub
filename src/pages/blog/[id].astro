@@ -1,0 +1,529 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CleanHeader from '../../components/CleanHeader.astro';
+import CleanFooter from '../../components/CleanFooter.astro';
+import blogPosts from '../../data/blogPosts.json';
+
+export async function getStaticPaths() {
+  return blogPosts.posts.map((post, index) => ({
+    params: { id: post.id },
+    props: { 
+      post: {
+        ...post,
+        publishDate: [
+          '2024-03-15', '2024-02-28', '2024-02-14', '2024-01-30', '2024-01-18',
+          '2024-01-05', '2023-12-20', '2023-12-08', '2023-11-25', '2023-11-12',
+          '2023-10-28', '2023-10-15', '2023-09-30', '2023-09-18', '2023-09-05'
+        ][index % 15],
+        headerImage: `/images/blog/header-${(index % 6) + 1}.jpg`
+      }
+    }
+  }));
+}
+
+const { post } = Astro.props;
+
+// Generate full content for the blog post
+const generateFullContent = (post) => {
+  return `
+    <p>Welcome to this comprehensive guide on ${post.title.toLowerCase()}. This article will provide you with essential knowledge for healthcare professionals and students.</p>
+    
+    <h2>Introduction</h2>
+    <p>${post.excerpt}</p>
+    
+    <h2>Key Medical Terms</h2>
+    <p>Understanding medical terminology is crucial for effective communication in healthcare settings. In this section, we'll explore the most important terms related to ${post.category.toLowerCase()}.</p>
+    
+    <h3>Essential Terminology</h3>
+    <ul>
+      <li><strong>Primary Terms:</strong> Learn the fundamental vocabulary used in ${post.category.toLowerCase()}</li>
+      <li><strong>Anatomical References:</strong> Understand body system terminology</li>
+      <li><strong>Clinical Applications:</strong> Apply terminology in real healthcare scenarios</li>
+      <li><strong>Documentation:</strong> Use proper medical language in patient records</li>
+    </ul>
+    
+    <h2>Clinical Applications</h2>
+    <p>Medical terminology serves as the foundation for clear communication among healthcare professionals. Whether you're a student preparing for exams or a practitioner reviewing concepts, this guide provides practical insights.</p>
+    
+    <h3>Study Tips</h3>
+    <ol>
+      <li>Break down complex terms into prefixes, roots, and suffixes</li>
+      <li>Practice with flashcards and interactive tools</li>
+      <li>Use medical terminology in context</li>
+      <li>Review regularly to maintain retention</li>
+    </ol>
+    
+    <h2>Practice and Assessment</h2>
+    <p>To reinforce your learning, we recommend using our interactive study tools:</p>
+    
+    <h2>Conclusion</h2>
+    <p>Mastering medical terminology takes time and practice. Use this knowledge as a foundation for your continued learning in healthcare. Remember to review regularly and apply these terms in clinical contexts.</p>
+    
+    <p>Continue your medical terminology journey with our comprehensive study resources and interactive flashcards.</p>
+  `;
+};
+
+// SEO Schema data for blog post
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.excerpt,
+  "image": `https://medicalterminologyhub.netlify.app${post.headerImage}`,
+  "datePublished": post.publishDate,
+  "dateModified": post.publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": "Medical Terminology Hub"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Medical Terminology Hub",
+    "url": "https://medicalterminologyhub.netlify.app/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://medicalterminologyhub.netlify.app/blog/${post.id}`
+  },
+  "articleSection": post.category,
+  "keywords": post.tags,
+  "wordCount": 400,
+  "articleBody": post.excerpt
+};
+---
+
+<Layout 
+  title={`${post.title} - Medical Terminology Hub Blog`}
+  description={post.excerpt}
+>
+  <CleanHeader />
+  
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)}></script>
+  
+  <main class="blog-post-main">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/">
+              <span itemprop="name">Home</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="/blog">
+              <span itemprop="name">Blog</span>
+            </a>
+            <meta itemprop="position" content="2" />
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{post.title}</span>
+            <meta itemprop="position" content="3" />
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="container">
+        
+        <!-- Post Header -->
+        <header class="post-header">
+          <div class="post-meta">
+            <span class="category">{post.category}</span>
+            <time class="publish-date" itemprop="datePublished" datetime={post.publishDate}>
+              {new Date(post.publishDate).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </time>
+            <span class="read-time">{post.readTime}</span>
+          </div>
+          
+          <h1 class="post-title" itemprop="headline">{post.title}</h1>
+          
+          <div class="post-tags">
+            {post.tags.map(tag => (
+              <span class="tag" itemprop="keywords">{tag}</span>
+            ))}
+          </div>
+        </header>
+
+        <!-- Featured Image -->
+        <div class="post-image">
+          <img 
+            src={post.headerImage} 
+            alt={post.title}
+            itemprop="image"
+            onerror="this.src='/images/blog/default.svg'"
+          />
+        </div>
+
+        <!-- Post Content -->
+        <div class="post-content" itemprop="articleBody">
+          <Fragment set:html={generateFullContent(post)} />
+        </div>
+
+        <!-- Related Resources -->
+        <aside class="related-resources">
+          <h2>Continue Learning</h2>
+          <div class="resources-grid">
+            <a href="/" class="resource-card">
+              <h3>Interactive Flashcards</h3>
+              <p>Practice with our spaced repetition system</p>
+            </a>
+            <a href="/tests/comprehensive" class="resource-card">
+              <h3>Take a Quiz</h3>
+              <p>Test your knowledge with 100 questions</p>
+            </a>
+            <a href="/blog" class="resource-card">
+              <h3>More Articles</h3>
+              <p>Explore other medical terminology guides</p>
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </article>
+  </main>
+
+  <CleanFooter />
+</Layout>
+
+<style>
+  /* Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .blog-post-main {
+    background: #ffffff;
+    min-height: calc(100vh - 140px);
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 16px 0;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin-left: 8px;
+    color: #6c757d;
+  }
+
+  .breadcrumb a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+  }
+
+  .breadcrumb span {
+    color: #6c757d;
+  }
+
+  /* Blog Post */
+  .blog-post {
+    padding: 60px 0;
+  }
+
+  /* Post Header */
+  .post-header {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    font-size: 0.875rem;
+    color: #6c757d;
+    flex-wrap: wrap;
+  }
+
+  .category {
+    background: #212529;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .publish-date {
+    font-weight: 500;
+    color: #495057;
+  }
+
+  .read-time {
+    color: #adb5bd;
+  }
+
+  .post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .tag {
+    background: #f8f9fa;
+    color: #495057;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid #e9ecef;
+  }
+
+  /* Post Image */
+  .post-image {
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+  }
+
+  .post-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  /* Post Content */
+  .post-content {
+    line-height: 1.7;
+    color: #495057;
+    margin-bottom: 60px;
+  }
+
+  .post-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 40px 0 20px 0;
+    line-height: 1.3;
+  }
+
+  .post-content h3 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 32px 0 16px 0;
+    line-height: 1.3;
+  }
+
+  .post-content p {
+    margin-bottom: 20px;
+    font-size: 1.0625rem;
+  }
+
+  .post-content ul,
+  .post-content ol {
+    margin: 20px 0;
+    padding-left: 24px;
+  }
+
+  .post-content li {
+    margin-bottom: 8px;
+    font-size: 1.0625rem;
+  }
+
+  .post-content strong {
+    font-weight: 600;
+    color: #212529;
+  }
+
+  /* Related Resources */
+  .related-resources {
+    border-top: 1px solid #e9ecef;
+    padding-top: 40px;
+  }
+
+  .related-resources h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .resource-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 24px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .resource-card:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resource-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 8px;
+  }
+
+  .resource-card p {
+    color: #6c757d;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 16px;
+    }
+
+    .blog-post {
+      padding: 40px 0;
+    }
+
+    .post-title {
+      font-size: 2rem;
+    }
+
+    .post-meta {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .post-image img {
+      height: 200px;
+    }
+
+    .post-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .resources-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post-title {
+      font-size: 1.75rem;
+    }
+
+    .post-image img {
+      height: 160px;
+    }
+
+    .resource-card {
+      padding: 20px 16px;
+    }
+  }
+
+  /* Clean styling with no color bleeding */
+  .blog-post,
+  .blog-post * {
+    background-clip: padding-box;
+  }
+
+  .resource-card {
+    isolation: isolate;
+  }
+</style>
+
+<script>
+  // Simple interactions for blog post
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add reading progress indicator
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress';
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: #0d6efd;
+      z-index: 1001;
+      transition: width 0.2s ease;
+    `;
+    document.body.appendChild(progressBar);
+
+    // Update progress on scroll
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  });
+</script>
